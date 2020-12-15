@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:ital,wght@0,200;0,400;1,200&family=Roboto:wght@300;400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <!-- nav, section, header, footer, main, article, -->
+    <nav>
+        <div class="container">
+            <div class="left">
+                <img src="../assets/logo.svg" alt="Main Logo on the site">
+            </div>
+            <div class="middle">
+                <ul>
+                    <li>Collection</li>
+                    <li>New Releases</li>
+                    <li>Kids</li>
+                    <li>Promotions</li>
+                </ul>
+            </div>
+            <div class="right">
+                <div class="search">
+                    <input type="text" class="mainpage-search" placeholder="search">
+                    <img src="../assets/search-icon.svg" alt="">
+                </div>
+                <div class='profile'><img src="../assets/profile.svg" alt="Profile svg icon"></div>
+                <div class="cart"><img src="../assets/shopping-cart.svg" alt="Cart svg icon"></div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main">
+        <section class="parent-wh-inherit">
+            <div class="sign-up">
+                <form action="" name="sign-up">
+                    <div class="signing-description">
+
+                        <img src="../assets/short-logo.svg" alt="website logo in the beginning">
+                        <h3 class="signing-title">Sign Up</h3>
+                        <p class="signing-description-self">Sign Up and become a member of our partnership program. Get
+                            the latest releases, and be informed about promotions.</p>
+
+                    </div>
+                    <div class="inputs">
+                        <input type="email" class="input-text-regular" placeholder="Email:" name="email">
+                        <input type="password" class="input-text-regular" placeholder="Password:" name="password">
+                        <input type="text" class="input-text-regular" placeholder="First Name:" name="firstname">
+                        <input type="text" class="input-text-regular" placeholder="Last Name:" name="lastname">
+                        <input type="date" class="input-text-regular" placeholder="Date of Birth:">
+                        <div>
+                            <label for="male">
+                                <input type="radio" name="gender" id="male">
+                            </label>
+                            <label for="female">
+                                <input type="radio" name="gender" id="female">
+                            </label>
+                        </div>
+                        <div class="checkbox-terms">
+                            <input type="checkbox" class="checkbox">
+                            <p class="terms-self">
+                                I'm agree with Fit's <a href="#" class="terms-link">Privacy Policy</a> and <a href="#"
+                                    class="terms-link">
+                                    Term of Use.
+                                </a>
+                            </p>
+                        </div>
+                        <button class="submit-primary" type="submit">SIGN UP</button>
+                    </div>
+                    <div class="extra">
+                        <p class="option">Already Have An Account? <span class="extra-link">Sign In.</span></p>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+
+    </footer>
+
+</body>
+
+</html>

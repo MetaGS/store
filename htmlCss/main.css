@@ -113,13 +113,14 @@ nav .right .profile {
 /* Main Section */
 
 main {
-    height: calc(100vh - 68px);
+    min-height: calc(100vh - 68px);
     display: flex;
     position: relative;
     /* overflow-x: hidden; */
-    background-image: url(../assets/background-vector.png);
-    background-position: right bottom;
-    background-repeat: no-repeat;
+    background: url(../assets/background-vector.png) right bottom no-repeat, url(../assets/bg-secondary.png) 0% 110% no-repeat;
+
+    /* background-position: right bottom;
+    background-repeat: no-repeat; */
     
 }
 
@@ -192,7 +193,7 @@ main .buttons button:first-child {
 
 .see-more::after {
     content: "";
-    width: 60vw;
+    width: 70vw;
     margin-top: 20px;
     position: absolute;
     height: 20vh;
@@ -222,8 +223,63 @@ main .buttons button:first-child {
 .choose-category {
     width: 100%;
     height: 20vh;
-    
+    display: flex;
+    padding-right: 20px;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.mini-block {
+    width: 120px;
+    height: 120px;
+    border-radius: 13px;
+    border: 3px white solid;
+    overflow: hidden;
+    position: relative;
+
+}
+
+.miniblock-image {
+    position: absolute;
+    top: 0;
+    left: 0;   
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.miniblock-icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.arrow {
+    color: rgba(0, 0, 0, 0);
+    position: relative;
+    height: 120px;
+    width: 120px;
+    font-size: 0;
+ 
+}
+
+
+.arrow::after {
+    position: absolute;
+    height: 60%;
+    width: 60%;
+    content: "";
+    border-right: 3px white solid;
+    border-bottom: 3px white solid;
+    left:0;
+    
+    transform-origin: right center;
+    transition: transform 1s ease-out;
+    transform: rotateZ(-45deg) translate(-50%, -50%);
+}
+
+
 
 
 
@@ -237,3 +293,88 @@ main .right .main-girl {
     align-self: flex-end;
 }
 
+
+/* signUp.html */
+
+.parent-wh-inherit {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .sign-up {
+    width: 503px;
+    min-height: 800px;
+    margin: 71px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.sign-up form {
+    max-width: 327px;
+}
+
+.signing-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signing-description h3 {
+    text-transform:uppercase;
+    font-family: var(--fatface);
+    font-size: 2.1rem;
+    font-weight: 400;
+}
+
+.signing-description p {
+    font-size: 1.3rem;
+    font-family: var(--roboto);
+    color: var(--primary-grey);
+    text-align: justify;
+    margin-top: 20px;
+}
+
+.inputs > input {
+    height: 40px;
+    width: 320px;
+    border-radius: 3px;
+    border: 1px var(--primary-grey) solid;
+    padding-left: 7px;
+    margin-top: 16px;
+}
+
+.inputs > input:focus {
+    border-color: #000;
+    outline: none;
+}
+
+.inputs > input:first-child {
+    margin-top: 35px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Media Queries */
+
+@media (min-width: 1200px) {
+    main {
+        /* background-position: left top; */
+    }
+
+    main .right  {
+        justify-content: center;
+    }
+}
