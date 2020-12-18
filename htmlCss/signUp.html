@@ -9,6 +9,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:ital,wght@0,200;0,400;1,200&family=Roboto:wght@300;400&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
 </head>
 
@@ -51,19 +52,23 @@
 
                     </div>
                     <div class="inputs">
-                        <input type="email" class="input-text-regular" placeholder="Email:" name="email">
-                        <input type="password" class="input-text-regular" placeholder="Password:" name="password">
-                        <input type="text" class="input-text-regular" placeholder="First Name:" name="firstname">
-                        <input type="text" class="input-text-regular" placeholder="Last Name:" name="lastname">
-                        <input type="date" class="input-text-regular" placeholder="Date of Birth:">
-                        <div>
-                            <label for="male">
-                                <input type="radio" name="gender" id="male">
+                        <input type="email" class="input text-regular" placeholder="Email:" name="email">
+                        <input type="password" class="input text-regular" placeholder="Password:" name="password">
+                        <input type="text" class="input text-regular" placeholder="First Name:" name="firstname">
+                        <input type="text" class="input text-regular" placeholder="Last Name:" name="lastname">
+                        <input type="date" class="input text-regular" placeholder="Date of Birth:">
+
+                        <div class="choose-gender">
+                            <input type="radio" name="gender" id="male">
+                            <label for="male" class="input">
+                                Male
                             </label>
-                            <label for="female">
-                                <input type="radio" name="gender" id="female">
+                            <input type="radio" name="gender" id="female">
+                            <label for="female" class="input">
+                                Female
                             </label>
                         </div>
+
                         <div class="checkbox-terms">
                             <input type="checkbox" class="checkbox">
                             <p class="terms-self">
@@ -73,17 +78,77 @@
                                 </a>
                             </p>
                         </div>
-                        <button class="submit-primary" type="submit">SIGN UP</button>
+
+                        <button class="btn primary-button submit" type="submit">SIGN UP</button>
                     </div>
                     <div class="extra">
-                        <p class="option">Already Have An Account? <span class="extra-link">Sign In.</span></p>
+                        <p class="option">Already Have An Account? <a href="#" class="extra-link"><span class="">Sign
+                                    In.</span></a></p>
                     </div>
                 </form>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+
+                <div class="column">
+                    <h5 class="footer-header">ABOUT T-FIT</h5>
+                    <ul class="footer-links">
+                        <a href="">
+                            <li>News</li>
+                        </a>
+                        <a href="">
+                            <li>Carreers</li>
+                        </a>
+                        <a href="">
+                            <li>Developers</li>
+                        </a>
+                        <a href="">
+                            <li>Staff</li>
+                        </a>
+                    </ul>
+                </div>
+
+                <div class="column">
+                    <h5 class="footer-header">GET HELP</h5>
+                    <ul class="footer-links">
+                        <a href="">
+                            <li>How To Order</li>
+                        </a>
+                        <a href="">
+                            <li>Order Status</li>
+                        </a>
+                        <a href="">
+                            <li>Repayment Claim</li>
+                        </a>
+                        <a href="">
+                            <li>Contact Us</li>
+                        </a>
+                    </ul>
+                </div>
+                <div class="column">
+                    <img src="../assets/instagram-icon.svg" alt="link to instagram profile">
+                    <img src="../assets/facebook-icon.svg" alt="link to facebook profile">
+                    <img src="../assets/twitter-icon.svg" alt="link to twitter profile">
+                    <img src="../assets/youtube-icon.svg" alt="link to youtube channel">
+                </div>
+            </div>
+        </div>
+        <div class="footer-author">
+            <div class="container">
+                <div class="author-location">
+                    <img src="../assets/location-icon.svg" alt="location icon" class="location-icon">
+                    <p>Kyrgyzstan, Bishkek</p>
+                </div>
+                <div class="author">
+                    <img src="../assets/copyright.svg" alt="copyright icon" class="copyright">
+                    <p>T-Fit, Alymov M. Inc. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
 
     </footer>
 

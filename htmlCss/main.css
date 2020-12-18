@@ -21,13 +21,14 @@ html {
 body {
     width: 100%;
     height: 100vh;
+    font-family: var(--roboto);
 }
 
 .container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1150px;
     margin: 0 auto;
-    
+    padding: 0 25px;
 }
 
 /* Navigation Section */
@@ -306,10 +307,13 @@ main .right .main-girl {
 
 main .sign-up {
     width: 503px;
-    min-height: 800px;
+    padding: 26px 0 45px;
     margin: 71px 0;
     display: flex;
     justify-content: center;
+    background-color: white;
+    box-shadow: 0 4px 4px rgba(0, 0 , 0, 0.25);
+    border-radius: 5px;
 }
 
 .sign-up form {
@@ -337,11 +341,17 @@ main .sign-up {
     margin-top: 20px;
 }
 
-.inputs > input {
-    height: 40px;
-    width: 320px;
+.input {
     border-radius: 3px;
     border: 1px var(--primary-grey) solid;
+    font-size: 1.3rem;
+    font-family: var(--roboto);
+    
+}
+
+.inputs > input {
+    height: 40px;
+    width: 327px;
     padding-left: 7px;
     margin-top: 16px;
 }
@@ -351,7 +361,71 @@ main .sign-up {
     outline: none;
 }
 
+.inputs > input[type="date"] {
+    color: grey;
+}
+
 .inputs > input:first-child {
+    margin-top: 35px;
+}
+
+.choose-gender {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+.choose-gender input {
+    opacity: 0;
+    width: 0;
+    margin: 0;
+    position: absolute;
+
+}
+
+.choose-gender label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 153px;
+    height: 40px;
+    color: var(--primary-grey);
+    vertical-align: middle;
+}
+
+.choose-gender input:focus + label, .choose-gender input:checked + label {
+    border-color: black;
+    color: black;
+}
+
+ 
+
+.checkbox-terms {
+    display: flex;
+    margin-top: 30px;
+    align-items: center;
+}
+
+.checkbox-terms .checkbox {
+    width: 24px;
+    height: 24px;
+    margin-right: 11px;
+}
+
+.checkbox-terms .terms-self {
+    font-size: 1.3rem;
+    font-family: var(--roboto);
+    color: var(--primary-grey);
+}
+
+.checkbox-terms .terms-self a {
+    color: inherit;
+}
+
+
+
+.primary-button.submit {
+    width: 327px;
     margin-top: 35px;
 }
 
@@ -360,10 +434,142 @@ main .sign-up {
 
 
 
+.extra {
+    margin-top: 35px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--primary-grey);
+}
+
+
+.extra .extra-link {
+    color: var(--primary-color-text);
+    text-decoration: none;
+}
+
+.extra .extra-link:hover, .extra .extra-link:focus {
+    text-decoration: underline;
+}
+
+/* footer */
+
+.footer {
+    min-height: 345px;
+    background: linear-gradient(36deg, #070707, var(--primary-color) 60%);
+    font-family: 'Merriweather', serif;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
+}
+
+.footer-content {
+    display: flex;
+}
+
+.footer-content .column:first-child {
+    margin-right: 70px;
+}
 
 
 
 
+.footer .footer-header {
+    font-weight: 400;
+    font-size: 1.7rem;
+    color: #fff;
+}
+
+.footer .footer-links {
+    list-style: none;
+    color: var(--primary-grey);
+    font-size: 1.6rem;
+    text-decoration: none;
+    margin-top: 25px;
+}
+
+.footer .footer-links a {
+    text-decoration: inherit;
+    color: inherit;
+    /* margin-top: 16px; */
+}
+
+.footer .footer-links li {
+    margin-top: 16px;
+}
+
+.foooter .footer-links:hover {
+    text-decoration: underline;
+}
+
+.column:last-child {
+    display: flex;
+    align-self: flex-start;
+    margin: 0 0 0 auto;
+}
+
+.column:last-child img:not(:last-child) {
+    margin-right: 15px;
+}
+
+.footer-author {
+    height: 62px;
+    position: relative;
+    color: white;
+}
+
+
+
+.author-location, .footer .author {
+    display: flex;
+    align-items: center;
+}
+
+.footer .author {
+    justify-content: center;
+    color: #c4c4c4;
+    font-size: 1.2rem;
+    font-family: var(--roboto);
+}
+
+.footer .author-location {
+    font-size: 1.2rem;
+    font-family: var(--roboto);
+}
+
+
+.footer .author-location img, .footer .author img {
+    margin-right: 10px;
+}
+
+.footer-author::after {
+    content: "";
+    width: 95%;
+    margin: 0 auto;
+    display: block;
+    top: 0;
+    height: 0;
+    position: absolute;
+    border-top: 1px #EAE2E2 solid;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.footer-author .container {
+    display: flex;
+    height: 100%;
+    
+}
+
+.footer-author .container > *,.footer-author .container::after {
+    flex: 1 1 33%;
+}
+.footer-author .container::after {
+    content: "";
+    display: block;
+}
+
+.author
 
 
 
