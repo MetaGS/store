@@ -72,6 +72,16 @@ nav .middle ul {
     margin: 10px;
 }
 
+.middle a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.middle a.active {
+    text-decoration: underline;
+    
+}
+
 
 
 

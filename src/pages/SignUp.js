@@ -1,11 +1,14 @@
 import Navbar from '../components/Navbar';
 import Main from '../components/Main';
+import Footer from '../components/Footer';
 
 const SignUp = (props) => {
     return (
         <>
-            <Navbar />
+            <Main>
 
+            </Main>
+            <Footer />
         </>
     )
 }

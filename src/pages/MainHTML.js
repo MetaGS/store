@@ -9,15 +9,15 @@ import DescriptionP from '../components/DescriptionP';
 
 
 import mainGirl from '../assets/main-girl.png';
+import Main from '../components/Main';
 
 
 
 const MainHTML = props => {
     return (
         <>
-            <Navbar />
 
-            <main className="main">
+            <Main>
 
                 <section className="left">
                     <SecondaryContainer>
@@ -44,7 +44,7 @@ const MainHTML = props => {
                     <object className='main-girl' data={mainGirl} type="image/png">hi</object>
 
                 </section>
-            </main>{/* .main End */}
+            </Main>{/* .main End */}
         </>
     )
 }

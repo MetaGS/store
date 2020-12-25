@@ -1,3 +1,6 @@
+import { NavLink } from 'react-router-dom';
+
+import Container from '../components/Container';
 
 import './Navbar.css';
 
@@ -12,13 +15,13 @@ const Navbar = props => {
     return (
         <>
             <nav>
-                <div className="container">
+                <Container >
                     <div className="left">
-                        <img src={logo} alt="Main Logo on the site" />
+                        <NavLink to="/" activeClassName="active"><img src={logo} alt="Main Logo on the site" /></NavLink>
                     </div>
                     <div className="middle">
                         <ul>
-                            <li>Collection</li>
+                            <NavLink to="/signup"><li>Collection</li></NavLink>
                             <li>New Releases</li>
                             <li>Kids</li>
                             <li>Promotions</li>
@@ -32,7 +35,7 @@ const Navbar = props => {
                         <div className='profile'><img src={photo} alt="Profile svg icon" /></div>
                         <div className="cart"><img src={cart} alt="Cart svg icon" /></div>
                     </div>
-                </div>
+                </Container>
             </nav>
         </>
     )
