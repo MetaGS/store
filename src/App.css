@@ -29,6 +29,17 @@ body {
     font-family: var(--roboto);
 }
 
+/* a-primary here deletes default underline, i can pass this to parent of navbar for ex
+example, or to parent of links in footer section
+*/
+.a-primary a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.a-primary a:hover, .a-primary a:focus {
+    text-decoration: underline;
+}
 
 
 /* Navigation Section */

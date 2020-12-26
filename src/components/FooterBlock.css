@@ -1,0 +1,17 @@
+.footer-header {
+    font-weight: 400;
+    font-size: 1.7rem;
+    color: #fff;
+}
+
+.footer-links {
+    list-style: none;
+    color: var(--primary-grey);
+    font-size: 1.6rem;
+    margin-top: 25px;
+}
+
+
+.footer-links li {
+    margin-top: 16px;
+}

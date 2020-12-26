@@ -1,13 +1,53 @@
 
 import Container from '../components/Container';
-import './Footer.css';
+import FooterBlock from '../components/FooterBlock';
 
-import facebook from '../assets/facebook-icon.svg'
-import twitter from '../assets/twitter-icon.svg'
-import instagram from '../assets/instagram-icon.svg'
-import youtube from '../assets/youtube-icon.svg'
+
+import './Footer.css';
+import socialsArray from "./SvgSocial";
+
+// import facebook from '../assets/facebook-icon.svg'
+// import twitter from '../assets/twitter-icon.svg'
+// import instagram from '../assets/instagram-icon.svg'
+// import youtube from '../assets/youtube-icon.svg'
 import locationIcon from '../assets/location-icon.svg'
-import copyrightIcon from '../assets/copyright.svg'
+import copyrightIcon from '../assets/copyright.svg';
+
+
+
+const data = [{
+    header: 'ABOUT T-FIT',
+    list: [
+        {
+            name: 'Careers',
+        },
+        {
+            name: 'News'
+        },
+        {
+            name: 'Developers'
+        },
+        {
+            name: 'Staff'
+        }
+    ]
+}, {
+    header: 'GET HELP',
+    list: [
+        {
+            name: 'How To Order'
+        },
+        {
+            name: 'Order Status'
+        },
+        {
+            name: 'Repayment Claim'
+        },
+        {
+            name: 'Contact Us'
+        }
+    ]
+}];
 
 
 
@@ -19,36 +59,28 @@ const Footer = (props) => {
                     <div className="footer-content">
 
                         <div className="column">
-                            <h5 className="footer-header">ABOUT T-FIT</h5>
-                            <ul className="footer-links">
-
-                                <li><a href="">News</a></li>
-                                <li><a href="">Carreers</a></li>
-                                <li><a href="">Developers</a></li>
-                                <li><a href="">Staff</a></li>
-                            </ul>
+                            <FooterBlock {...data[0]} />
                         </div>
 
                         <div className="column">
-                            <h5 className="footer-header">GET HELP</h5>
-                            <ul className="footer-links">
-
-                                <li><a href="">How To Order</a></li>
-                                <li><a href="">Order Status</a></li>
-                                <li><a href="">Repayment Claim</a></li>
-                                <li><a href="">Contact Us</a></li>
-                            </ul>
+                            <FooterBlock {...data[1]} />
                         </div>
-                        <div className="column">
-                            <img src={instagram} alt="link to instagram profile" />
-                            <img src={twitter} alt="link to facebook profile" />
-                            <img src={facebook} alt="link to twitter profile" />
-                            <img src={youtube} alt="link to youtube channel" />
+
+                        <div className="column socials">
+                            {
+                                socialsArray.map(icon => {
+                                    return (<a>{icon}</a>);
+                                })
+                            }
                         </div>
                     </div>
                 </Container>
                 <div className="footer-author">
-                    <Container style={{ height: "100%", display: 'flex' }} extraClasses={'footer-container'}>
+                    <Container
+                        style={{ height: "100%", display: 'flex' }}
+                        extraClasses={'footer-container'
+                        }>
+
                         <div className="author-location">
                             <img src={locationIcon} alt="location icon" className="location-icon" />
                             <p>Kyrgyzstan, Bishkek</p>
@@ -57,6 +89,7 @@ const Footer = (props) => {
                             <img src={copyrightIcon} alt="copyright icon" className="copyright" />
                             <p>T-Fit, Alymov M. Inc. All Rights Reserved</p>
                         </div>
+
                     </Container>
                 </div>
 
