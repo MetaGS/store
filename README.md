@@ -7,4 +7,5 @@ New Project = Store
 4. add react related stuff, animation, screen size etc
 4. add redux or other storage, useReducer, context etc.
 5. add api
+6. express.js, mongodb etc.
 6. js optimization
