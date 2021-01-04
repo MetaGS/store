@@ -68,10 +68,11 @@ const Footer = (props) => {
 
                         <div className="column socials">
                             {
-                                socialsArray.map(icon => {
-                                    return (<a>{icon}</a>);
+                                socialsArray.map((icon, index) => {
+                                    return (<a href='#' key={index}>{icon}</a>);
                                 })
                             }
+
                         </div>
                     </div>
                 </Container>

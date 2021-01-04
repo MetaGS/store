@@ -1,9 +1,9 @@
 import './Main.css';
 
-const Main = (props) => {
+const Main = ({ children, extraClasses = '' }) => {
     return (
-        <main className="main">
-            {props.children}
+        <main className={`main ${extraClasses}`}>
+            {children}
         </main>
     )
 }

@@ -1,0 +1,20 @@
+.signing-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signing-title {
+    text-transform:uppercase;
+    font-family: var(--fatface);
+    font-size: 2.1rem;
+    font-weight: 400;
+}
+
+.signing-description {
+    font-size: 1.3rem;
+    font-family: var(--roboto);
+    color: var(--primary-grey);
+    text-align: justify;
+    margin-top: 20px;
+}

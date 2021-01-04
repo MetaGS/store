@@ -31,6 +31,8 @@ body {
 
 /* a-primary here deletes default underline, i can pass this to parent of navbar for ex
 example, or to parent of links in footer section
+change this classes with careful, Because it is used in
+multiple place and hard to detect
 */
 .a-primary a {
     text-decoration: none;
@@ -40,6 +42,29 @@ example, or to parent of links in footer section
 .a-primary a:hover, .a-primary a:focus {
     text-decoration: underline;
 }
+
+.border-1px-grey {
+    border-radius: 3px;
+    border: 1px var(--primary-grey) solid;
+    font-size: 1.3rem;
+    font-family: var(--roboto);
+}
+
+
+
+
+
+
+
+
+
+
+
+/* End of Universal */
+
+
+
+
 
 
 /* Navigation Section */
@@ -193,7 +218,7 @@ main .right .main-girl {
     justify-content: center;
 }
 
-main .signing {
+.signing {
     width: 503px;
     padding: 26px 0 45px;
     margin: 71px 0;
@@ -210,83 +235,14 @@ main .signing {
     max-width: 327px;
 }
 
-.signing-description {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-.signing-description h3 {
-    text-transform:uppercase;
-    font-family: var(--fatface);
-    font-size: 2.1rem;
-    font-weight: 400;
-}
 
-.signing-description p {
-    font-size: 1.3rem;
-    font-family: var(--roboto);
-    color: var(--primary-grey);
-    text-align: justify;
-    margin-top: 20px;
-}
 
-.input {
-    border-radius: 3px;
-    border: 1px var(--primary-grey) solid;
-    font-size: 1.3rem;
-    font-family: var(--roboto);
-    
-}
 
-.inputs > input {
-    height: 40px;
-    width: 327px;
-    padding-left: 7px;
-    margin-top: 16px;
-}
 
-.inputs > input:focus {
-    border-color: #000;
-    outline: none;
-}
 
-.inputs > input[type="date"] {
-    color: grey;
-}
 
-.inputs > input:first-child {
-    margin-top: 35px;
-}
 
-.choose-gender {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 16px;
-}
-
-.choose-gender input {
-    opacity: 0;
-    width: 0;
-    margin: 0;
-    position: absolute;
-
-}
-
-.choose-gender label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 153px;
-    height: 40px;
-    color: var(--primary-grey);
-    vertical-align: middle;
-}
-
-.choose-gender input:focus + label, .choose-gender input:checked + label {
-    border-color: black;
-    color: black;
-}
 
  
 

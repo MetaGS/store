@@ -1,0 +1,16 @@
+.input {
+    height: 40px;
+    width: 327px;
+    padding-left: 7px;
+    margin-top: 16px;
+}
+
+.input:focus {
+    border-color: #000;
+    outline: none;
+}
+
+.input[type="date"] {
+    color: grey;
+}
+
