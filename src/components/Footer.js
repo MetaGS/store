@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 
 import Container from '../components/Container';
 import FooterBlock from '../components/FooterBlock';
+
 
 
 import './Footer.css';
@@ -52,6 +54,13 @@ const data = [{
 
 
 const Footer = (props) => {
+    useEffect(() => {
+        console.log('mounted');
+        return () => {
+            console.log('unmounted');
+        }
+    }, [])
+
     return (
         <>
             <footer className="footer">

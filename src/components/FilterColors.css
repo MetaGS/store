@@ -1,0 +1,13 @@
+.color-filter-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.color-filter-list li {
+    font-size: 0;
+    height: 32px;
+    width: 32px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 5px 5px 10px 5px;
+}

@@ -1,0 +1,11 @@
+.price-filter-list li {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.prices input {
+    margin-right: 30px;
+    height: 24px;
+    width: 24px;
+}

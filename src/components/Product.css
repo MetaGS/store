@@ -1,0 +1,83 @@
+.product {
+    max-width: 340px;
+    min-height: 150px;
+    min-width: 150px;
+    /* max-height: 315px; */
+    flex: 1 1 240px;
+    margin: 0 20px 20px 0;
+    /* align-items: stretch; */
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    font-size: 1.8rem;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.29);
+    transition: transform 0.2s ease-in-out ;
+    cursor: pointer;
+}
+
+.product:hover {
+    transform: scale(1.05);
+
+}
+
+.product-content {
+    padding: 15px;
+    /* height: 50%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    
+}
+
+.product-title{
+    font-weight: 400;
+    /* max-height: 48px; */
+}
+
+ .product-description {
+    color: var(--primary-grey);
+    font-size: 0.8em;
+    font-family: var(--roboto);
+    font-weight: 400;
+    /* white-space: pre-line; */
+    /* max-height: 48px; */
+    width: 100%;
+    
+    text-overflow: ellipsis;
+    overflow: hidden;
+    line-clamp: 2;
+    /* height: 48px; */
+    /* text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap; */
+}
+
+ .product-photo {
+    width: 100%;
+    
+    overflow: hidden;
+    max-height: 152px;
+    /* height: 40%; */
+    object-fit: cover;
+    min-height: 120px;
+    display: block;
+}
+
+.price-and-rating {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+    vertical-align: middle;
+}
+
+.product-price {
+    font-weight: 600;
+}
+
+.rating span:last-child img {
+    transform: translateY(2px)
+}

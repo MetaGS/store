@@ -1,0 +1,22 @@
+.filters {
+    width: 190px;
+    flex-shrink: 0;
+
+    margin-right: 25px;
+    box-shadow: 2px 0 2px rgba(0, 0, 0, 0.15);
+    padding-right: 15px;
+}
+
+.filters a {
+    color: var(--primary-color);
+    margin: 8px 0;
+}
+
+.filter {
+    padding: 20px 0;
+    
+}
+
+.filters section:not(:last-child) {
+    border-bottom: 1px var(--primary-color) solid;
+}

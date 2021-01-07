@@ -34,12 +34,12 @@ example, or to parent of links in footer section
 change this classes with careful, Because it is used in
 multiple place and hard to detect
 */
-.a-primary a {
+a {
     text-decoration: none;
     color: inherit;
 }
 
-.a-primary a:hover, .a-primary a:focus {
+a:hover, a:focus {
     text-decoration: underline;
 }
 
@@ -52,25 +52,7 @@ multiple place and hard to detect
 
 
 
-
-
-
-
-
-
-
-
-/* End of Universal */
-
-
-
-
-
-
-/* Navigation Section */
-
-
-
+/* End of Univ */
 /* Main Section */
 
 
@@ -210,7 +192,7 @@ main .right .main-girl {
 
 /* signUp.html ------------------------------*/
 
-.parent-wh-inherit {
+.center-fwidth {
     width: 100%;
     height: 100%;
     display: flex;
@@ -218,97 +200,7 @@ main .right .main-girl {
     justify-content: center;
 }
 
-.signing {
-    width: 503px;
-    padding: 26px 0 45px;
-    margin: 71px 0;
-    display: flex;
-    justify-content: center;
-    background-color: white;
-    box-shadow: 0 4px 4px rgba(0, 0 , 0, 0.25);
-    border-radius: 5px;
-}
 
-
-
-.signing form {
-    max-width: 327px;
-}
-
-
-
-
-
-
-
-
-
-
- 
-
-.checkbox-terms {
-    display: flex;
-    margin-top: 30px;
-    align-items: center;
-}
-
-.checkbox-terms .checkbox {
-    width: 24px;
-    height: 24px;
-    margin-right: 11px;
-}
-
-.checkbox-terms .terms-self {
-    font-size: 1.3rem;
-    font-family: var(--roboto);
-    color: var(--primary-grey);
-}
-
-
-/* for sign-in modification */
-main .signing--sign-in {
-    min-height: 674px;
-    align-items: center;
-    padding: 0 0 30px;
-}
-.checkbox-terms .terms-self--sign-in {
-    margin: 0 0 0 auto;
-}
-/* ------------- */
-
-
-.checkbox-terms .terms-self a {
-    color: inherit;
-}
-
-
-
-.primary-button.submit {
-    width: 327px;
-    margin-top: 35px;
-}
-
-
-
-
-
-
-.extra {
-    margin-top: 35px;
-    text-align: center;
-    font-size: 1.5rem;
-    color: var(--primary-grey);
-}
-
-
-.extra .extra-link {
-    color: var(--primary-color-text);
-    text-decoration: none;
-}
-
-.extra .extra-link:hover, .extra .extra-link:focus {
-    text-decoration: underline;
-}
 
 /* footer  -------------------------------*/
 
@@ -319,226 +211,9 @@ main .signing--sign-in {
 
 
 /* products page */
-.main.main--products {
-    display: block;
-    padding: 0 50px;
-    font-size: 1.7rem;
-    
-}
-
-.main--products ul {
-    list-style: none;
-}
-
-main .sort {
-    display: flex;
-    margin: 50px 0px;
-}
-main .sort p {
-    color: var(--primary-grey);
-    min-width: 100px;
-}
-
-main .sort ul a {
-    color: var(--black);
-    margin-right: 20px;
-}
-
-main a {
-    text-decoration: none;
-    display: inline-block;
-}
-
-main  a:hover, main  a:focus, main a.active {
-    text-decoration: underline;
-}
-
-main .sort ul {
-    display: flex;
-    width: 100%;
-}
-
-.main--products .content {
-    display: flex;
-}
-
-.main--products .filters {
-    width: 190px;
-    flex-shrink: 0;
-}
-
-.filters {
-    margin-right: 25px;
-    box-shadow: 2px 0 2px rgba(0, 0, 0, 0.15);
-    padding-right: 15px;
-}
-
-.filters a {
-    color: var(--primary-color);
-    margin: 8px 0;
-}
-
-.filters section {
-    padding: 20px 0;
-    
-}
-
-.filters section:not(:last-child) {
-    border-bottom: 1px var(--primary-color) solid;
-}
-
-.price-filter-list li {
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
-}
-
-.prices input {
-    margin-right: 30px;
-    height: 24px;
-    width: 24px;
-}
-
-.color-filter-list {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.color-filter-list li {
-    font-size: 0;
-    height: 34px;
-    width: 34px;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    margin: 5px 5px 10px 5px;
-}
-
-.color-filter-list li:nth-child(1) {
-    background-color: #BB3737;
-}
-.color-filter-list li:nth-child(2) {
-    background-color: #B6A935;
-}
-.color-filter-list li:nth-child(3) {
-    background-color: #1AC25D;
-}
-.color-filter-list li:nth-child(4) {
-    background-color: #5f0de4;
-}
-.color-filter-list li:nth-child(5) {
-    background-color: #000;
-}
-.color-filter-list li:nth-child(6) {
-    background-color: #fff;
-}
-.color-filter-list li:nth-child(7) {
-    background-color: #D4139E;
-}
-.color-filter-list li:nth-child(8) {
-    background-color: #EDF116;
-}
 
 
 
-
-
-
-
-.rating span {
-    display: block;
-}
-
-.main--products .rating {
-    display: flex;
-    vertical-align: middle;
-}
-
-.main--products .products-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    font-family: var(--abhaya);
-    font-weight: 400;
-    align-items: flex-start;
-    font-size: 2rem;
-    color: var(--white);
-}
-
-.main--products .product {
-    max-width: 340px;
-    min-height: 150px;
-    min-width: 150px;
-    /* max-height: 315px; */
-    flex: 1 1 240px;
-    margin: 0 20px 20px 0;
-    /* align-items: stretch; */
-    background-color: var(--primary-color);
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-    overflow: hidden;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.29)
-}
-
-.main--products .product-description {
-    padding: 15px;
-    /* height: 50%; */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex-grow: 1;
-    
-}
-
-.main--products h4 {
-    font-weight: 400;
-    /* max-height: 48px; */
-}
-
-.main--products .product-description-self {
-    color: var(--primary-grey);
-    font-size: 1.8rem;
-    font-family: var(--roboto);
-    font-weight: 400;
-    /* white-space: pre-line; */
-    /* max-height: 48px; */
-    width: 100%;
-    height: 48px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    line-clamp: 2;
-    /* height: 48px; */
-    /* text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap; */
-}
-
-.products-list .product-photo {
-    width: 100%;
-    border: 1px grey solid;
-    overflow: hidden;
-    max-height: 152px;
-    /* height: 40%; */
-    object-fit: cover;
-    min-height: 120px;
-    display: block;
-}
-
-.price-and-rating {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-top: 10px;
-    vertical-align: middle;
-}
-
-.product-price {
-    font-weight: 600;
-}
-
-.rating span:last-child img {
-    transform: translateY(2px)
-}
 
 
 

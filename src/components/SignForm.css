@@ -1,0 +1,85 @@
+.signing {
+    width: 503px;
+    padding: 26px 0 45px;
+    margin: 71px 0;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    box-shadow: 0 4px 4px rgba(0, 0 , 0, 0.25);
+    border-radius: 5px;
+}
+
+
+
+.signing form {
+    max-width: 327px;
+}
+
+
+
+
+ 
+
+.checkbox-terms {
+    display: flex;
+    margin-top: 30px;
+    align-items: center;
+}
+
+.checkbox-terms .checkbox {
+    width: 24px;
+    height: 24px;
+    margin-right: 11px;
+}
+
+.checkbox-terms .terms-self {
+    font-size: 1.3rem;
+    font-family: var(--roboto);
+    color: var(--primary-grey);
+}
+
+
+/* for sign-in modification */
+main .signing--sign-in {
+    min-height: 674px;
+    align-items: center;
+    padding: 0 0 30px;
+}
+.checkbox-terms .terms-self--sign-in {
+    margin: 0 0 0 auto;
+}
+/* ------------- */
+
+
+.checkbox-terms .terms-self a {
+    color: inherit;
+}
+
+
+
+.primary-button.submit {
+    width: 327px;
+    margin-top: 35px;
+}
+
+
+
+
+
+
+.extra {
+    margin-top: 35px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--primary-grey);
+}
+
+
+.extra .extra-link {
+    color: var(--primary-color-text);
+    text-decoration: none;
+}
+
+.extra .extra-link:hover, .extra .extra-link:focus {
+    text-decoration: underline;
+}

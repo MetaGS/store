@@ -1,27 +1,40 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, useRouteMatch } from 'react-router-dom';
 
 import MainHTML from "./pages/MainHTML";
-import SignUp from "./pages/SignUp";
-import Navbar from "./components/Navbar"
+import WithFooter from "./pages/WithFooter";
+import Navbar from "./components/Navbar";
 
+import useContextWithReducer, { Context } from './hooks/useContextWithReducer';
 import './App.css';
 
 function App() {
+  const [state, dispatch] = useContextWithReducer();
+
   return (
     <Router>
-      <Navbar />
-      <div className="App">
-        <Switch>
-          <Route path="/" exact>
-            <MainHTML />
-          </Route>
-          <Route path='/signup'>
+      <Context.Provider value={{ state, dispatch }}>
+        <Navbar />
+        <div className="App">
+          <Switch>
+            <Route path="/" exact>
+              <MainHTML />
+            </Route>
+
+            <WithFooter />
+            {/* <Route path='/signup'>
             <SignUp />
           </Route>
-        </Switch>
-      </div>
+          <Route path="/signin">
+            <SignIn />
+          </Route> */}
+          </Switch>
+        </div>
+      </Context.Provider>
     </Router>
   );
 }
 
+
 export default App;
+
+

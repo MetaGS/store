@@ -1,6 +1,6 @@
 import SigningHeader from './SigningHeader';
 
-
+import './SignForm.css';
 
 const SignForm = ({ children, header, description, extraText, extraLink, signUp = false, submitButtonText }) => {
     return (
@@ -23,8 +23,8 @@ const SignForm = ({ children, header, description, extraText, extraLink, signUp 
                                         className="terms-link">
                                         Term of Use.</a>
                                 </p></>) : (<>
-                                    <input type="checkbox" class="checkbox" />
-                                    <p class="terms-self">Keep me logged in.</p>
+                                    <input type="checkbox" class="checkbox" id='keep-logged' />
+                                    <label htmlFor='keep-logged' class="terms-self">Keep me logged in.</label>
                                     <p class="terms-self terms-self--sign-in">
                                         <a href="#" class="terms-link">Forgotten Password</a>
 
