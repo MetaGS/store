@@ -14,9 +14,31 @@
 }
 
 .btn:focus {
-    transform: scale(1.1);
-    outline: none;
+    outline-color: var(--primary-color);
+    outline-style: solid;
 }
+
+.btn-icon {
+    border: none;
+    background:none;
+    transition: transform 0.2s ease-in-out;
+}
+
+.btn-icon:hover, .btn-icon:focus {
+    transform: scale(1.05);
+}
+
+.btn-icon:focus {
+    outline-color: var(--primary-color);
+    outline-style: solid;
+}
+
+.btn:focus {
+    transform: scale(1.1);
+ 
+}
+
+/* Button Types */
 
 .primary-button {
     background-color: var(--primary-color);
@@ -35,3 +57,31 @@
     color: var(--primary-color-text);
     background: rgba(255, 255, 255, 0.25);
 }
+
+.secondary {
+    border: 2px var(--primary-color) solid;
+    color: var(--primary-color-text);
+    background: rgba(255, 255, 255, 0.85);
+    text-shadow: 0 3px 4px rgba(0, 0, 0, 0.5);
+}
+
+.secondary:hover, .secondary:focus {
+    border: initial;
+    color: var(--white);
+    background: var(--primary-color);
+}
+
+
+.btn.big {
+    width: 100%;
+    max-width: 350px;
+    padding: 2.5% 0;
+    min-height: 40px;
+    font-size: calc(10px + 0.6vw);
+}
+
+.btn.rounded {
+    border-radius: 146px
+}
+
+

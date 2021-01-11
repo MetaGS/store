@@ -35,7 +35,9 @@ const Navbar = props => {
                             <li><NavLink to="/signup">SignUp</NavLink></li>{/* Collection */}
                             <li><NavLink to="/signin">Sign in</NavLink></li>{/* New Releases */}
                             <li><NavLink to="/products">Products</NavLink></li> {/* Kids */}
-                            <li>Promotions</li>
+                            <li><NavLink to="/product/id">Product</NavLink></li>{/* Promotions */}
+                            {/* <li><NavLink to="/check">check</NavLink></li>
+                            <li><NavLink to="/check2">check2</NavLink></li> */}
                         </ul>
                         {wideSearch && searchBar}
                     </div>

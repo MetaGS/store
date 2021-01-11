@@ -7,6 +7,7 @@ import RadioSelect from '../components/RadioSelect';
 import SignForm from '../components/SignForm';
 import Input from '../components/StandartInput';
 import ProductsPage from './ProductsPage';
+import ProductPage from './ProductPage';
 
 import shortLogo from '../assets/short-logo.svg'
 
@@ -34,7 +35,6 @@ const WithFooter = ({ signIn = false }) => {
                         extraLink='Sign In'
                         signUp
                     >
-
                         <Input type="email" placeholder="Email:" name="email" style={{ marginTop: '35px' }} />
                         <Input type="password" placeholder="Password:" name="password" />
                         <Input type="text" placeholder="First Name:" name="firstname" />
@@ -55,10 +55,8 @@ const WithFooter = ({ signIn = false }) => {
                         extraLink='Sign Up'
                         signIn
                     >
-
                         <Input type="email" placeholder="Email:" name="email" style={{ marginTop: '35px' }} />
                         <Input type="password" placeholder="Password:" name="password" />
-
 
                     </SignForm>
 
@@ -66,6 +64,10 @@ const WithFooter = ({ signIn = false }) => {
 
                 <Route path='/products'>
                     <ProductsPage />
+                </Route>
+
+                <Route path='/product/id'>
+                    <ProductPage />
                 </Route>
 
             </Main>

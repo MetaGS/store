@@ -19,7 +19,6 @@
 
 .product:hover {
     transform: scale(1.05);
-
 }
 
 .product-content {
@@ -57,7 +56,6 @@
 
  .product-photo {
     width: 100%;
-    
     overflow: hidden;
     max-height: 152px;
     /* height: 40%; */
@@ -80,4 +78,19 @@
 
 .rating span:last-child img {
     transform: translateY(2px)
+}
+
+.product.mobile {
+    max-width: 184px;
+    font-size: 1.5rem;
+}
+
+.mobile .product-title, 
+.mobile .product-description
+ {
+    margin-bottom: 5px;
+}
+
+.mobile .product-content {
+    padding: 8px;
 }

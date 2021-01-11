@@ -1,0 +1,21 @@
+.check {
+    height: 100vh;
+    background: #676767;
+    overflow: hidden;
+}
+
+.left1 {
+    width: 60%;
+    display: flex;
+}
+
+.cargo {
+    display: flex;
+}
+
+.box {
+    width: 150px; 
+    height: 150px;
+    background-color: green;
+    border: 2px solid black;
+}

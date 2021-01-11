@@ -9,7 +9,7 @@ const Filters = (props) => {
         <div className="filters">
             <FilterStyles />
             <FilterPrices />
-            <FilterColors />
+            <section className="filter"><FilterColors style={{ padding: "11%" }} /></section>
         </div>
     )
 };

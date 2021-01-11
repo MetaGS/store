@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Route, Switch, useRouteMatch } from 'react-rou
 import MainHTML from "./pages/MainHTML";
 import WithFooter from "./pages/WithFooter";
 import Navbar from "./components/Navbar";
+import Check from './pages/Check'
+import ProductPage from './pages/ProductPage';
+
 
 import useContextWithReducer, { Context } from './hooks/useContextWithReducer';
 import './App.css';
@@ -19,7 +22,8 @@ function App() {
             <Route path="/" exact>
               <MainHTML />
             </Route>
-
+            {/* <Route path="/check" component={Check} />
+            <Route path="/check2" component={ProductPage} /> */}
             <WithFooter />
             {/* <Route path='/signup'>
             <SignUp />
@@ -30,6 +34,7 @@ function App() {
           </Switch>
         </div>
       </Context.Provider>
+
     </Router>
   );
 }
@@ -37,4 +42,4 @@ function App() {
 
 export default App;
 
-
+// rfcp edf rafcp

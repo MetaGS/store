@@ -7,10 +7,16 @@ import jeans from '../assets/jeans.jpg';
 import star from '../assets/star.svg';
 import starTransparent from '../assets/star-transparent.svg';
 
-const Product = ({ photos: [photo1, photo2, photo3] }) => {
-    let { user: { first_name: firstName, last_name: lastName }, description, urls: { regular = '' } = {} } = photo1;
+const Product = ({ photos: [photo1, photo2, photo3] = [{}, {}, {}], mobile = false }) => {
+
+    let { user: { first_name: firstName = 'Nike Rivera', last_name: lastName = '72Z NK' } = {},
+        description = "No Description entered", urls: { regular = jeans } = {},
+    } = photo1;
+
+
+
     return (
-        <article className="product">
+        <article className={`product ${mobile ? 'mobile' : ''}`}>
             <img className="product-photo" alt="shoes product image" src={regular} />
             <div className="product-content">
                 <div>
@@ -21,14 +27,14 @@ const Product = ({ photos: [photo1, photo2, photo3] }) => {
                     <span className="product-price">
                         $350
                             </span>
-                    <div className="rating">
+                    {!mobile && <div className="rating">
                         <span className="rating-quantity">(19)</span>
                         <span className="star"><img src={star} alt="rating star" /></span>
                         <span className="star"><img src={star} alt="rating star" /></span>
                         <span className="star"><img src={star} alt="rating star" /></span>
                         <span className="star"><img src={star} alt="rating star" /></span>
                         <span className="star"><img src={starTransparent} alt="rating star" /></span>
-                    </div>
+                    </div>}
                 </div>
             </div>
         </article>
