@@ -2,6 +2,7 @@ import './SigningHeader.css';
 
 import shortLogo from '../assets/short-logo.svg';
 
+
 export default function SigningHeader({ header = '', description = '' }) {
     return (
         <div className="signing-block">

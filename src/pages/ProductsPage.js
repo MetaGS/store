@@ -23,7 +23,7 @@ const ProductsPage = (props) => {
 
     console.log(state)
     return (
-        <main className="main main--products">
+        <main className="main--products">
 
             <section className="sort">
                 <p>Sort By:</p>

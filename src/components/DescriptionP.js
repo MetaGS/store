@@ -6,8 +6,8 @@ const Description = ({ text, fontSize = '1.5rem', width = 'auto', extraClass, ch
     return (
         <div className={`description-p ${extraClass}`} style={{ fontSize, width }}>
             <p >
+                {text}
                 {children}
-
             </p>
         </div>
     )

@@ -8,6 +8,7 @@ import SignForm from '../components/SignForm';
 import Input from '../components/StandartInput';
 import ProductsPage from './ProductsPage';
 import ProductPage from './ProductPage';
+import CartPage from './CartPage';
 
 import shortLogo from '../assets/short-logo.svg'
 
@@ -22,7 +23,8 @@ const WithFooter = ({ signIn = false }) => {
 
     return (
         <>
-            <Main extraClasses='center-fwidth'>
+
+            <Main >
 
 
                 <Route path='/signup'>
@@ -69,6 +71,8 @@ const WithFooter = ({ signIn = false }) => {
                 <Route path='/product/id'>
                     <ProductPage />
                 </Route>
+
+                <Route path='/cart' component={CartPage} />
 
             </Main>
             <Footer />

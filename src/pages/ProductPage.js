@@ -6,9 +6,9 @@ import FilterColors from '../components/FilterColors';
 import Review from '../components/Review';
 import WriteReview from '../components/WriteReview';
 import Container from '../components/Container';
+import UtilsBlock from '../components/UtilsBlock'
 
 import addFavorites from '../assets/addFavorites.svg';
-import share from '../assets/share.svg';
 import productPhoto from '../assets/product-image-big.jpg';
 
 import './ProductPage.css';
@@ -16,18 +16,8 @@ import './ProductPage.css';
 const ProductPage = (props) => {
     return (
         <div className="product-page">
-            <Container>
-                <section className="utils">
-                    <Button type='secondary-button' text='BACK' />
-                    <div className="product-links">
-                        <button className="btn-icon">
-                            <img src={addFavorites} alt="" />
-                        </button>
-                        <button className="btn-icon">
-                            <img src={share} alt="share product" />
-                        </button>
-                    </div>
-                </section> {/*  utils block end */}
+            <Container >
+                <UtilsBlock share />
 
                 <div className="product-page-content">
 
@@ -117,10 +107,10 @@ const ProductPage = (props) => {
 
 
 
-
                     </section> {/* product-page-desc end */}
                 </div>
             </Container>
+
         </div>
     )
 }

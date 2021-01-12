@@ -44,7 +44,7 @@ const Navbar = props => {
                     <div className="right">
                         {wideSearch || searchBar}
                         <div className='profile'><img src={photo} alt="Profile svg icon" /></div>
-                        <div className="cart"><img src={cart} alt="Cart svg icon" /></div>
+                        <div className="cart"><NavLink to="/cart"><img src={cart} alt="Cart svg icon" /></NavLink></div>
                     </div>
                 </Container>
             </nav>

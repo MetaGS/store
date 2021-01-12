@@ -1,0 +1,11 @@
+.utils {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 45px;
+    /* width: 100%; */
+}
+
+.utils .btn-icon:first-child {
+    margin-right: 20px;
+
+}

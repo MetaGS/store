@@ -16,6 +16,7 @@ html {
     --abhaya: 'Abhaya Libre', serif;
     --roboto: 'Roboto', 'sans-serif';
     --primary-color: #3A3937;
+    --primary-color-linear: linear-gradient(to bottom, rgba(139, 139, 139, 1), rgba(11, 9, 10, 1));
     --primary-grey: #999898;
     --primary-color-text: #333231;
     --black: #000;
