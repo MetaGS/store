@@ -1,6 +1,6 @@
 import './StandartInput.css';
 
-const Input = ({ extraClasses = '', type, placeholder, name = '', style = {} }) => {
+const Input = ({ extraClasses = '', type, placeholder, name = '', style = {}, ...rest }) => {
     return (
         <input
             type={type}
@@ -8,6 +8,7 @@ const Input = ({ extraClasses = '', type, placeholder, name = '', style = {} }) 
             placeholder={placeholder}
             className={`border-1px-grey input ${extraClasses}`}
             style={style}
+            {...rest}
         />
     )
 }

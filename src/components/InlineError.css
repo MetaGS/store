@@ -1,0 +1,18 @@
+.inline-error {
+    padding: 0px 5px 0px 5px;
+    background-color: rgb(235, 149, 149);
+    
+    margin-top: 5px;
+    border-radius: 3px;
+    height: 0;
+    font-size: 0;
+    overflow: hidden;
+    transition: height 0.2s ease-out, padding 0.2s ease-in, font-size 0.2s ease-out, min-height 0.2s ease-out;
+}
+
+.inline-error.active {
+    height: auto;
+    height: 20px;
+    font-size: 1rem;
+    padding: 5px;
+}

@@ -1,6 +1,6 @@
-import { useContext, useEffect } from 'react';
-import { Context } from '../hooks/useContextWithReducer';
-import { WIDE_SEARCH, NORMAL_SEARCH, ADD_PHOTOS } from '../hooks/useContextWithReducer';
+import { useEffect } from 'react';
+import useStorage from '../storage';
+import { WIDE_SEARCH, NORMAL_SEARCH, ADD_PHOTOS } from '../storage/types';
 
 import Product from '../components/Product';
 
@@ -19,8 +19,8 @@ myHeaders.append('X-Total', '30');
 
 const Products = (props) => {
 
-    const { state, dispatch } = useContext(Context);
-    // console.log(state.wideSearch)
+    const [state, dispatch] = useStorage();
+    // console.log(state)
 
     useEffect(() => {
         fetch(`https://api.unsplash.com/search/photos/?query=${'clothes'}&page=1&per_page=29&orientation=landscape`, {
@@ -32,7 +32,7 @@ const Products = (props) => {
                 // catch an error
             }
         }).then((json) => {
-            console.log(json);
+            // console.log(json);
 
             let photos = json?.results.reduce((returnValue, currentValue, index) => {
 
@@ -42,7 +42,7 @@ const Products = (props) => {
                 returnValue[returnValue.length - 1].push(currentValue);
                 return returnValue;
             }, [])
-            console.log(photos)
+            // console.log(photos)
             dispatch({ type: ADD_PHOTOS, payload: photos })
         })
 
@@ -52,7 +52,7 @@ const Products = (props) => {
     return (
         <div className="products-list">
             {
-                state?.photos.map((photos) => {
+                state?.photos?.map((photos) => {
                     return <Product photos={photos} key={photos[0]?.id} />
                 })
             }

@@ -1,0 +1,61 @@
+.table-row {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--primary-color);
+    border-radius: 20px;
+    border: 1px solid var(--primary-grey);
+    padding: 16px 30px;
+    
+    margin-top: 30px;
+}
+
+.table-data {
+    position: relative;
+    padding: 0 25px;
+    text-align:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.table-header {
+    display: block;
+    width: 100%;
+   
+    font-family: var(--roboto);
+    font-size: 2.1rem;
+    color: var(--primary-grey);
+    position: absolute;
+    top: -45px;
+    left: 0;
+}
+
+
+.title-sm {
+    font-family: var(--abhaya);
+    color: var(--white);
+    font-size: 1.7rem;
+}
+
+.desc-sm {
+    font-family: var(--roboto);
+    font-size: 1.6rem;
+    color: var(--primary-grey);
+}
+
+.table-price {
+    font-size: 2rem;
+    color: var(--white);
+    min-width:50px;
+}
+
+.table-quantity-input {
+    height: 40px;
+    width: 70px;
+    background-color: #232121;
+    border-radius: 5px;
+    font-size: 2rem;
+    color: var(--white);
+    text-align: center;
+}

@@ -1,14 +1,13 @@
-import './Button.css';
+import "./Button.css";
 
-
-const Button = ({ text, type }) => {
-    return (
-        <>
-            <button className={`btn ${type}`}>
-                {text}
-            </button>
-        </>
-    )
+const Button = ({ text, type, className }) => {
+  return (
+    <>
+      <button className={`btn ${type}`}>
+        <span>{text}</span>
+      </button>
+    </>
+  );
 };
 
 export default Button;

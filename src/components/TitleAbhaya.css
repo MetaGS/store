@@ -1,5 +1,6 @@
 .title-abhaya {
-    font-family: var(--abhaya);
+    font-family: var(--poppins);
+    font-weight: 400;
     font-size: 3.5rem;
     color: var(--primary-color);
 }

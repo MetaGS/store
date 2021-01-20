@@ -1,83 +1,62 @@
-import { Route, useRouteMatch } from 'react-router-dom';
+import { Route, useRouteMatch } from "react-router-dom";
 
-import Main from '../components/Main';
-import Footer from '../components/Footer';
-import SigningHeader from '../components/SigningHeader';
-import RadioSelect from '../components/RadioSelect';
-import SignForm from '../components/SignForm';
-import Input from '../components/StandartInput';
-import ProductsPage from './ProductsPage';
-import ProductPage from './ProductPage';
-import CartPage from './CartPage';
+import Main from "../components/Main";
+import Footer from "../components/Footer";
 
-import shortLogo from '../assets/short-logo.svg'
+import ProductsPage from "./ProductsPage";
+import ProductPage from "./ProductPage";
+import CartPage from "./CartPage";
+import ProfilePage from "./ProfilePage";
+import SignUpPage from "./SignUpPage";
+import SignInPage from "./SignInPage";
+import CreateProduct from "../components/CreateProduct";
+import TestPhoto from "./TestPhoto";
+// import useAuthenticate from '../hooks/useAuthenticate';
 
-import './WithFooter.css';
+import shortLogo from "../assets/short-logo.svg";
+
+import "./WithFooter.css";
 
 /* Here is the Sign In Page, Sign Up page, Products and other pAges Which needs footer */
 
 const WithFooter = ({ signIn = false }) => {
-    const match = useRouteMatch('/:sign');
+  const match = useRouteMatch("/:sign");
 
-    console.log(match);
+  //firebase auth test
+  // useAuthenticate();
 
-    return (
-        <>
+  // console.log(match);
 
-            <Main >
+  return (
+    <>
+      <Main>
+        <Route path="/signup">
+          <SignUpPage />
+        </Route>
 
+        <Route path="/signin">
+          <SignInPage />
+        </Route>
 
-                <Route path='/signup'>
-                    <SignForm
-                        header='sign up'
-                        description='Sign Up and become a member of our partnership program. Get
-                    the latest releases, and be informed about promotions.'
-                        submitButtonText='SiGN Up'
-                        extraText='Already Signed Up?'
-                        extraLink='Sign In'
-                        signUp
-                    >
-                        <Input type="email" placeholder="Email:" name="email" style={{ marginTop: '35px' }} />
-                        <Input type="password" placeholder="Password:" name="password" />
-                        <Input type="text" placeholder="First Name:" name="firstname" />
-                        <Input type="text" placeholder="Last Name:" name="lastname" />
-                        <Input type="date" placeholder="Date of Birth:" />
+        <Route path="/products">
+          <ProductsPage />
+        </Route>
 
-                        <RadioSelect />
+        <Route path="/product/id">
+          <ProductPage />
+        </Route>
 
-                    </SignForm>
-                </Route>
+        <Route path="/cart" component={CartPage} />
 
-                <Route path='/signin'>
+        <Route path="/profile" component={ProfilePage} />
 
-                    <SignForm
-                        header='your account'
-                        submitButtonText='SiGN Up'
-                        extraText='Not A Member?'
-                        extraLink='Sign Up'
-                        signIn
-                    >
-                        <Input type="email" placeholder="Email:" name="email" style={{ marginTop: '35px' }} />
-                        <Input type="password" placeholder="Password:" name="password" />
+        <Route path="/create" component={CreateProduct} />
 
-                    </SignForm>
-
-                </Route>
-
-                <Route path='/products'>
-                    <ProductsPage />
-                </Route>
-
-                <Route path='/product/id'>
-                    <ProductPage />
-                </Route>
-
-                <Route path='/cart' component={CartPage} />
-
-            </Main>
-            <Footer />
-        </>
-    )
-}
+        <Route path="/testphoto" component={TestPhoto} />
+      </Main>
+      <Footer />
+    </>
+  );
+};
 
 export default WithFooter;

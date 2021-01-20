@@ -10,14 +10,14 @@ import DescriptionP from '../components/DescriptionP';
 
 import mainGirl from '../assets/main-girl.png';
 import Main from '../components/Main';
-
+import './MainHTML.css';
 
 
 const MainHTML = props => {
     return (
         <>
 
-            <Main>
+            <Main className="main-page">
 
                 <section className="left">
                     <SecondaryContainer>

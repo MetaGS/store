@@ -1,6 +1,6 @@
-import { useContext, useEffect } from 'react';
-import { Context } from '../hooks/useContextWithReducer';
-import { WIDE_SEARCH, NORMAL_SEARCH } from '../hooks/useContextWithReducer';
+import { useEffect } from 'react';
+import useStorage from '../storage';
+import { WIDE_SEARCH, NORMAL_SEARCH } from '../storage/types';
 
 
 import Filters from '../components/FIlters';
@@ -10,7 +10,7 @@ import './ProductsPage.css'
 
 
 const ProductsPage = (props) => {
-    const { state, dispatch } = useContext(Context);
+    const [state, dispatch] = useStorage();;
 
 
     useEffect(() => {
