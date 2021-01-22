@@ -60,30 +60,30 @@ const Navbar = (props) => {
           <div className="right">
             {wideSearch || searchBar}
             <div className="profile">
-              <NavLink to="/profile">
-                {userSignedIn ? (
-                  <button
-                    className="btn"
-                    onClick={() => {
-                      signOut();
-                      console.log(state);
-                    }}
-                  >
-                    signOut
+              {/* <NavLink to="/profile"> */}
+              {userSignedIn ? (
+                <button
+                  className="btn"
+                  onClick={() => {
+                    signOut();
+                    console.log(state);
+                  }}
+                >
+                  signOut
+                </button>
+              ) : (
+                <>
+                  <button className="btn">
+                    <NavLink to="/signup">SignUp</NavLink>
                   </button>
-                ) : (
-                  <>
-                    <button className="btn">
-                      <NavLink to="/signup">SignUp</NavLink>
-                    </button>
-                    <button className="btn">
-                      <NavLink to="/signin">Sign in</NavLink>
-                    </button>
-                  </>
-                )}
+                  <button className="btn">
+                    <NavLink to="/signin">Sign in</NavLink>
+                  </button>
+                </>
+              )}
 
-                {/* <img src={photo} alt="Profile svg icon" /> */}
-              </NavLink>
+              {/* <img src={photo} alt="Profile svg icon" /> */}
+              {/* </NavLink> */}
             </div>
             <div className="cart">
               <NavLink to="/cart">

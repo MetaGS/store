@@ -38,11 +38,11 @@ const WithFooter = ({ signIn = false }) => {
           <SignInPage />
         </Route>
 
-        <Route path="/products">
+        <Route path="/products" exact>
           <ProductsPage />
         </Route>
 
-        <Route path="/product/:id">
+        <Route path="/products/:id">
           <ProductPage />
         </Route>
 

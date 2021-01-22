@@ -19,7 +19,7 @@ title: "asdf" */
   let {
     title = "No title Entered",
     desc: description = "No description entered",
-    id,
+    id = "",
     photoUrls: [
       mainPhoto = "https://via.placeholder.com/800",
       ...restPhotos
@@ -31,7 +31,7 @@ title: "asdf" */
 
   return (
     <article className={`product ${mobile ? "mobile" : ""}`}>
-      <Link to={`/product/${id}`}>
+      <Link to={`/products/${id}`}>
         <img
           className="product-photo"
           alt="shoes product image"
@@ -39,7 +39,7 @@ title: "asdf" */
         />
       </Link>
       <div className="product-content">
-        <Link to={`/product/${id}`}>
+        <Link to={`/products/${id}`}>
           <div>
             <h4 className="product-title">{limitText(title)}</h4>
             <p className="product-description"> {limitText(description, 60)}</p>
