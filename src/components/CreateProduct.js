@@ -2,40 +2,44 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import InlineError from "../components/InlineError";
+import HandlePhotoInput from "./HandlePhotoInput";
 
 import { addProduct } from "../firebase/db";
 import useFormInput from "../hooks/useFormInput";
 import useInputList from "../hooks/useInputList";
 import { checkProductReliable } from "../utils/validateInputs";
+import { uploadPhoto } from "../firebase/storage";
+
 import "./CreateProduct.css";
 
 const CreateProduct = (props) => {
   const title = useFormInput("");
   const desc = useFormInput("");
   const price = useFormInput("");
-  //   const [photoUrl, setPhotoUrl] = useState("");
-  //   const [listOfUrls, setList] = useState([]);
   const [errors, setErrors] = useState({});
-  //   const [size, setSize] = useState("");
-  //   const [sizes, setSizes] = useState([]);
-  //   const [color, setColor] = useState("");
-  //   const [colors, setColors] = useState([]);
-
   //it is similar to useState return, BUT return differently check source code
-  const [photoUrl, onAdd, listOfPhotoUrls, backToPhotoUrl] = useInputList(
-    "./public/"
-  );
   const [size, onSizeAdd, sizeList, backToSize] = useInputList("");
-
   const [color, onColorAdd, colorList, backToColor] = useInputList("");
 
-  //   const onSizeAdd = (e) => {
-  //     if (size.trim() !== "") {
-  //       const list = [...sizes, size];
-  //       setSizes(list);
-  //       setSize("");
-  //     }
-  //   };
+  //   ---------------------Upload Photo-----------------------------------------
+  const [photoFiles, setPhotoFiles] = useState([]);
+  const [urls, setUrls] = useState([]);
+
+  const uploadMultiplePhotos = (id, files) => {
+    const urlList = Promise.all(
+      Array.from(files).map((file) => {
+        return uploadPhoto(`productImages/${id}`, file);
+      })
+    ).then((urlArray) => {
+      return urlArray;
+    });
+
+    return urlList;
+    // setUrls(downloadUrl);
+  };
+  // ----------------------------------------------------------------------------
+
+  // ----------------------On Submit Whole Product------------------------------
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -45,21 +49,47 @@ const CreateProduct = (props) => {
       price.value
     );
     if (Object.keys(inputErrors).length === 0) {
-      addProduct(
-        title.value,
-        desc.value,
-        price.value,
-        listOfPhotoUrls,
-        sizeList,
-        colorList
-      )
-        .then((doc) => {})
-        .catch((error) => {});
+      addProduct(title.value, desc.value, price.value, sizeList, colorList)
+        .then((snap) => {
+          // console.log(snap.id);
+          //   console.log(snap.data());
+          snap.get().then((doc) => {
+            console.log(doc);
+            // doc.update({ updatedMe: true });
+            console.log(doc.exists);
+            console.log(doc.data());
+          });
+
+          const productId = snap.id;
+
+          uploadMultiplePhotos(productId, photoFiles)
+            .then((listOfPhotoUrls) => {
+              snap.update({ photoUrls: [...listOfPhotoUrls] });
+
+              setUrls(listOfPhotoUrls);
+            })
+            .catch((error) => {
+              console.log(
+                "%cError in CreateProduct onSubmit",
+                "font-size: 1.2rem; color: red"
+              );
+              console.log(error.message);
+            });
+        })
+        .catch((error) => {
+          console.log(
+            "%cError CreateProduct 79",
+            "font-size: 1.2rem; color: red;"
+          );
+          console.log(error.message);
+        });
       setErrors({});
     } else {
       setErrors(inputErrors);
     }
   };
+
+  // ----------------------------------------------------------------------------
 
   return (
     <form action="#" onSubmit={onSubmit}>
@@ -138,7 +168,7 @@ const CreateProduct = (props) => {
           </ul>
         </div>
 
-        <ul className="list-of-photos">
+        {/* <ul className="list-of-photos">
           {listOfPhotoUrls.map((item, index) => {
             return (
               <li key={`${item}${index}`} onClick={backToPhotoUrl(index)}>
@@ -146,16 +176,17 @@ const CreateProduct = (props) => {
               </li>
             );
           })}
-        </ul>
+        </ul> */}
         <div className="prod prod-images">
-          <input
+          {/* <input
             type="text"
             placeholder="enter img url:: <photos will be located in public directory, till i set up firebase storage"
             {...photoUrl}
           />
           <button type="button" className="btn secondary" {...onAdd}>
             add url
-          </button>
+          </button> */}
+          <HandlePhotoInput giveParentFiles={setPhotoFiles} urls={urls} />
         </div>
 
         <button type="submit" className="btn primary-button mid prod-submit">

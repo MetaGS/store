@@ -10,7 +10,7 @@ import ProfilePage from "./ProfilePage";
 import SignUpPage from "./SignUpPage";
 import SignInPage from "./SignInPage";
 import CreateProduct from "../components/CreateProduct";
-import TestPhoto from "./TestPhoto";
+import HandlePhoto from "../components/HandlePhotoInput";
 // import useAuthenticate from '../hooks/useAuthenticate';
 
 import shortLogo from "../assets/short-logo.svg";
@@ -42,7 +42,7 @@ const WithFooter = ({ signIn = false }) => {
           <ProductsPage />
         </Route>
 
-        <Route path="/product/id">
+        <Route path="/product/:id">
           <ProductPage />
         </Route>
 
@@ -52,7 +52,7 @@ const WithFooter = ({ signIn = false }) => {
 
         <Route path="/create" component={CreateProduct} />
 
-        <Route path="/testphoto" component={TestPhoto} />
+        <Route path="/handlePhoto" component={HandlePhoto} />
       </Main>
       <Footer />
     </>

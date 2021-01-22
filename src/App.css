@@ -1,48 +1,50 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
-  }
-  
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@600&display=swap');
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@600&display=swap");
 
 html {
-    font-size: 0.65rem;
+  font-size: 0.65rem;
 }
 
 :root {
-    --poppins: 'Poppins', 'sans-serif';
-    --fatface: 'Abril Fatface', cursive;
-    --abhaya: 'Abhaya Libre', serif;
-    --roboto: 'Roboto', 'sans-serif';
-    --primary-color: #3A3937;
-    --primary-color-linear: linear-gradient(to bottom, rgba(139, 139, 139, 1), rgba(11, 9, 10, 1));
-    --primary-grey: #999898;
-    --primary-color-text: #333231;
-    --black: #000;
-    --white: #fff;
+  --poppins: "Poppins", "sans-serif";
+  --fatface: "Abril Fatface", cursive;
+  --abhaya: "Abhaya Libre", serif;
+  --roboto: "Roboto", "sans-serif";
+  --primary-color: #3a3937;
+  --primary-color-linear: linear-gradient(
+    to bottom,
+    rgba(139, 139, 139, 1),
+    rgba(11, 9, 10, 1)
+  );
+  --primary-grey: #999898;
+  --primary-color-text: #333231;
+  --black: #000;
+  --white: #fff;
 }
 
-
 body {
-    width: 100%;
-    
-    font-family: var(--roboto);
+  width: 100%;
+
+  font-family: var(--roboto);
 }
 
 /* a-primary here deletes default underline, i can pass this to parent of navbar for ex
@@ -51,223 +53,192 @@ change this classes with careful, Because it is used in
 multiple place and hard to detect
 */
 a {
-    text-decoration: none;
-    color: inherit;
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
 }
 
-a:hover, a:focus {
-    text-decoration: underline;
+a:hover,
+a:focus {
+  text-decoration: underline;
 }
 
 .border-1px-grey {
-    border-radius: 3px;
-    border: 1px var(--primary-grey) solid;
-    font-size: 1.3rem;
-    font-family: var(--roboto);
+  border-radius: 3px;
+  border: 1px var(--primary-grey) solid;
+  font-size: 1.3rem;
+  font-family: var(--roboto);
 }
-
-
 
 /* End of Univ */
 /* Main Section */
 
-
-
-
-
 main .left {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    /* align-items: flex-start; */
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* align-items: flex-start; */
 }
 
 main .left h1 {
-    font-family: var(--fatface);
-    font-size: 8.7rem;
-    color: var(--primary-color-text);
-    margin-top: 100px;
+  font-family: var(--fatface);
+  font-size: 8.7rem;
+  color: var(--primary-color-text);
+  margin-top: 100px;
 }
 
-
-
-
-
-
 main .buttons {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
 main .buttons button:first-child {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 .see-more::after {
-    content: "";
-    width: 70vw;
-    margin-top: 20px;
-    position: absolute;
-    height: 20vh;
-    bottom: 0;
-    background-color: rgba(196, 196, 196, 0.5);
-    z-index: -2;
-    filter: blur(4px);
+  content: "";
+  width: 70vw;
+  margin-top: 20px;
+  position: absolute;
+  height: 20vh;
+  bottom: 0;
+  background-color: rgba(196, 196, 196, 0.5);
+  z-index: -2;
+  filter: blur(4px);
 }
 
 .see-more::before {
-    content: "";
-    height: 20vh;
-    position: absolute;
-    width: 60vw;
-    background-image: url(./assets/bg-secondary.png);
-    background-position: 0px 50px;
-    background-repeat: no-repeat;
-    bottom: 0;
-    z-index: -1;
-    left: 0;
+  content: "";
+  height: 20vh;
+  position: absolute;
+  width: 60vw;
+  background-image: url(./assets/bg-secondary.png);
+  background-position: 0px 50px;
+  background-repeat: no-repeat;
+  bottom: 0;
+  z-index: -1;
+  left: 0;
 }
 
 .see-more {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .choose-category {
-    width: 100%;
-    height: 20vh;
-    display: flex;
-    padding-right: 20px;
-    justify-content: space-between;
-    align-items: center;
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  padding-right: 20px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .mini-block {
-    width: 120px;
-    height: 120px;
-    border-radius: 13px;
-    border: 3px white solid;
-    overflow: hidden;
-    position: relative;
-    flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 13px;
+  border: 3px white solid;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
 }
 
 .miniblock-image {
-    position: absolute;
-    top: 0;
-    left: 0;   
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 .miniblock-icon {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .arrow {
-    color: rgba(0, 0, 0, 0);
-    position: relative;
-    height: 120px;
-    width: 120px;
-    font-size: 0;
- 
+  color: rgba(0, 0, 0, 0);
+  position: relative;
+  height: 120px;
+  width: 120px;
+  font-size: 0;
 }
-
 
 .arrow::after {
-    position: absolute;
-    height: 70px;
-    width: 70px;
-    content: "";
-    border-right: 3px white solid;
-    border-bottom: 3px white solid;
-    right:0;
-    
-    transform-origin: right center;
-    transition: transform 1s ease-out;
-    transform: rotateZ(-45deg) translate(-50%, -50%);
+  position: absolute;
+  height: 70px;
+  width: 70px;
+  content: "";
+  border-right: 3px white solid;
+  border-bottom: 3px white solid;
+  right: 0;
+
+  transform-origin: right center;
+  transition: transform 1s ease-out;
+  transform: rotateZ(-45deg) translate(-50%, -50%);
 }
-
-
-
-
 
 main .right {
-    position: relative;
-    width: 50%;
-    display: flex;
-    justify-content: flex-end;
+  position: relative;
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
 }
 main .right .main-girl {
-    align-self: flex-end;
+  align-self: flex-end;
 }
-
 
 /* signUp.html ------------------------------*/
 
 .center-fwidth {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-
 
 /* footer  -------------------------------*/
 
-
-
 /* ----------------- */
-
-
 
 /* products page */
 
-
-
-
-
-
 /*  */
-
-
 
 /* Media Queries */
 
 @media (max-width: 1200px) {
-    main {
-        /* background-position: left top; */
-    }
+  main {
+    /* background-position: left top; */
+  }
 
-    main .right  {
-        justify-content: center;
-        width: 40%;
-    }
-    
-    main .left {
-        width: 60%;
-    }
+  main .right {
+    justify-content: center;
+    width: 40%;
+  }
+
+  main .left {
+    width: 60%;
+  }
 }
 
 @media (max-width: 1000px) {
-    main {
-        /* background-position: left top; */
-    }
+  main {
+    /* background-position: left top; */
+  }
 
-    main .right  {
-        justify-content: center;
-        width: 20%;
-    }
+  main .right {
+    justify-content: center;
+    width: 20%;
+  }
 
-    main .left  {
-        justify-content: center;
-        width: 70%;
-    }
-    
-    
+  main .left {
+    justify-content: center;
+    width: 70%;
+  }
 }

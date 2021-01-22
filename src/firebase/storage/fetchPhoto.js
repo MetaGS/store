@@ -17,3 +17,15 @@ var name = spaceRef.name;
 
 // Points to 'images'
 var imagesRef = spaceRef.parent;
+
+/* 
+*   in input type file:
+    reference as doc.querySel('input');
+    has <files> property which returns Files type, where each index is File type > which has <size>, <name>, <type> properties;
+    Files is as array like, so you can run over;
+
+*   input tag may have accept attribute, by which you can control type of files allowed
+
+
+*/
+//

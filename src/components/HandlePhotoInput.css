@@ -1,0 +1,19 @@
+.photo-create-thumb {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.uploaded-through-url {
+  display: flex;
+
+  border-radius: 20px;
+  padding: 20px 0;
+  margin-top: 20px;
+}
+
+.uploaded-through-url img {
+  width: 300px;
+  height: auto;
+  object-fit: contain;
+}

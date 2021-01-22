@@ -73,7 +73,6 @@
 
 .secondary:hover,
 .secondary:focus {
-  border: initial;
   color: var(--white);
   background: var(--primary-color);
 }
