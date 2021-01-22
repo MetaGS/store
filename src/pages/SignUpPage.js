@@ -21,14 +21,12 @@ const SignUpPage = (props) => {
   let email = useFormInput("");
   let password = useFormInput("");
   let name = useFormInput("");
-  console.log(history);
 
   useEffect(() => {
     if (state.userSignedIn && history.location.pathname === "/signup") {
-      console.log("signup page history.push()");
       history.push("/products");
     }
-  });
+  }, [history.location.pathname, state.userSignedIn]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -43,13 +41,12 @@ const SignUpPage = (props) => {
     if (Object.keys(validatedErrors).length === 0) {
       console.log("starting signing up");
 
-      signUp(email.value, password.value)
-        .then((user) => {
-          console.log("hereee");
-        })
+      signUp(email.value, password.value, name.value)
+        .then((user) => {})
         .catch((error) => {
           console.log("%cerror", "color:red; font-weight: 600");
           console.log(error.message);
+          setErrors({ serverError: error.message });
         });
 
       setErrors({});
@@ -59,41 +56,49 @@ const SignUpPage = (props) => {
   };
 
   return (
-    <SignForm
-      header="sign up"
-      description="Sign Up and become a member of our partnership program. Get
+    <>
+      <SignForm
+        header="sign up"
+        description="Sign Up and become a member of our partnership program. Get
                     the latest releases, and be informed about promotions."
-      submitButtonText="SiGN Up"
-      extraText="Already Signed Up?"
-      extraLink="Sign In"
-      signUp
-      onSubmit={onSubmit}
-    >
-      <Input
-        type="email"
-        placeholder="Email:"
-        name="email"
-        style={{ marginTop: "35px" }}
-        {...email}
-      />
-      <InlineError error={errors.email} />
+        submitButtonText="SiGN Up"
+        extraText="Already Signed Up?"
+        extraLink="Sign In"
+        signUp
+        onSubmit={onSubmit}
+      >
+        <Input
+          type="email"
+          placeholder="Email:"
+          name="email"
+          style={{ marginTop: "35px" }}
+          {...email}
+        />
+        <InlineError error={errors.email} />
 
-      <Input
-        type="password"
-        placeholder="Password:"
-        name="password"
-        {...password}
-      />
-      <InlineError error={errors.password} />
+        <Input
+          type="password"
+          placeholder="Password:"
+          name="password"
+          {...password}
+        />
+        <InlineError error={errors.password} />
 
-      <Input type="text" placeholder="First Name:" name="firstname" {...name} />
-      <InlineError error={errors.name} />
+        <Input
+          type="text"
+          placeholder="First Name:"
+          name="firstname"
+          {...name}
+        />
+        <InlineError error={errors.name} />
+        <InlineError error={errors.serverError} />
 
-      {/* <Input type="text" placeholder="Last Name:" name="lastname" />
+        {/* <Input type="text" placeholder="Last Name:" name="lastname" />
             <Input type="date" placeholder="Date of Birth:" />
 
             <RadioSelect /> */}
-    </SignForm>
+      </SignForm>
+    </>
   );
 };
 

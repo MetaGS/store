@@ -168,7 +168,7 @@ const ProductPage = (props) => {
 
               {/* Add to cart or save block */}
               <div className={"product-page-actions"}>
-                <AddToCart id={id} />
+                <AddToCart productId={id} />
 
                 <Button type="big secondary rounded" text="add to Favorites" />
               </div>

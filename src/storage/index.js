@@ -7,6 +7,7 @@ const initialState = {
   user: null,
   userSignedIn: false,
   products: [],
+  cart: [],
 };
 
 export const StorageInitialize = ({ children }) => {

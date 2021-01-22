@@ -5,6 +5,7 @@ import {
   NORMAL_SEARCH,
   WIDE_SEARCH,
   ADD_PRODUCTS,
+  ADD_TO_CART,
 } from "./types";
 
 export default (state, action) => {
@@ -19,6 +20,8 @@ export default (state, action) => {
       return { ...state, user: action.payload, userSignedIn: true };
     case SIGN_OUT:
       return { ...state, user: null, userSignedIn: false };
+    case ADD_TO_CART:
+      return { ...state, cart: [...state.cart, ...action.payload] };
     default:
       return state;
   }
