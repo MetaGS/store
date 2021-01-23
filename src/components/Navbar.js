@@ -1,17 +1,18 @@
 import { NavLink } from "react-router-dom";
 
 import useStorage from "../storage";
-import Container from "../components/Container";
-import { signOut } from "../firebase/auth";
-
+import Container from "./Container";
+import CartNav from "./CartNav";
 import "./Navbar.css";
 
-import cart from "../assets/shopping-cart.svg";
+import { signOut } from "../firebase/auth";
+
 import logo from "../assets/logo.svg";
 import photo from "../assets/profile.svg";
 
 const Navbar = (props) => {
   const [state] = useStorage();
+  const itemsInCart = state.cart.length;
   let { wideSearch, userSignedIn } = state;
   let searchBar = (
     <div className={`search ${wideSearch ? "search--products" : ""}`}>
@@ -87,7 +88,7 @@ const Navbar = (props) => {
             </div>
             <div className="cart">
               <NavLink to="/cart">
-                <img src={cart} alt="Cart svg icon" />
+                <CartNav items={itemsInCart} />
               </NavLink>
             </div>
           </div>

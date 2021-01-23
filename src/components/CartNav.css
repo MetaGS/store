@@ -1,0 +1,20 @@
+.cartNav {
+  position: relative;
+}
+
+.items-in-cart {
+  position: absolute;
+
+  font-size: 1.5rem;
+  color: var(--primary-color-text);
+  width: 20px;
+  height: 20px;
+  background: white;
+  /* align-items: center; */
+  display: flex;
+  top: 0;
+  right: -5px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}

@@ -31,6 +31,9 @@ export const checkProductReliable = (title, desc, price, photos) => {
   if (+price <= 0) {
     errors.price = "Price cannot be 0";
   }
+  if (isNaN(price)) {
+    errors.price = "Price should be number";
+  }
 
   return errors;
 };
