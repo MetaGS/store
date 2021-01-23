@@ -7,11 +7,11 @@ import Button from "./Button";
 import shareIcon from "../assets/share.svg";
 import "./UtilsBlock.css";
 
-const UtilsBlock = ({ share = false, children = null }) => {
+const UtilsBlock = ({ share = false, children = null, className = "" }) => {
   const history = useHistory();
 
   return (
-    <section className="utils">
+    <section className={`utils ${className}`}>
       <Button
         type="secondary-button"
         text="BACK"

@@ -9,11 +9,10 @@ import WriteReview from "../components/WriteReview";
 import Container from "../components/Container";
 import UtilsBlock from "../components/UtilsBlock";
 import AddToCart from "../components/AddToCart";
+import AddToFavorites from "../components/AddToFavorites";
 
 import { createProduct, getProduct } from "../firebase/db";
 import useStorage from "../storage";
-import addFavorites from "../assets/addFavorites.svg";
-import productPhoto from "../assets/product-image-big.jpg";
 
 import "./ProductPage.css";
 
@@ -170,7 +169,7 @@ const ProductPage = (props) => {
               <div className={"product-page-actions"}>
                 <AddToCart productId={id} />
 
-                <Button type="big secondary rounded" text="add to Favorites" />
+                <AddToFavorites productId={id} />
               </div>
 
               {/* Reviews block */}

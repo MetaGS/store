@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import useStorage from "../storage";
-import { getProduct, getProducts } from "../firebase/db";
+import { getProduct, getProducts, getProductsAsArray } from "../firebase/db";
+import useGetProductsByFieldName from "../hooks/useGetProductsByFieldName";
 
 import UtilsBlock from "../components/UtilsBlock";
 import Container from "../components/Container";
@@ -16,34 +17,11 @@ import "./CartPage.css";
 
 const CartPage = (props) => {
   const [state, dispatch] = useStorage();
-  const [cartItems, setCartItems] = useState([]);
+
   const [totalPrice, setTotalPrice] = useState([]);
   const cart = state.cart;
   const itemsInCart = cart.length;
-
-  useEffect(() => {
-    let cartList = Promise.all(
-      cart.map((cartItemId) => {
-        let itemIsDownloaded = state.products.find((product) => {
-          return product.id === cartItemId;
-        });
-        if (itemIsDownloaded) {
-          return itemIsDownloaded;
-        } else {
-          return getProduct(cartItemId).then((doc) => {
-            return { ...doc.data(), id: doc.id };
-          });
-        }
-      })
-    )
-      .then((cartItemsResolved) => {
-        console.log(cartItemsResolved);
-        setCartItems([...cartItemsResolved]);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  }, [cart]);
+  const cartItems = useGetProductsByFieldName("cart");
 
   const updateTotalPrice = (index) => (itemTotalPrice) => {
     setTotalPrice((prevPriceList) => {

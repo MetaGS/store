@@ -6,23 +6,20 @@ import "./AddToCart.css";
 
 import useStorage from "../storage";
 import { addToCartDispatch } from "../storage/actions";
-import { addToCart as addToCartDb } from "../firebase/db";
+import { addToField as addToCartDb } from "../firebase/db";
 
 const AddToCart = ({ productId }) => {
   const [state, dispatch] = useStorage();
   const alreadyInCart = state.cart.includes(productId);
   //лучше если все же можно добавить в корзинку без логина но, когда order нажимаешь он направляет в signup signin
   const onAddToCart = (e) => {
-    console.log("add to cart click");
+    console.log("add to field click");
     if (state.userSignedIn) {
-      addToCartDb(productId, state.user.uid)
+      addToCartDb(productId, state.user.uid, "cart")
         .then((doc) => {
           dispatch(addToCartDispatch([productId]));
         })
-        .catch((error) => {
-          console.log("%cError", "font-size: 1.2rem; color: red");
-          console.log(error.message);
-        });
+        .catch((error) => {});
     }
   };
 

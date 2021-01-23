@@ -8,6 +8,7 @@ const initialState = {
   userSignedIn: false,
   products: [],
   cart: [],
+  favorites: [],
 };
 
 export const StorageInitialize = ({ children }) => {
@@ -15,7 +16,7 @@ export const StorageInitialize = ({ children }) => {
 
   return (
     <ContextINNER.Provider value={[state, dispatch]}>
-      {children};
+      {children}
     </ContextINNER.Provider>
   );
 };

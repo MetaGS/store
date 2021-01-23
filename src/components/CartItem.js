@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import Button from "../components/Button";
@@ -11,6 +12,7 @@ const CartItem = ({ cartItem = {}, updateTotalPrice = () => {} }) => {
     desc,
     photoUrls = ["https://via.placeholder.com/200"],
     price = 0,
+    id,
   } = cartItem;
 
   let [quantity, setQuantity] = useState(1);
@@ -40,12 +42,16 @@ const CartItem = ({ cartItem = {}, updateTotalPrice = () => {} }) => {
 
       <div className="table-data">
         <span className="table-header">{firstRow && "Name"}</span>
-        <h4 className="data title-sm">{title}</h4>
+        <Link to={`products/${id}`}>
+          <h4 className="data title-sm">{title}</h4>
+        </Link>
       </div>
 
       <div className="table-data">
         <span className="table-header">{firstRow && "Description"}</span>
-        <div className="data desc-sm">{desc}</div>
+        <Link to={`products/${id}`}>
+          <div className="data desc-sm">{desc}</div>
+        </Link>
       </div>
 
       <div className="table-data">

@@ -3,12 +3,10 @@ import { NavLink } from "react-router-dom";
 import useStorage from "../storage";
 import Container from "./Container";
 import CartNav from "./CartNav";
+import ProfileIcon from "./ProfileIcon";
 import "./Navbar.css";
 
-import { signOut } from "../firebase/auth";
-
 import logo from "../assets/logo.svg";
-import photo from "../assets/profile.svg";
 
 const Navbar = (props) => {
   const [state] = useStorage();
@@ -53,8 +51,6 @@ const Navbar = (props) => {
                 <NavLink to="/product/id">Product</NavLink>
               </li>{" "}
               {/* Promotions */}
-              {/* <li><NavLink to="/check">check</NavLink></li>
-                <li><NavLink to="/check2">check2</NavLink></li> */}
             </ul>
             {wideSearch && searchBar}
           </div>
@@ -63,16 +59,17 @@ const Navbar = (props) => {
             <div className="profile">
               {/* <NavLink to="/profile"> */}
               {userSignedIn ? (
-                <button
-                  className="btn"
-                  onClick={() => {
-                    signOut();
-                    console.log(state);
-                  }}
-                >
-                  signOut
-                </button>
+                <ProfileIcon />
               ) : (
+                // <button
+                //   className="btn"
+                //   onClick={() => {
+                //     signOut();
+                //     console.log(state);
+                //   }}
+                // >
+                //   signOut
+                // </button>
                 <>
                   <button className="btn">
                     <NavLink to="/signup">SignUp</NavLink>
@@ -83,7 +80,7 @@ const Navbar = (props) => {
                 </>
               )}
 
-              {/* <img src={photo} alt="Profile svg icon" /> */}
+              {/* */}
               {/* </NavLink> */}
             </div>
             <div className="cart">

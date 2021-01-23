@@ -24,7 +24,9 @@ export default () => {
           .doc(user.uid)
           .get()
           .then((doc) => {
-            dispatch(addToCartDispatch(doc.data().cart));
+            if (doc.exists) {
+              dispatch(addToCartDispatch(doc.data().cart));
+            }
           })
           .catch((error) => {
             console.log("%cerrrrror", "font-size:1.2rem; color: red");

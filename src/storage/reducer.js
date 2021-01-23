@@ -6,6 +6,7 @@ import {
   WIDE_SEARCH,
   ADD_PRODUCTS,
   ADD_TO_CART,
+  ADD_TO_FAVORITES,
 } from "./types";
 
 export default (state, action) => {
@@ -22,6 +23,8 @@ export default (state, action) => {
       return { ...state, user: null, userSignedIn: false };
     case ADD_TO_CART:
       return { ...state, cart: [...state.cart, ...action.payload] };
+    case ADD_TO_FAVORITES:
+      return { ...state, favorites: [...state.favorites, ...action.payload] };
     default:
       return state;
   }

@@ -1,4 +1,10 @@
-import { SIGN_IN, SIGN_OUT, ADD_PRODUCTS, ADD_TO_CART } from "./types";
+import {
+  SIGN_IN,
+  SIGN_OUT,
+  ADD_PRODUCTS,
+  ADD_TO_CART,
+  ADD_TO_FAVORITES,
+} from "./types";
 
 export const signIn = (user) => {
   return {
@@ -24,5 +30,12 @@ export const addToCartDispatch = (cartItem) => {
   return {
     type: ADD_TO_CART,
     payload: cartItem,
+  };
+};
+
+export const addToFavoritesDispatch = (favoritesItem) => {
+  return {
+    type: ADD_TO_FAVORITES,
+    payload: favoritesItem,
   };
 };

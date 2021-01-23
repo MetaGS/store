@@ -10,7 +10,12 @@ export default function (email, password, displayName = "noName entered") {
         .firestore()
         .collection("users")
         .doc(response.user.uid)
-        .set({ name: displayName, cart: [] });
+        .set({
+          name: displayName,
+          cart: [],
+          favorites: [],
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        });
     });
   // catch errors on place where it called
 }

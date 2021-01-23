@@ -7,7 +7,7 @@ import jeans from "../assets/jeans.jpg";
 import star from "../assets/star.svg";
 import starTransparent from "../assets/star-transparent.svg";
 
-const Product = ({ product = {}, mobile = false }) => {
+const Product = ({ product = {}, mobile = false, className = "" }) => {
   /* 
 colors: []
 desc: "asdfasd"
@@ -30,7 +30,7 @@ title: "asdf" */
   } = product;
 
   return (
-    <article className={`product ${mobile ? "mobile" : ""}`}>
+    <article className={`product ${mobile ? "mobile" : ""} ${className}`}>
       <Link to={`/products/${id}`}>
         <img
           className="product-photo"

@@ -1,0 +1,45 @@
+.profile-icon {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-icon-body {
+  position: absolute;
+  width: 150px;
+  right: 0;
+  background: white;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+  padding: 8px 7px;
+  border-radius: 5px;
+  z-index: 10;
+}
+
+.profile-icon-actions {
+  list-style: none;
+}
+
+.profile-icon-actions li {
+  padding: 5px 6px;
+  font-size: 1.5rem;
+  font-family: var(--roboto);
+  cursor: pointer;
+}
+
+.profile-icon-actions li:hover {
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  border-bottom: 1px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.profile-logout {
+  display: flex;
+  align-items: center;
+}
+
+.logout-icon {
+  height: 15px;
+  width: 15px;
+  margin: 0 5px 0 1px;
+  display: inline-block;
+}
