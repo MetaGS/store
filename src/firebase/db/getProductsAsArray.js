@@ -1,6 +1,7 @@
 import { getProduct } from "./";
 
 export default (field, state) => {
+  console.log(state[field]);
   return Promise.all(
     state[field].map((fieldItemId) => {
       let itemIsDownloaded = state.products.find((product) => {
@@ -20,5 +21,6 @@ export default (field, state) => {
       "font-size: 1.2rem; color: red"
     );
     console.log(error.message);
+    // return [];
   });
 };

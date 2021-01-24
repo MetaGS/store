@@ -5,7 +5,7 @@ import Button from "./Button";
 import "./AddToFavorites.css";
 
 import useStorage from "../storage";
-import { addToFavoritesDispatch } from "../storage/actions";
+import { addToFavoritesAction } from "../storage/actions";
 import { addToField as addToFavoritesDb } from "../firebase/db";
 
 // Unify addFavorites and AddToCart
@@ -14,11 +14,10 @@ const AddToFavorites = ({ productId }) => {
   const alreadyInFavorites = state.favorites.includes(productId);
   //лучше если все же можно добавить в корзинку без логина но, когда order нажимаешь он направляет в signup signin
   const onAddToFavorites = (e) => {
-    console.log("add to field click");
     if (state.userSignedIn) {
       addToFavoritesDb(productId, state.user.uid, "favorites")
         .then((doc) => {
-          dispatch(addToFavoritesDispatch([productId]));
+          dispatch(addToFavoritesAction([productId]));
         })
         .catch((error) => {});
     }

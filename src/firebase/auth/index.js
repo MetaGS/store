@@ -1,9 +1,15 @@
+import useControlField from "../auth";
 import firebase from "firebase/app";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import useStorage from "../../storage";
-import { signIn, signOut, addToCartDispatch } from "../../storage/actions";
+import {
+  signIn,
+  signOut,
+  addToCartAction,
+  addToFavoritesAction,
+} from "../../storage/actions";
 
 export { default as signUp } from "./signUp";
 export { default as signOut } from "./signOut";
@@ -25,7 +31,8 @@ export default () => {
           .get()
           .then((doc) => {
             if (doc.exists) {
-              dispatch(addToCartDispatch(doc.data().cart));
+              dispatch(addToCartAction(doc.data().cart));
+              dispatch(addToFavoritesAction(doc.data().favorites));
             }
           })
           .catch((error) => {
@@ -37,6 +44,7 @@ export default () => {
         dispatch(signOut());
       }
     });
+
     return () => {};
   }, []);
 };

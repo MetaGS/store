@@ -7,6 +7,10 @@ import {
   ADD_PRODUCTS,
   ADD_TO_CART,
   ADD_TO_FAVORITES,
+  REMOVE_FROM_CART,
+  REMOVE_FROM_FAVORITES,
+  SET_CART,
+  SET_FAVORITES,
 } from "./types";
 
 export default (state, action) => {
@@ -25,6 +29,31 @@ export default (state, action) => {
       return { ...state, cart: [...state.cart, ...action.payload] };
     case ADD_TO_FAVORITES:
       return { ...state, favorites: [...state.favorites, ...action.payload] };
+    case REMOVE_FROM_CART:
+      return {
+        ...state,
+        cart: state.cart.filter((item) => {
+          return item.id !== action.payload;
+        }),
+      };
+    case REMOVE_FROM_FAVORITES:
+      return {
+        ...state,
+        favorites: state.favorites.filter((item) => {
+          return item !== action.payload;
+        }),
+      };
+    case SET_FAVORITES:
+      return {
+        ...state,
+        favorites: action.payload,
+      };
+    case SET_CART:
+      return {
+        ...state,
+        cart: action.payload,
+      };
+
     default:
       return state;
   }

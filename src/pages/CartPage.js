@@ -9,8 +9,7 @@ import UtilsBlock from "../components/UtilsBlock";
 import Container from "../components/Container";
 import TitleAbhaya from "../components/TitleAbhaya";
 import DescriptionP from "../components/DescriptionP";
-import productImage from "../assets/small-product.jpg";
-import productImage2 from "../assets/product-image2.jpg";
+
 import Button from "../components/Button";
 import CartItem from "../components/CartItem";
 import "./CartPage.css";

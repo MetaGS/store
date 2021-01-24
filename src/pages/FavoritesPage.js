@@ -1,30 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import useGetProductsByFieldName from "../hooks/useGetProductsByFieldName";
+import useControlField from "../hooks/useControlField";
+import useStorage from "../storage";
 
 import Container from "../components/Container";
 import UtilsBlock from "../components/UtilsBlock";
 import TitleAbhaya from "../components/TitleAbhaya";
 import DescriptionP from "../components/DescriptionP";
-import Product from "../components/Product";
+import FavoriteItem from "../components/FavoriteItem";
 
-import star from "../assets/gold-star.svg";
-import Star from "../assets/Star";
-import { Gold } from "../assets/Star";
 import "./FavoritesPage.css";
 const FavoritesPage = (props) => {
-  const [isFavorite, setIsFavorite] = useState(true);
-  const productList = useGetProductsByFieldName("favorites");
-  const [
-    tempItem = { photoUrl: ["https://via.placeholder.com/200"] },
-  ] = productList;
-  const { title, desc, price, photoUrl } = tempItem;
+  const [state, dispatch] = useStorage();
 
-  console.log(productList);
-  const onFavoriteClick = (e) => {
-    setIsFavorite(!isFavorite);
-  };
+  const productList = useGetProductsByFieldName("favorites");
+  const controlFavorites = useControlField("favorites");
+
+  controlFavorites.showMeOwnState();
 
   return (
     <Container>
@@ -34,16 +28,11 @@ const FavoritesPage = (props) => {
         <DescriptionP fontSize="2.1rem" text={`Your Favorited Products`} />
 
         <div className="favorite-items">
-          <div className="favorite-item">
-            <Product mobile className="favorite-product" />
-            <div
-              className="favorites-star"
-              style={{ backgroundColor: `${isFavorite ? "yellow" : "grey"}` }}
-              onClick={onFavoriteClick}
-            >
-              <div className="favorites-star-icon">{Gold(isFavorite)}</div>
-            </div>
-          </div>
+          {productList.map((favoriteItem) => {
+            return (
+              <FavoriteItem key={favoriteItem.id} itemData={favoriteItem} />
+            );
+          })}
         </div>
       </section>
     </Container>

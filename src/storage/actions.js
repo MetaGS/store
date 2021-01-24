@@ -4,6 +4,10 @@ import {
   ADD_PRODUCTS,
   ADD_TO_CART,
   ADD_TO_FAVORITES,
+  REMOVE_FROM_CART,
+  REMOVE_FROM_FAVORITES,
+  SET_CART,
+  SET_FAVORITES,
 } from "./types";
 
 export const signIn = (user) => {
@@ -26,16 +30,60 @@ export const addProducts = (products) => {
   };
 };
 
-export const addToCartDispatch = (cartItem) => {
+export const addToCartAction = (cartItem) => {
   return {
     type: ADD_TO_CART,
     payload: cartItem,
   };
 };
 
-export const addToFavoritesDispatch = (favoritesItem) => {
+export const addToFavoritesAction = (favoritesItem) => {
   return {
     type: ADD_TO_FAVORITES,
     payload: favoritesItem,
   };
+};
+
+export const removeFromCartAction = (cartItem) => {
+  return {
+    type: REMOVE_FROM_CART,
+    payload: cartItem,
+  };
+};
+
+export const removeFromFavoritesAction = (favoritesItem) => {
+  return {
+    type: REMOVE_FROM_FAVORITES,
+    payload: favoritesItem,
+  };
+};
+
+export const setFavorites = (array) => {
+  return {
+    type: SET_FAVORITES,
+    payload: array,
+  };
+};
+
+export const setCart = (array) => {
+  return {
+    type: SET_CART,
+    payload: array,
+  };
+};
+
+//unification, I can use as removeFrom['cart']()
+export const removeFrom = {
+  favorites: removeFromFavoritesAction,
+  cart: removeFromCartAction,
+};
+
+export const addTo = {
+  favorites: addToFavoritesAction,
+  cart: addToCartAction,
+};
+
+export const setField = {
+  favorites: setFavorites,
+  cart: setCart,
 };
