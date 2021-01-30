@@ -14,15 +14,25 @@ import FavoriteItem from "../components/FavoriteItem";
 import "./FavoritesPage.css";
 const FavoritesPage = (props) => {
   const [state, dispatch] = useStorage();
+  console.log(state);
 
-  const productList = useGetProductsByFieldName("favorites");
   const controlFavorites = useControlField("favorites");
+  const productList = controlFavorites.productsByField;
 
-  controlFavorites.showMeOwnState();
+  console.log("hi");
+  console.log(productList);
+  controlFavorites.showMeOwnState?.();
 
   return (
     <Container>
       <section className="favorites-page">
+        <button
+          onClick={() => {
+            console.log(productList);
+          }}
+        >
+          show control
+        </button>
         <UtilsBlock className={"favorites-utils"} />
         <TitleAbhaya text={"Favorite"} />
         <DescriptionP fontSize="2.1rem" text={`Your Favorited Products`} />

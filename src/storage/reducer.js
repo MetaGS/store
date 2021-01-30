@@ -25,10 +25,21 @@ export default (state, action) => {
       return { ...state, user: action.payload, userSignedIn: true };
     case SIGN_OUT:
       return { ...state, user: null, userSignedIn: false };
+
     case ADD_TO_CART:
-      return { ...state, cart: [...state.cart, ...action.payload] };
+      let newCart = Array.isArray(action.payload)
+        ? action.payload
+        : [action.payload];
+      return { ...state, cart: [...state.cart, ...newCart] };
+
     case ADD_TO_FAVORITES:
-      return { ...state, favorites: [...state.favorites, ...action.payload] };
+      console.log(action.payload);
+      // throw Error("Reducer true error");
+      let newFavorites = Array.isArray(action.payload)
+        ? action.payload
+        : [action.payload];
+      return { ...state, favorites: [...state.favorites, ...newFavorites] };
+
     case REMOVE_FROM_CART:
       return {
         ...state,
@@ -44,6 +55,7 @@ export default (state, action) => {
         }),
       };
     case SET_FAVORITES:
+      console.log(action.payload);
       return {
         ...state,
         favorites: action.payload,

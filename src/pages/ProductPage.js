@@ -36,6 +36,7 @@ const ProductPage = (props) => {
   } = product;
 
   useEffect(() => {
+    console.log("it runs in product page");
     const productFromState = state.products.find((product) => {
       return product.id === id;
     });
@@ -84,7 +85,7 @@ const ProductPage = (props) => {
                     {/* <div className=" carousel-photo active">
                       <img src={productPhoto} alt="product carousel" />
                     </div> */}
-                    {console.log(product.photoUrls)}
+
                     {product?.photoUrls?.map((photoUrl) => {
                       return (
                         <div

@@ -15,6 +15,7 @@ export default function (email, password, displayName = "noName entered") {
           cart: [],
           favorites: [],
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+          email,
         });
     });
   // catch errors on place where it called

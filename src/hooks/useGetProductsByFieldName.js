@@ -13,7 +13,7 @@ export default (field) => {
       console.log(itemsResolved);
       setItems([...itemsResolved]);
     });
-  }, []);
+  }, [state[field]]);
 
   return items;
 };

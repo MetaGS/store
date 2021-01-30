@@ -1,42 +1,17 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-import useStorage from "../storage";
-import { addToField } from "../firebase/db";
-import { removeFromField } from "../firebase/db";
+import useControlField from "../hooks/useControlField";
 
 import Product from "./Product";
 import { Gold } from "../assets/Star";
 import "./FavoriteItem.css";
-import {
-  addToFavoritesAction,
-  removeFromFavoritesAction,
-} from "../storage/actions";
 
-const FavoriteItem = ({ itemData }) => {
+const FavoriteItem = ({ itemData, removeItem }) => {
+  console.log(itemData);
   const [isFavorite, setIsFavorite] = useState(true);
-  const [state, dispatch] = useStorage();
 
-  const onFavoriteClick = async (e) => {
-    let response;
-    if (isFavorite) {
-      await onRemoveFromFavorites();
-      dispatch(removeFromFavoritesAction(itemData.id));
-    } else {
-      await onAddToFavorites();
-      dispatch(addToFavoritesAction([itemData.id]));
-    }
-
-    setIsFavorite(!isFavorite);
-  };
-
-  const onAddToFavorites = () => {
-    return addToField(itemData.id, state.user.uid, "favorites");
-  };
-
-  const onRemoveFromFavorites = () => {
-    return removeFromField(itemData.id, state.user.uid, "favorites");
-  };
+  const { removeFromField = () => {} } = useControlField("favorites");
 
   return (
     <div className="favorite-item">
@@ -44,7 +19,9 @@ const FavoriteItem = ({ itemData }) => {
       <div
         className="favorites-star"
         style={{ backgroundColor: `${isFavorite ? "yellow" : "grey"}` }}
-        onClick={onFavoriteClick}
+        onClick={() => {
+          removeFromField(itemData.id);
+        }}
       >
         <div className="favorites-star-icon">{Gold(isFavorite)}</div>
       </div>
