@@ -71,10 +71,10 @@ const Navbar = (props) => {
                 //   signOut
                 // </button>
                 <>
-                  <button className="btn">
+                  <button className="btn sm">
                     <NavLink to="/signup">SignUp</NavLink>
                   </button>
-                  <button className="btn">
+                  <button className="btn sm">
                     <NavLink to="/signin">Sign in</NavLink>
                   </button>
                 </>

@@ -2,6 +2,7 @@ import { getProduct } from "./";
 
 export default (field, state) => {
   console.log(state[field]);
+
   return Promise.all(
     state[field].map((fieldItemId) => {
       let itemIsDownloaded = state.products.find((product) => {

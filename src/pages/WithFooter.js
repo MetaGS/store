@@ -36,7 +36,7 @@ const WithFooter = ({ signIn = false }) => {
           <SignUpPage />
         </Route>
         <Route path="/signin">
-          <SignInPage />
+          <SignInPage hi={"wtf it works"} />
         </Route>
         <Route path="/products" exact>
           <ProductsPage />

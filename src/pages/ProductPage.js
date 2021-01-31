@@ -41,6 +41,7 @@ const ProductPage = (props) => {
       return product.id === id;
     });
     if (productFromState) {
+      console.log(id);
       console.log("found in local state");
       setProduct(productFromState);
     } else {

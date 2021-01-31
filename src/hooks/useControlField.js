@@ -20,10 +20,8 @@ export default (field) => {
         state.user?.uid,
         dispatch,
         state,
-
         new LocalStorage(field),
-        productsByField,
-        state
+        productsByField
       )
     );
   }, []);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import SignForm from "../components/SignForm";
@@ -17,14 +17,20 @@ const SignInPage = (props) => {
   const email = useFormInput("");
   const password = useFormInput("");
   const [errors, setErrors] = useState({});
+  console.log(history);
 
-  useEffect(() => {
-    console.log(history);
-    if (state.userSignedIn && history.location.pathname === "/signin") {
-      console.log("signinPage history.push()");
-      history.push("/products");
-    }
-  });
+  // const redirectTo = new URL(document.location).searchParams;
+  // console.log(redirectTo.get("name"));
+
+  let redirectTo = history.location.state?.refferer || "/products";
+  console.log(redirectTo);
+  // useEffect(() => {
+  //   console.log(history);
+  //   if (state.userSignedIn && history.location.pathname === "/signin") {
+  //     console.log("signinPage history.push()");
+  //     history.push("/products");
+  //   }
+  // });
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -53,7 +59,9 @@ const SignInPage = (props) => {
     }
   };
 
-  return (
+  return state.userSignedIn ? (
+    <Redirect to={redirectTo} />
+  ) : (
     <div>
       <SignForm
         header="your account"

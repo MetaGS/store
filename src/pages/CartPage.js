@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import useStorage from "../storage";
-import { getProduct, getProducts, getProductsAsArray } from "../firebase/db";
+
 import useGetProductsByFieldName from "../hooks/useGetProductsByFieldName";
+import useControlField from "../hooks/useControlField";
 
 import UtilsBlock from "../components/UtilsBlock";
 import Container from "../components/Container";
@@ -16,11 +17,10 @@ import "./CartPage.css";
 
 const CartPage = (props) => {
   const [state, dispatch] = useStorage();
-
+  const { productsByField = [] } = useControlField("cart");
   const [totalPrice, setTotalPrice] = useState([]);
   const cart = state.cart;
   const itemsInCart = cart.length;
-  const cartItems = useGetProductsByFieldName("cart");
 
   const updateTotalPrice = (index) => (itemTotalPrice) => {
     setTotalPrice((prevPriceList) => {
@@ -45,7 +45,7 @@ const CartPage = (props) => {
         </div>
 
         <div className="table">
-          {cartItems.map((cartItem, index) => {
+          {productsByField.map((cartItem, index) => {
             return (
               <CartItem
                 cartItem={cartItem}

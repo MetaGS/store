@@ -2,10 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
+import useControlField from "../hooks/useControlField";
+import useStorage from "../storage";
+
 import Button from "../components/Button";
 import "./CartItem.css";
 
 const CartItem = ({ cartItem = {}, updateTotalPrice = () => {} }) => {
+  const { removeFromField = () => {} } = useControlField("cart");
+  const [state, dispatch] = useStorage();
+
   const {
     firstRow = false,
     title,
@@ -39,7 +45,13 @@ const CartItem = ({ cartItem = {}, updateTotalPrice = () => {} }) => {
           />
         </div>
       </div>
-
+      <button
+        onClick={() => {
+          console.log(state);
+        }}
+      >
+        Show state
+      </button>
       <div className="table-data">
         <span className="table-header">{firstRow && "Name"}</span>
         <Link to={`products/${id}`}>
@@ -79,7 +91,14 @@ const CartItem = ({ cartItem = {}, updateTotalPrice = () => {} }) => {
       <div className="table-data">
         <span className="table-header"></span>
         <div className="data">
-          <Button type="primary-button-linear" text={"Remove"} />
+          <Button
+            type="primary-button-linear sm"
+            text={"Remove"}
+            onClick={() => {
+              removeFromField(id);
+              updateTotalPrice(0);
+            }}
+          />
         </div>
       </div>
     </div>

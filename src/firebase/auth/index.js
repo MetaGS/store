@@ -17,8 +17,8 @@ export { default as signUp } from "./signUp";
 export { default as signOut } from "./signOut";
 export { default as signIn } from "./signIn";
 console.log("new local storage control");
-const localStorageFavorites = new LocalStorage("favorites");
-const localStorageCart = new LocalStorage("cart");
+const localStorageFavoritesControl = new LocalStorage("favorites");
+const localStorageCartControl = new LocalStorage("cart");
 
 export default () => {
   const history = useHistory();
@@ -31,21 +31,29 @@ export default () => {
         dispatch(signIn(user));
 
         console.log("%csigned in", "color:green; font-weight: 600");
-
         const userRef = db.collection("users").doc(user.uid);
-        let localFavorites = localStorageFavorites.getField();
+        let localFavorites = localStorageFavoritesControl.getField();
+        let localCart = localStorageCartControl.getField();
         console.log(localFavorites);
+
         new Promise((resolve, reject) => {
-          if (localFavorites.length !== 0) {
-            updateFieldInDb(user.uid, "favorites", localFavorites).then();
-            localStorageFavorites.setField([]);
+          if (localFavorites.length !== 0 || localCart.length !== 0) {
+            if (localFavorites.length !== 0) {
+              updateFieldInDb(user.uid, "favorites", localFavorites);
+
+              localStorageFavoritesControl.setField([]);
+            }
+            if (localCart.length !== 0) {
+              updateFieldInDb(user.uid, "cart", localCart);
+
+              localStorageCartControl.setField([]);
+            }
             resolve("updated");
           } else {
             resolve("No need in update");
           }
         }).then((updatedMessage) => {
           console.log(updatedMessage);
-
           userRef
             .get()
             .then((doc) => {
@@ -62,10 +70,11 @@ export default () => {
         });
       } else {
         dispatch(signOut());
-        dispatch(addToFavoritesAction(localStorageFavorites.getField?.()));
+        dispatch(
+          addToFavoritesAction(localStorageFavoritesControl.getField?.())
+        );
+        dispatch(addToCartAction(localStorageCartControl.getField?.()));
       }
     });
-
-    return () => {};
   }, []);
 };

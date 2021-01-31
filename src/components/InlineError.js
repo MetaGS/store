@@ -1,18 +1,22 @@
-import React from 'react'
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import './InlineError.css';
+import "./InlineError.css";
 
-const InlineError = props => {
-    return (
-        <>
-            <p className={`inline-error ${props.error ? 'active' : ''}`}>{props.error}</p>
-        </>
-    )
-}
+const InlineError = (props) => {
+  return (
+    <>
+      <p
+        className={`inline-error ${props.className} ${
+          props.error ? "active" : ""
+        }`}
+      >
+        {props.error}
+      </p>
+    </>
+  );
+};
 
-InlineError.propTypes = {
+InlineError.propTypes = {};
 
-}
-
-export default InlineError
+export default InlineError;

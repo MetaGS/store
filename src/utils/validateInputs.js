@@ -37,3 +37,23 @@ export const checkProductReliable = (title, desc, price, photos) => {
 
   return errors;
 };
+
+export const validateCommentInput = (comment, phoneNumber, rating) => {
+  let errors = {};
+
+  if (comment.length > 800) {
+    errors.comment = "Comment cannot be more than 800 characters";
+  } else if (comment.length === 0) {
+    errors.comment = "Comment cannot be blank";
+  }
+
+  if (isNaN(phoneNumber)) {
+    errors.phoneNumber = "Phone should be only numbers";
+  }
+
+  if (rating == 0) {
+    errors.rating = "You did not rate the product";
+  }
+
+  return errors;
+};

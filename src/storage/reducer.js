@@ -44,7 +44,7 @@ export default (state, action) => {
       return {
         ...state,
         cart: state.cart.filter((item) => {
-          return item.id !== action.payload;
+          return item !== action.payload;
         }),
       };
     case REMOVE_FROM_FAVORITES:
