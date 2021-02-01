@@ -176,7 +176,7 @@ const ProductPage = (props) => {
 
               {/* Reviews block */}
               <div className="product-page-reviews">
-                <WriteReview id={id} />
+                <WriteReview productId={id} />
                 <Review />
                 <Review />
               </div>

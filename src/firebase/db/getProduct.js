@@ -11,11 +11,11 @@ export default (id) => {
     .then((doc) => {
       console.error(id);
 
-      console.log("wtf");
       if (doc.exists) {
         console.log("%cExists", "color: green");
         return doc;
       } else {
+        console.log("here will be error");
         throw Error("No such Document in Collection");
       }
     })

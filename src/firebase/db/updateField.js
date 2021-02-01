@@ -1,20 +1,21 @@
 import firebase from "firebase/app";
 
-export default (userId, field, updateFieldArray) => {
+export default (collectionName, docId, field, updateItem) => {
   const db = firebase.firestore();
-  const userRef = db.collection("users").doc(userId);
+  const docRef = db.collection(collectionName).doc(docId);
+  let updateArray = Array.isArray(updateItem) ? updateItem : [updateItem];
 
-  return userRef.get().then((userDoc) => {
-    const oldField = userDoc.data()[field];
+  return docRef.get().then((doc) => {
+    const oldField = doc.data()[field] || [];
 
     const newField = [
-      ...updateFieldArray.filter((newItem) => {
+      ...updateArray.filter((newItem) => {
         return !oldField.includes(newItem);
       }),
       ...oldField,
     ];
 
-    return userRef
+    return docRef
       .update({
         [field]: newField,
       })

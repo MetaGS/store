@@ -48,6 +48,7 @@ const SignInPage = (props) => {
         .catch((error) => {
           console.log("%cerror", "color:red; font-weight: 600");
           console.log(error.message);
+          setErrors({ global: error.message });
         });
 
       console.log(
@@ -86,6 +87,7 @@ const SignInPage = (props) => {
           {...password}
         />
         <InlineError error={errors.password} />
+        <InlineError error={errors.global} />
       </SignForm>
     </div>
   );

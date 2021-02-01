@@ -10,7 +10,7 @@ import {
   addToCartAction,
   addToFavoritesAction,
 } from "../../storage/actions";
-import { updateField as updateFieldInDb } from "../db";
+import { updateUserField as updateFieldInDb } from "../db";
 import LocalStorage from "../../localStorage";
 
 export { default as signUp } from "./signUp";

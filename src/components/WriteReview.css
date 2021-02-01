@@ -5,12 +5,12 @@
   font-family: var(--roboto);
 }
 
-.review-rating {
+.review-rate {
   text-align: center;
   margin: 10px 0px;
 }
 
-.review-rating svg:hover {
+.review-rate svg:hover {
   fill: black;
   transform: scale(1.1);
 }

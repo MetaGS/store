@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 
 import useStorage from "../storage";
 import { validateCommentInput } from "../utils/validateInputs";
+import { useReviewUploadControl } from "../firebase/db";
 
 import Button from "./Button";
 import SelectPhoneNumber from "./SelectPhoneNumber";
@@ -14,8 +15,14 @@ import "./WriteReview.css";
 
 let Star = StarConf.bind(null, "#3a3937", 27, 21);
 
-const WriteReview = (props) => {
-  const [rating, setRating] = useState(0);
+export default ({ productId }) => {
+  const history = useHistory();
+  const reviewControl = useReviewUploadControl(productId);
+
+  // reviewControl.getReview?.();
+  const alreadyReviewed = reviewControl.alreadyReviewed;
+  console.log(alreadyReviewed);
+
   const [stars, setStars] = useState([
     { filled: false },
     { filled: false },
@@ -23,8 +30,8 @@ const WriteReview = (props) => {
     { filled: false },
     { filled: false },
   ]);
+  const [rate, setRating] = useState(0);
   const [state, dispatch] = useStorage();
-  const history = useHistory();
   const [opened, setOpened] = useState(true);
   const [redirectTo, setRedirectTo] = useState(false);
   const [comment, setComment] = useState("");
@@ -51,7 +58,7 @@ const WriteReview = (props) => {
   const onBlurStar = () => {
     setStars([
       ...stars.map((item, index) => {
-        if (index + 1 > rating) {
+        if (index + 1 > rate) {
           return { filled: false };
         }
         return { filled: true };
@@ -61,13 +68,19 @@ const WriteReview = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const inputErrors = validateCommentInput(comment, phoneNumber, rating);
+    const inputErrors = validateCommentInput(comment, phoneNumber, rate);
     if (Object.keys(inputErrors).length === 0) {
       // send to the server;
       console.log(
         "%cthe comment has been sent. Waiting for response...",
         " color: green; font-size: 1.2rem"
       );
+      reviewControl.submitReview(
+        comment,
+        String(phoneNumberCode) + String(phoneNumber),
+        rate
+      );
+
       setErrors({});
     } else {
       setErrors(inputErrors);
@@ -77,6 +90,17 @@ const WriteReview = (props) => {
   return state.userSignedIn ? (
     opened ? (
       <form className="write-review">
+        <div>{String(alreadyReviewed)}</div>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            let same = reviewControl.showReviewed();
+            console.log(same);
+          }}
+        >
+          {" "}
+          showReviewed
+        </button>
         <textarea
           name="review"
           id=""
@@ -105,7 +129,7 @@ const WriteReview = (props) => {
           />
         </div>
         <InlineError error={errors.phoneNumber} />
-        <div className="review-rating">
+        <div className="review-rate">
           {stars.map((starConfig, index) => {
             return (
               <span
@@ -119,7 +143,7 @@ const WriteReview = (props) => {
               </span>
             );
           })}
-          <InlineError error={errors.rating} />
+          <InlineError error={errors.rate} />
         </div>
 
         <Button
@@ -155,6 +179,4 @@ const WriteReview = (props) => {
   );
 };
 
-WriteReview.propTypes = {};
-
-export default WriteReview;
+// WriteReview.propTypes = {};

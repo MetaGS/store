@@ -37,8 +37,9 @@ export default (field) => {
       console.log(products);
       setProductsByField(products);
     });
+    control.userSignedIn = state.userSignedIn;
     //need to update again by setProductsByField()
-  }, [state[field], control]);
+  }, [state[field], control, state.userSignedIn]);
 
   control.productsByField = productsByField;
 

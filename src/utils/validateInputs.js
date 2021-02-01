@@ -38,7 +38,7 @@ export const checkProductReliable = (title, desc, price, photos) => {
   return errors;
 };
 
-export const validateCommentInput = (comment, phoneNumber, rating) => {
+export const validateCommentInput = (comment, phoneNumber, rate) => {
   let errors = {};
 
   if (comment.length > 800) {
@@ -51,8 +51,8 @@ export const validateCommentInput = (comment, phoneNumber, rating) => {
     errors.phoneNumber = "Phone should be only numbers";
   }
 
-  if (rating == 0) {
-    errors.rating = "You did not rate the product";
+  if (rate == 0) {
+    errors.rate = "You did not rate the product";
   }
 
   return errors;
