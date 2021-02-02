@@ -10,6 +10,7 @@ import Container from "../components/Container";
 import UtilsBlock from "../components/UtilsBlock";
 import AddToCart from "../components/AddToCart";
 import AddToFavorites from "../components/AddToFavorites";
+import SizesComponent from "../components/SizesComponent";
 
 import { createProduct, getProduct } from "../firebase/db";
 import useStorage from "../storage";
@@ -21,6 +22,7 @@ const ProductPage = (props) => {
   const [download, setDownload] = useState(false);
   const [product, setProduct] = useState({});
   const [error, setError] = useState("");
+  const [activeSize, setActiveSize] = useState(null);
   const { id } = useParams();
 
   let {
@@ -130,11 +132,9 @@ const ProductPage = (props) => {
                       {
                         <>
                           <div className="row">
-                            {sizes.map((size) => {
+                            {sizes.map((size, index) => {
                               return (
-                                <div className="size">
-                                  <span>{size}</span>
-                                </div>
+                                <SizesComponent size={size} active={activeSize === index} onClick={(e)=>{setActiveSize(index)}}/>
                               );
                             })}
                           </div>
