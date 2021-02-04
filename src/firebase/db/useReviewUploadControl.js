@@ -58,7 +58,7 @@ class ControlUploadReview {
       .get()
       .then((snapshot) => {
         console.log(snapshot);
-        const reviewed = snapshot.docs[0].exists;
+        const reviewed = !!snapshot.docs[0]?.exists;
         this.alreadyReviewed = reviewed;
         if (reviewed) {
           this.reviewRef = snapshot.docs[0].ref;

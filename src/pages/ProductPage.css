@@ -133,23 +133,6 @@
   flex-wrap: wrap;
 }
 
-.sizes-self .size {
-  border: 1px solid var(--primary-grey);
-  border-radius: 20%;
-  font-size: 1.8rem;
-  min-width: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-
-  padding: 8%;
-  max-width: 70px;
-}
-
-.sizes-self span {
-  position: absolute;
-}
 
 .product-page-colors .sub-block {
   margin-top: 35px;
