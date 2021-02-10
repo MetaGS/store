@@ -1,13 +1,22 @@
 import firebase from "firebase/app";
 
-export default (collectionName, docId, field, updateItem) => {
+const updateField = (
+  collectionName,
+  docId,
+  field,
+  updateItem,
+  callBack = (data) => ({}) // callback must return object with fields to update
+) => {
   const db = firebase.firestore();
   const docRef = db.collection(collectionName).doc(docId);
   let updateArray = Array.isArray(updateItem) ? updateItem : [updateItem];
 
   return docRef.get().then((doc) => {
-    const oldField = doc.data()[field] || [];
+    const allDataFromDb = doc.data();
+    const additionalUpdate = callBack(allDataFromDb);
+    const oldField = allDataFromDb[field] || [];
 
+    // main logic: update field which you set
     const newField = [
       ...updateArray.filter((newItem) => {
         return !oldField.includes(newItem);
@@ -15,10 +24,16 @@ export default (collectionName, docId, field, updateItem) => {
       ...oldField,
     ];
 
-    return docRef
-      .update({
+    // update other fields as well if you want, through callback
+    const updateObject = {
+      ...{
         [field]: newField,
-      })
+      },
+      ...additionalUpdate,
+    };
+
+    return docRef
+      .update(updateObject)
       .then(() => {
         console.log("Updated the whole field and Filtered");
         console.log(newField);
@@ -32,3 +47,5 @@ export default (collectionName, docId, field, updateItem) => {
       });
   });
 };
+
+export default updateField;

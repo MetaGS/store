@@ -1,0 +1,49 @@
+.sort-block {
+  display: flex;
+  margin: 50px 0px;
+}
+.sort-block p {
+  color: var(--primary-grey);
+  min-width: 100px;
+}
+
+.sort-item {
+  color: var(--black);
+  margin-right: 5px;
+}
+
+.sort-item button {
+  padding: 2px 4px;
+}
+
+.asc-desc {
+  position: relative;
+  height: 0;
+  width: 0;
+  margin-right: 3px;
+}
+
+.active-asc {
+  border-style: solid;
+  bottom: 12px;
+
+  border-width: 0 7.5px 8px 7.5px;
+  border-color: transparent transparent #007bff transparent;
+}
+
+.active-desc {
+  top: 12px;
+
+  border-style: solid;
+  border-width: 8px 7.5px 0 7.5px;
+  border-color: #007bff transparent transparent transparent;
+}
+
+.sort-item.active {
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5), -3px -3px 4px rgba(0, 0, 0, 0.5);
+}
+
+.sort-items {
+  display: flex;
+  width: 100%;
+}

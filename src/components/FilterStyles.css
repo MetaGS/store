@@ -1,0 +1,21 @@
+.style-filter-items {
+}
+
+.style-filter-item {
+  cursor: pointer;
+  padding: 2px 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+  transition: border 0.2s ease-in, box-shadow 0.2s ease-in;
+  border-radius: 5px;
+}
+
+.style-filter-item:hover {
+  /* border-bottom-color: var(--primary-color); */
+  box-shadow: 0px -1px 1px rgba(0, 0, 0, 0.25), 0px 1px 1px rgba(0, 0, 0, 0.25);
+}
+
+.style-filter-item.active {
+  box-shadow: 0px -1px 1px rgba(0, 0, 0, 0.25), 0px 1px 1px rgba(0, 0, 0, 0.25);
+  background-color: var(--primary-grey);
+  color: white;
+}

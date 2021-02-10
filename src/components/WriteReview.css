@@ -67,3 +67,10 @@
   outline-color: rgb(0, 89, 255);
   outline-width: 1px;
 }
+
+.already-reviewed {
+  font-size: 1.5rem;
+  font-weight: 400;
+  padding-bottom: 10px;
+  border-bottom: 1px solid grey;
+}

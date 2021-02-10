@@ -8,7 +8,7 @@ import { addTo, removeFrom, setField } from "../storage/actions";
 import useStorage from "../storage";
 import LocalStorage from "../localStorage";
 
-export default (field) => {
+const useControlField = (field) => {
   const [state, dispatch] = useStorage();
   const [control, setControl] = useState({ productsByField: [] });
   const [productsByField, setProductsByField] = useState([]);
@@ -29,7 +29,7 @@ export default (field) => {
   useEffect(() => {
     console.log("runned in useControlField");
     console.log(`new state `);
-    console.log(state);
+
     control?.setOwnState?.(state);
 
     control.getProductsByField?.().then((products) => {
@@ -104,7 +104,6 @@ class ControlField {
   };
 
   includes = (fieldItemId) => {
-    console.log(this.state);
     console.log(this.field);
     return this.state[this.field].includes(fieldItemId);
   };
@@ -113,3 +112,5 @@ class ControlField {
     console.log(this.state);
   };
 }
+
+export default useControlField;

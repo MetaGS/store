@@ -97,3 +97,18 @@ input.sm {
 .prod-submit {
   margin-top: 30px;
 }
+
+.itemsFromDb {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.itemsFromDb li {
+  width: auto;
+}
+
+.chooseFromDb {
+  min-width: 50px;
+  min-height: 50px;
+}

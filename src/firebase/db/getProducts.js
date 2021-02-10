@@ -1,15 +1,13 @@
 import firebase from "firebase/app";
 
-export default function () {
+function getProducts(sorts = []) {
   const db = firebase.firestore();
 
-  const products = db
-    .collection("products")
-    .get()
-    .then((snap) => {
-      console.log(snap.docs);
-      return snap;
-    });
+  let products = db.collection("products");
 
-  return products;
+  const myExtension = Object.create(products);
+  myExtension.isOwnExtension = "Yeas it is an extension";
+  return myExtension;
 }
+
+export default getProducts;

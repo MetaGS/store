@@ -1,20 +1,55 @@
+import { useState } from "react";
+import PropTypes from "prop-types";
+import "./FilterStyles.css";
 
+const styles = [
+  { name: "All", value: "all" },
+  { name: "Lifestyle", value: "lifestyle" },
+  { name: "Kids", value: "kids" },
+  { name: "Casual", value: "casual" },
+  { name: "Sport", value: "sport" },
+  { name: "Men", value: "men" },
+];
 
-import './FilterStyles.css';
+const FilterStyles = ({ updateParent = () => {} }) => {
+  const [styleFilter, setStyleFilter] = useState("all");
 
+  const updateFilter = (style) => {
+    const whereFilter = {
+      field: "tags",
+      comparison: "==",
+      value: style,
+    };
 
-const FilterStyles = (props) => {
-    return (
-        <section className="styles filter">
-            <ul className="style-filter-items">
-                <li className="style-filter-item"><a href="#">Lifestyle</a></li>
-                <li className="style-filter-item"><a href="#">Kids</a></li>
-                <li className="style-filter-item"><a href="#">Casual</a></li>
-                <li className="style-filter-item"><a href="#">Sport</a></li>
-                <li className="style-filter-item"><a href="#">Men</a></li>
-            </ul>
-        </section>
-    )
-}
+    setStyleFilter(style);
+    updateParent(style === "all" ? [] : [whereFilter]);
+  };
+
+  return (
+    <section className="styles filter">
+      <ul className="style-filter-items">
+        {styles.map(({ name, value }, index) => {
+          return (
+            <li
+              key={index + value}
+              className={`style-filter-item ${
+                styleFilter === value && "active"
+              }`}
+              onClick={() => {
+                updateFilter(value);
+              }}
+            >
+              {name}
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  );
+};
+
+FilterStyles.propTypes = {
+  updateParent: PropTypes.func.isRequired,
+};
 
 export default FilterStyles;

@@ -3,8 +3,8 @@ import { useParams, useHistory } from "react-router-dom";
 
 import Button from "../components/Button";
 import SeeMoreProducts from "../components/SeeMoreProducts";
-import FilterColors from "../components/FilterColors";
-import Review from "../components/Review";
+import ChooseColors from "../components/ChooseColors";
+import Reviews from "../components/Reviews";
 import WriteReview from "../components/WriteReview";
 import Container from "../components/Container";
 import UtilsBlock from "../components/UtilsBlock";
@@ -14,7 +14,7 @@ import SizesComponent from "../components/SizesComponent";
 
 import { createProduct, getProduct } from "../firebase/db";
 import useStorage from "../storage";
-
+import { useReviewsControl } from "../firebase/db";
 import "./ProductPage.css";
 
 const ProductPage = (props) => {
@@ -24,6 +24,7 @@ const ProductPage = (props) => {
   const [error, setError] = useState("");
   const [activeSize, setActiveSize] = useState(null);
   const { id } = useParams();
+  const reviewControl = useReviewsControl(id);
 
   let {
     title = "No title Entered",
@@ -134,7 +135,14 @@ const ProductPage = (props) => {
                           <div className="row">
                             {sizes.map((size, index) => {
                               return (
-                                <SizesComponent size={size} active={activeSize === index} onClick={(e)=>{setActiveSize(index)}}/>
+                                <SizesComponent
+                                  key={index}
+                                  size={size}
+                                  active={activeSize === index}
+                                  onClick={(e) => {
+                                    setActiveSize(index);
+                                  }}
+                                />
                               );
                             })}
                           </div>
@@ -160,7 +168,7 @@ const ProductPage = (props) => {
                   <div className="sub-block">
                     <span className="sub-block-title">Colors</span>
                   </div>
-                  <FilterColors
+                  <ChooseColors
                     style={{ padding: "7%", marginRight: "7%" }}
                     colors={colors}
                   />
@@ -176,9 +184,8 @@ const ProductPage = (props) => {
 
               {/* Reviews block */}
               <div className="product-page-reviews">
-                <WriteReview productId={id} />
-                <Review />
-                <Review />
+                <WriteReview productId={id} reviewControl={reviewControl} />
+                <Reviews reviews={reviewControl.reviews} />
               </div>
             </section>
             {/* product-page-desc end */}
@@ -190,16 +197,3 @@ const ProductPage = (props) => {
 };
 
 export default ProductPage;
-
-const sizes = [
-  "32/21",
-  "32/21",
-  "32/21",
-  "32/21",
-  "32/21",
-  "32/21",
-  "32/21",
-  "32/21",
-  "32/21",
-  "32/21",
-];

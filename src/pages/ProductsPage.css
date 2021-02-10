@@ -1,69 +1,35 @@
 .main--products {
-    display: block;
-    padding: 0 50px;
-    font-size: 1.7rem;
-    width: 100%;
+  display: block;
+  padding: 0 50px;
+  font-size: 1.7rem;
+  width: 100%;
 }
 
 .main--products ul {
-    list-style: none;
+  list-style: none;
 }
 
-main .sort {
-    display: flex;
-    margin: 50px 0px;
+.content {
+  display: flex;
+  margin-bottom: 100px;
 }
-main .sort p {
-    color: var(--primary-grey);
-    min-width: 100px;
-}
-
-main .sort ul a {
-    color: var(--black);
-    margin-right: 20px;
-}
-
-
-
-main .sort ul {
-    display: flex;
-    width: 100%;
-}
-
- .content {
-    display: flex;
-    margin-bottom: 100px;
-}
-
 
 .products-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    font-family: var(--abhaya);
-    font-weight: 400;
-    align-items: flex-start;
-    font-size: 2rem;
-    color: var(--white);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: var(--abhaya);
+  font-weight: 400;
+  align-items: flex-start;
+  font-size: 2rem;
+  color: var(--white);
 }
- 
-
-
-
-
-
-
-
-
-
-
 
 .rating span {
-    display: block;
+  display: block;
 }
 
 .rating {
-    display: flex;
-    vertical-align: middle;
+  display: flex;
+  vertical-align: middle;
 }
-

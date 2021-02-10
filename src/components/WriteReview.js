@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom";
 
 import useStorage from "../storage";
 import { validateCommentInput } from "../utils/validateInputs";
-import { useReviewUploadControl } from "../firebase/db";
 
 import Button from "./Button";
 import SelectPhoneNumber from "./SelectPhoneNumber";
@@ -15,13 +14,10 @@ import "./WriteReview.css";
 
 let Star = StarConf.bind(null, "#3a3937", 27, 21);
 
-export default ({ productId }) => {
+const WriteReview = ({ productId, reviewControl }) => {
   const history = useHistory();
-  const reviewControl = useReviewUploadControl(productId);
 
-  // reviewControl.getReview?.();
-  const alreadyReviewed = reviewControl.alreadyReviewed;
-  console.log(alreadyReviewed);
+  const [state, dispatch] = useStorage();
 
   const [stars, setStars] = useState([
     { filled: false },
@@ -31,7 +27,6 @@ export default ({ productId }) => {
     { filled: false },
   ]);
   const [rate, setRating] = useState(0);
-  const [state, dispatch] = useStorage();
   const [opened, setOpened] = useState(true);
   const [redirectTo, setRedirectTo] = useState(false);
   const [comment, setComment] = useState("");
@@ -87,96 +82,112 @@ export default ({ productId }) => {
     }
   };
 
-  return state.userSignedIn ? (
-    opened ? (
-      <form className="write-review">
-        <div>{String(alreadyReviewed)}</div>
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            let same = reviewControl.showReviewed();
-            console.log(same);
-          }}
-        >
-          {" "}
-          showReviewed
-        </button>
-        <textarea
-          name="review"
-          id=""
-          cols="30"
-          rows="5"
-          className="review-text"
-          value={comment}
-          placeholder="Enter review text"
-          onChange={({ target }) => {
-            setComment(target.value);
-          }}
-        ></textarea>
-        <InlineError error={errors.comment} />
-        <div className="row">
-          <SelectPhoneNumber
-            className="select-code"
-            onChange={setPhoneNumberCode}
+  const userAlreadyReviewed = reviewControl.alreadyReviewed;
+
+  if (reviewControl.loading) {
+    return <h2>Loading</h2>;
+  } else {
+    return state.userSignedIn ? (
+      (opened && !userAlreadyReviewed && (
+        <form className="write-review">
+          <div>{String(userAlreadyReviewed)}</div>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              let same = reviewControl.showReviewed();
+              console.log(same);
+            }}
+          >
+            {" "}
+            showReviewed
+          </button>
+          <textarea
+            name="review"
+            id=""
+            cols="30"
+            rows="5"
+            className="review-text"
+            value={comment}
+            placeholder="Enter review text"
+            onChange={({ target }) => {
+              setComment(target.value);
+            }}
+          ></textarea>
+          <InlineError error={errors.comment} />
+          <div className="row">
+            <SelectPhoneNumber
+              className="select-code"
+              onChange={setPhoneNumberCode}
+            />
+            <input
+              type="text"
+              className="review-number"
+              value={phoneNumber}
+              onChange={(e) => {
+                setPhoneNumber(e.target.value);
+              }}
+            />
+          </div>
+          <InlineError error={errors.phoneNumber} />
+          <div className="review-rate">
+            {stars.map((starConfig, index) => {
+              return (
+                <span
+                  key={index}
+                  onPointerOver={onHoverStar(index)}
+                  onPointerLeave={onBlurStar}
+                  onClick={() => {
+                    setRating(+index + 1);
+                  }}
+                >
+                  {Star(starConfig)}
+                </span>
+              );
+            })}
+            <InlineError error={errors.rate} />
+          </div>
+
+          <Button
+            type="big secondary rounded"
+            text="Submit Review"
+            onClick={onSubmit}
           />
-          <input
-            type="text"
-            className="review-number"
-            value={phoneNumber}
-            onChange={(e) => {
-              setPhoneNumber(e.target.value);
+        </form>
+      )) ||
+        (!opened && !userAlreadyReviewed && (
+          <Button
+            text="Write a Review"
+            type="big secondary rounded"
+            onClick={() => {
+              setOpened(!opened);
             }}
           />
-        </div>
-        <InlineError error={errors.phoneNumber} />
-        <div className="review-rate">
-          {stars.map((starConfig, index) => {
-            return (
-              <span
-                onPointerOver={onHoverStar(index)}
-                onPointerLeave={onBlurStar}
-                onClick={() => {
-                  setRating(+index + 1);
-                }}
-              >
-                {Star(starConfig)}
-              </span>
-            );
-          })}
-          <InlineError error={errors.rate} />
-        </div>
-
-        <Button
-          type="big secondary rounded"
-          text="Submit Review"
-          onClick={onSubmit}
-        />
-      </form>
-    ) : (
-      <Button
-        text="Write a Review"
-        type="big secondary rounded"
-        onClick={() => {
-          setOpened(!opened);
+        )) ||
+        (userAlreadyReviewed && (
+          <p className="already-reviewed">"You have already reviewed!"</p>
+        ))
+    ) : redirectTo ? (
+      <Redirect
+        to={{
+          pathname: "/signin",
+          state: { refferer: history.location.pathname },
         }}
       />
-    )
-  ) : redirectTo ? (
-    <Redirect
-      to={{
-        pathname: "/signin",
-        state: { refferer: history.location.pathname },
-      }}
-    />
-  ) : (
-    <Button
-      type="big secondary rounded"
-      text="Sign in First"
-      onClick={() => {
-        setRedirectTo(true);
-      }}
-    />
-  );
+    ) : (
+      <Button
+        type="big secondary rounded"
+        text="Sign in First"
+        onClick={() => {
+          setRedirectTo(true);
+        }}
+      />
+    );
+  }
 };
 
-// WriteReview.propTypes = {};
+WriteReview.propTypes = {
+  reviewControl: PropTypes.shape({
+    alreadyReviewed: PropTypes.bool.isRequired,
+  }).isRequired,
+};
+export default WriteReview;

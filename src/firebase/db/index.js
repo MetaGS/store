@@ -8,4 +8,5 @@ export { default as removeFromField } from "./removeFromField";
 export { default as updateUserField } from "./updateUserField";
 export { default as updateField } from "./updateField";
 export { default as updateProductField } from "./updateProductField";
-export { default as useReviewUploadControl } from "./useReviewUploadControl";
+export { default as useReviewsControl } from "./useReviewsControl";
+export { default as getProductsWithFilters } from "./getProductsWithFilters";

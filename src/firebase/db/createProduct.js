@@ -1,25 +1,34 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 
-export default (title, desc, price, sizes, colors) => {
+const createProduct = (
+  title,
+  desc,
+  price,
+  sizes = [],
+  colors = [],
+  tags = [],
+  discount = false,
+  discountPercentage = 0
+) => {
   let db = firebase.firestore();
-  //   return new Promise((res, rej) => {
-  //     setTimeout(() => {
-  //       console.log("resolved");
-  //       res(5);
-  //     }, 5000);
-  //   });
+
   return db
     .collection("products")
     .add({
       title,
       desc,
-      price,
+      price: Number(price),
       sizes,
       colors,
       photoUrls: [],
-      rating: [],
+      rating: 0,
+      ratings: [],
       reviews: [],
+      discount,
+      discountPercentage: Number(discountPercentage),
+      tags,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
     })
     .then((doc) => {
       console.log(doc);
@@ -27,3 +36,5 @@ export default (title, desc, price, sizes, colors) => {
     });
   //
 };
+
+export default createProduct;

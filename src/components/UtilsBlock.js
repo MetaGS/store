@@ -26,9 +26,18 @@ const UtilsBlock = ({ share = false, children = null, className = "" }) => {
                 </button> */}
         {children}
         {share && (
-          <button className="btn-icon">
+          <a
+            onClick={() => {
+              console.log(history);
+            }}
+            className="btn-icon"
+            href={`https://wa.me/?text=http://localhost:3000${history.location.pathname}`}
+            target="_blank"
+            rel="norefferer"
+          >
+            {/* "https://wa.me/whatsappphonenumber/?text=urlencodedtext" it is for <whatsapp me> */}
             <img src={shareIcon} alt="share product" />
-          </button>
+          </a>
         )}
       </div>
     </section>

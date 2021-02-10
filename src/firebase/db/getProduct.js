@@ -1,6 +1,6 @@
 import firebase from "firebase/app";
 
-export default (id) => {
+const getProduct = (id) => {
   const db = firebase.firestore();
 
   console.log(id);
@@ -30,3 +30,5 @@ export default (id) => {
 
   return product;
 };
+
+export default getProduct;
