@@ -13,3 +13,5 @@ New Project = Store
 10. when adding to the cart, size and color should be selected, and shown in cart page;
 11. onSnapshot on adding review is not working, it doesnt immidiately updates, user can send other review if he does not
     reloads the page
+12. what is left: see more, filters, searchbar, mobile version and some styles.
+13. see more, carousel, mobile version, get help, advanced search

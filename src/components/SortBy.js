@@ -29,7 +29,7 @@ const SortBy = ({ setParentSortBy }) => {
       updatedSortBy = initialSetup;
       updatedSortBy[sortIndexInArray] = { value: sortValue, order: "asc" };
     }
-
+    console.log(updatedSortBy);
     setSortBySelected(updatedSortBy);
     setParentSortBy(updatedSortBy);
   };

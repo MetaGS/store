@@ -22,6 +22,6 @@ export default (field, state) => {
       "font-size: 1.2rem; color: red"
     );
     console.log(error.message);
-    // return [];
+    return [];
   });
 };

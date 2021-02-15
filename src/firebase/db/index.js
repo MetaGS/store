@@ -10,3 +10,4 @@ export { default as updateField } from "./updateField";
 export { default as updateProductField } from "./updateProductField";
 export { default as useReviewsControl } from "./useReviewsControl";
 export { default as getProductsWithFilters } from "./getProductsWithFilters";
+export { default as useSearchInDb } from "./useSearchInDb";

@@ -7,33 +7,16 @@ import ProfileIcon from "./ProfileIcon";
 import "./Navbar.css";
 
 import logo from "../assets/logo.svg";
+import SearchInput from "./SearchInput";
 
 const Navbar = (props) => {
   const [state] = useStorage();
   const itemsInCart = state.cart.length;
   let { wideSearch, userSignedIn } = state;
-  let searchBar = (
-    <div className={`search ${wideSearch ? "search--products" : ""}`}>
-      <input
-        type="text"
-        className={`mainpage-search ${
-          wideSearch ? "mainpage-search--products" : ""
-        }`}
-        placeholder={
-          wideSearch ? "BlackBird 72, Levi’s 1965, Nike 707 etc..." : "search"
-        }
-      />
-      <img
-        src="../assets/search-icon.svg"
-        alt=""
-        className={wideSearch ? "search-icon--products" : ""}
-      />
-    </div>
-  );
 
   return (
     <>
-      <nav className={wideSearch ? "nav--products" : ""}>
+      <nav className={wideSearch ? "nav--products" : "top-nav"}>
         <Container>
           <div className="left">
             <NavLink to="/" activeClassName="active">
@@ -52,10 +35,9 @@ const Navbar = (props) => {
               </li>{" "}
               {/* Promotions */}
             </ul>
-            {wideSearch && searchBar}
           </div>
           <div className="right">
-            {wideSearch || searchBar}
+            <SearchInput />
             <div className="profile">
               {/* <NavLink to="/profile"> */}
               {userSignedIn ? (

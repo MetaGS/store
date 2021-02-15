@@ -59,7 +59,6 @@ const ProductsPage = (props) => {
       [field]: Array.isArray(filterArray) ? filterArray : [filterArray],
     });
   };
-  console.log(filters);
 
   return (
     <main className="main--products">

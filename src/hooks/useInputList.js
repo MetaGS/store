@@ -1,6 +1,9 @@
 import { useState } from "react";
 
-export default function useInputList(prefix = "") {
+export default function useInputList(
+  prefix = "",
+  updateOutsideSource = () => {}
+) {
   let [item, setItem] = useState("");
   let [items, setItems] = useState([]);
 
@@ -14,14 +17,16 @@ export default function useInputList(prefix = "") {
       console.log(list);
       setItems(list);
       setItem("");
+      updateOutsideSource(list);
+      return list;
     }
-    console.log(items);
   };
 
   const backToItem = (index) => {
     return (e) => {
       setItem(items[index]);
       const list = items.slice(0, index);
+      updateOutsideSource(list);
       setItems(list);
     };
   };
@@ -34,7 +39,7 @@ export default function useInputList(prefix = "") {
     {
       value: item,
       onChange: onItemChange,
-      onKeyPress: onEnterPress(onAdd),
+      onKeyPress: onEnterPress(onAdd()),
       onChoose: onAdd,
     },
     {

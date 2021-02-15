@@ -61,11 +61,20 @@ const prices = [
 
 const FilterPrices = ({ updateParent }) => {
   const [priceFilter, setPriceFilter] = useState({});
+  const [targetRadio, setTargetRadio] = useState(null);
+
+  const cancelAll = (e) => {
+    setPriceFilter({});
+    updateParent([]);
+  };
 
   const updateFilter = (whereQuery) => (e) => {
     const { target } = e;
-    const { name, checked } = target;
-    const filterCopy = { ...priceFilter, [name]: { checked, whereQuery } };
+    const { checked } = target;
+    let filterCopy;
+
+    filterCopy = { priceFilter: { checked, whereQuery } };
+
     setPriceFilter(filterCopy);
 
     console.log(filterCopy);
@@ -90,19 +99,34 @@ const FilterPrices = ({ updateParent }) => {
   return (
     <section className="prices filter">
       <ul className="price-filter-list">
-        {prices.map(({ name, whereQuery, id }) => {
+        {prices.map(({ name, whereQuery, id }, index) => {
           return (
             <li className="price-filter-item">
               <input
                 type="checkbox"
                 id={id}
-                name={name}
-                onChange={updateFilter(whereQuery)}
+                name="price-filter"
+                onChange={(e) => {
+                  updateFilter(whereQuery)(e);
+                  targetRadio === index
+                    ? setTargetRadio(null)
+                    : setTargetRadio(index);
+                }}
+                checked={index === targetRadio}
               />
               <label htmlFor={id}>{name}</label>
             </li>
           );
         })}
+        <button
+          className="sm fullwidth btn secondary "
+          onClick={() => {
+            setTargetRadio(null);
+            updateParent([]);
+          }}
+        >
+          cancel
+        </button>
       </ul>
     </section>
   );

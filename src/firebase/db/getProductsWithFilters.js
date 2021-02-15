@@ -20,23 +20,23 @@ function getProductsWithFilters(filters = [], sorts = []) {
     }
   });
 
-  //   sorts.forEach((sort) => {
-  //     if (priceWhere) {
-  //       products.orderBy("price", "asc");
-  //     }
+  sorts.forEach((sort) => {
+    if (priceWhere) {
+      products.orderBy("price", "asc");
+    }
 
-  //     if (sort?.value !== "discount" && sort) {
-  //       if (sort.value === "price") {
-  //         products = products.orderBy(sort.value, sort.order);
-  //       }
-  //       if (sort.value === "rating") {
-  //         products = products.orderBy(sort.value, sort.order);
-  //       }
-  //       if (sort.value === "createdAt") {
-  //         products = products.orderBy(sort.value, sort.order);
-  //       }
-  //     }
-  //   });
+    if (sort?.value !== "discount" && sort) {
+      if (sort.value === "price") {
+        products = products.orderBy(sort.value, sort.order);
+      }
+      if (sort.value === "rating") {
+        products = products.orderBy(sort.value, sort.order);
+      }
+      if (sort.value === "createdAt") {
+        products = products.orderBy(sort.value, sort.order);
+      }
+    }
+  });
 
   return products;
 }

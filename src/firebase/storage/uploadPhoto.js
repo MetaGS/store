@@ -1,6 +1,6 @@
 import firebase from "firebase/app";
 
-export default function (directory, file, progressCallBack = () => {}) {
+function uploadPhoto(directory, file, progressCallBack = () => {}) {
   const storageRef = firebase.storage().ref();
 
   const metaData = {};
@@ -80,3 +80,18 @@ const consoleLog = (message, warning = true) => {
     `color: ${warning ? "red" : "green"}; font-size: 1.2rem;`
   );
 };
+
+export const uploadMultiplePhotos = (id, files) => {
+  const urlList = Promise.all(
+    Array.from(files).map((file) => {
+      return uploadPhoto(`productImages/${id}`, file);
+    })
+  ).then((urlArray) => {
+    return urlArray;
+  });
+
+  return urlList;
+  // setUrls(downloadUrl);
+};
+
+export default uploadPhoto;
