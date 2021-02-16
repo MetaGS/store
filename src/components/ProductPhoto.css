@@ -1,0 +1,100 @@
+.product-page-photo {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.product-page-photo img {
+  width: 100%;
+  border-radius: 20px;
+  max-height: 400px;
+  height: 100%;
+  object-fit: contain;
+}
+
+.carousel {
+  display: flex;
+  margin-top: 30px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  /* width: 400px; */
+  align-items: center;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-photo {
+  max-width: 150px;
+  min-width: 70px;
+  height: auto;
+  padding: 12%;
+  position: relative;
+  width: 25%;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-right: 20px;
+  transition: border-color 0.2s ease-out, background 0.2s ease-out;
+  border: 10px solid rgba(0, 0, 0, 0);
+  border-radius: 10%;
+}
+
+.active.carousel-photo {
+  /* border: 1px solid var(--primary-color); */
+  /* border: 1px solid var(--primary-color); */
+
+  background-color: #8bc6ec;
+  border-style: outset;
+  border-color: #b9b9b9;
+  background: #b9b9b9;
+}
+
+.carousel-photo:hover {
+  border-color: rgba(100, 120, 100, 0.25);
+  background: rgba(100, 120, 100, 0.25);
+}
+
+.carousel-photo:last-child {
+  margin-right: 0;
+}
+
+.carousel-photo img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+  border-radius: 10px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.carousel .slide {
+  background: #e9e8e8;
+}
+
+.showBigPhoto {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background-color: lightgrey;
+}
+
+.showBigPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.close-photo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}

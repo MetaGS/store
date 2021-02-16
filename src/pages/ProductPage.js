@@ -11,6 +11,7 @@ import UtilsBlock from "../components/UtilsBlock";
 import AddToCart from "../components/AddToCart";
 import AddToFavorites from "../components/AddToFavorites";
 import SizesComponent from "../components/SizesComponent";
+import ProductPhoto from "../components/ProductPhoto";
 
 import { createProduct, getProduct } from "../firebase/db";
 import useStorage from "../storage";
@@ -29,10 +30,7 @@ const ProductPage = (props) => {
   let {
     title = "No title Entered",
     desc: description = "No description entered",
-    photoUrls: [
-      mainPhoto = "https://via.placeholder.com/800",
-      ...restPhotos
-    ] = [],
+
     colors = [],
     price = 0,
     sizes = [],
@@ -45,13 +43,12 @@ const ProductPage = (props) => {
     });
     if (productFromState) {
       console.log(id);
-      console.log("found in local state");
+
       setProduct(productFromState);
     } else {
       setDownload(true);
       getProduct(id)
         .then((doc) => {
-          console.log(doc.data());
           setProduct(doc.data());
           setDownload(false);
         })
@@ -79,30 +76,9 @@ const ProductPage = (props) => {
           <div styles={{ fontSize: "1.5rem", color: "red" }}>{error}</div>
         ) : (
           <div className="product-page-content">
-            <section className="product-page-photo-block">
-              <div className="product-page-photo">
-                <img src={mainPhoto} alt="product" />
-              </div>
-              <div className="hide-scroll-top">
-                <div className="hide-scroll">
-                  <div className="carousel">
-                    {/* <div className=" carousel-photo active">
-                      <img src={productPhoto} alt="product carousel" />
-                    </div> */}
+            <section className="product-page-left-block">
+              <ProductPhoto photos={product?.photoUrls} />
 
-                    {product?.photoUrls?.map((photoUrl) => {
-                      return (
-                        <div
-                          key={photoUrl.slice(-5)}
-                          className="carousel-photo "
-                        >
-                          <img src={photoUrl} alt="product" />
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
               <SeeMoreProducts />
             </section>
             {/* product-page-photo block end */}
