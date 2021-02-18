@@ -9,7 +9,6 @@ const ProductPhoto = ({ photos = [] }) => {
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
   const [showChosenPhoto, setShowChosenPhoto] = useState(false);
 
-  console.log(`this is photos length: ${photos.length}`);
   const [mainPhoto = "https://via.placeholder.com/800", ...restPhotos] = photos;
 
   const showPhoto = (
@@ -34,7 +33,6 @@ const ProductPhoto = ({ photos = [] }) => {
           <div
             className="product-page-photo"
             onPointerUp={({ target }) => {
-              console.log("click");
               if (target.className === "slide selected")
                 setShowChosenPhoto(true);
               // document.body.overflow = 'unset'
@@ -43,7 +41,6 @@ const ProductPhoto = ({ photos = [] }) => {
             <Carousel
               showStatus={false}
               renderThumbs={(childs) => {
-                console.log(childs);
                 return;
               }}
               selectedItem={selectedPhotoIndex}
@@ -52,7 +49,6 @@ const ProductPhoto = ({ photos = [] }) => {
               }}
             >
               {photos?.map((photoUrl) => {
-                console.log("runned once");
                 return (
                   <img src={photoUrl} alt="product" data-photo-url={photoUrl} />
                 );

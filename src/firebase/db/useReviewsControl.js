@@ -7,7 +7,7 @@ import updateProductField from "./updateProductField";
 
 let initialSetup = {
   listeners: [],
-  alreadyReviewed: true,
+  alreadyReviewed: false,
   loading: true,
 };
 
@@ -20,18 +20,17 @@ export default (productId) => {
   const [control, setControl] = useState(initialSetup);
 
   useEffect(() => {
+    console.log("%cuser state changed", "color:yellow");
     setControl(
-      state.userSignedIn
-        ? new ControlReviews(
-            db,
-            reviewsCollection,
-            state.user?.uid,
-            productId,
-            dispatch,
-            state,
-            updateCaller
-          )
-        : new Proxy({}, handler)
+      new ControlReviews(
+        db,
+        reviewsCollection,
+        state?.user?.uid,
+        productId,
+        dispatch,
+        state,
+        updateCaller
+      )
     );
 
     return () => {
@@ -54,7 +53,7 @@ class ControlReviews {
     updateCaller
   ) {
     this.db = db;
-    this.userId = userId;
+    this.userId = userId || null;
     this.productId = productId;
     this.allReviewsCollection = collection;
     this.collection = collection.where("productId", "==", this.productId);
@@ -68,26 +67,31 @@ class ControlReviews {
     this.alreadyReviewed = initialSetup.alreadyReviewed;
     this.reviewRef = null;
     this.listeners = initialSetup.listeners;
-    this.checkReviewed().then((response) => {
-      this.updateCaller();
-    });
+    this.checkReviewed();
     this.downloadReviews();
   }
 
   checkReviewed() {
-    return this.collection
-      .where("userId", "==", this.userId)
-      .get()
-      .then((snapshot) => {
-        const reviewed = !!snapshot.docs[0]?.exists;
-        console.log(reviewed);
-        this.alreadyReviewed = reviewed;
-        if (reviewed) {
-          this.reviewRef = snapshot.docs[0].ref;
-        }
-        this.loading = false;
-        this.updateCaller(Math.random());
-      });
+    if (this.userId) {
+      this.collection
+        .where("userId", "==", this.userId)
+        .get()
+        .then((snapshot) => {
+          console.log("%cit checks", "color: green");
+          const reviewed = !!snapshot.docs[0]?.exists;
+          console.log(reviewed);
+          this.alreadyReviewed = reviewed;
+          if (reviewed) {
+            this.reviewRef = snapshot.docs[0].ref;
+          }
+          this.loading = false;
+          this.updateCaller(Math.random());
+        });
+    } else {
+      console.log("%cit else runs", "color: green");
+      this.loading = false;
+      this.updateCaller();
+    }
   }
 
   downloadReviews = () => {
@@ -100,7 +104,6 @@ class ControlReviews {
 
         console.log(reviews);
         this.reviews = reviews;
-        this.updateCaller(Math.random());
       },
       (error) => {
         console.log(
@@ -123,8 +126,6 @@ class ControlReviews {
     // updateProductsField, updateUsersField
     //  TODO: Add db rule, so it checks that one buyer can only add once;
     //
-    // this.collection.get().then((snapshotDocs) => {
-    //   console.log(snapshotDocs);
 
     this.allReviewsCollection //this collection includes other product reviews as well
       .add({
@@ -149,9 +150,10 @@ class ControlReviews {
                 ? dataFromDb.ratings
                 : [];
               const newRatingsArray = [...ratingsArrayFromDb, Number(rate)];
-              const newRating = newRatingsArray.reduce((prev, current) => {
-                return (prev += current);
-              }, 0);
+              const newRating =
+                newRatingsArray.reduce((prev, current) => {
+                  return (prev += current);
+                }, 0) / newRatingsArray.length;
               const updatedRatings = {
                 ratings: newRatingsArray,
                 rating: newRating,
@@ -160,6 +162,7 @@ class ControlReviews {
             }
           ), //NOTE:do not change reviews field in dataFromDb
         ]).then((response) => {
+          this.checkReviewed();
           console.log("updated succesfully");
           console.log(response);
         });

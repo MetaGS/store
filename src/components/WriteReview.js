@@ -26,6 +26,7 @@ const WriteReview = ({ productId, reviewControl }) => {
     { filled: false },
     { filled: false },
   ]);
+
   const [rate, setRating] = useState(0);
   const [opened, setOpened] = useState(true);
   const [redirectTo, setRedirectTo] = useState(false);
@@ -91,16 +92,17 @@ const WriteReview = ({ productId, reviewControl }) => {
       (opened && !userAlreadyReviewed && (
         <form className="write-review">
           <div>{String(userAlreadyReviewed)}</div>
-          <button
+          {/* <button
             onClick={(e) => {
               e.preventDefault();
               let same = reviewControl.showReviewed();
-              console.log(same);
+              console.log(reviewControl);
             }}
           >
-            {" "}
-            showReviewed
-          </button>
+            {" "} */}
+          {/* // THIS BLOCK OF COMMENT IS TO CHECK IS AUTHENTICATED USER ... DELETE THEN */}{" "}
+          {/* showReviewed
+          </button> */}
           <textarea
             name="review"
             id=""
@@ -146,7 +148,6 @@ const WriteReview = ({ productId, reviewControl }) => {
             })}
             <InlineError error={errors.rate} />
           </div>
-
           <Button
             type="big secondary rounded"
             text="Submit Review"

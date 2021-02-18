@@ -7,6 +7,7 @@ import useStorage from "../storage";
 
 import Button from "../components/Button";
 import "./CartItem.css";
+import { limitText } from "../utils/limitText";
 
 const CartItem = ({ cartItem = {}, updateTotalPrice = () => {} }) => {
   const { removeFromField = () => {} } = useControlField("cart");
@@ -45,24 +46,24 @@ const CartItem = ({ cartItem = {}, updateTotalPrice = () => {} }) => {
           />
         </div>
       </div>
-      <button
+      {/* <button
         onClick={() => {
           console.log(state);
         }}
       >
         Show state
-      </button>
+      </button> */}
       <div className="table-data">
         <span className="table-header">{firstRow && "Name"}</span>
         <Link to={`products/${id}`}>
-          <h4 className="data title-sm">{title}</h4>
+          <h4 className="data title-sm">{limitText(title, 30)}</h4>
         </Link>
       </div>
 
       <div className="table-data">
         <span className="table-header">{firstRow && "Description"}</span>
         <Link to={`products/${id}`}>
-          <div className="data desc-sm">{desc}</div>
+          <div className="data desc-sm">{limitText(desc, 30)}</div>
         </Link>
       </div>
 
@@ -75,7 +76,7 @@ const CartItem = ({ cartItem = {}, updateTotalPrice = () => {} }) => {
         <span className="table-header">{firstRow && "Quantity"}</span>
         <div className="data table-quantity">
           <input
-            type="text"
+            type="number"
             className="table-quantity-input"
             value={quantity}
             onChange={quantityChange}

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import useStorage from "../storage";
-
 import useGetProductsByFieldName from "../hooks/useGetProductsByFieldName";
 import useControlField from "../hooks/useControlField";
 

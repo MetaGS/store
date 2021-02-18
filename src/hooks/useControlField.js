@@ -27,14 +27,9 @@ const useControlField = (field) => {
   }, []);
 
   useEffect(() => {
-    console.log("runned in useControlField");
-    console.log(`new state `);
-
     control?.setOwnState?.(state);
 
     control.getProductsByField?.().then((products) => {
-      console.log("New products ");
-      console.log(products);
       setProductsByField(products);
     });
     control.userSignedIn = state.userSignedIn;
@@ -62,13 +57,10 @@ class ControlField {
     this.userSignedIn = !!userId;
     this.localStorage = localStorage;
     this.productsByField = productsByField;
-    console.log("New control field as well");
-    console.log(state);
   }
 
   addToField = async (fieldItemId) => {
     if (this.includes(fieldItemId)) {
-      console.log("Already includes");
       return false;
     }
     //here should be logic in addToField so it check is user Signed in? if so then source is remote db, if user is not
@@ -88,7 +80,6 @@ class ControlField {
   };
 
   getProductsByField = () => {
-    console.log(this.state);
     return getProductsAsArray(this.field, this.state).then((productArray) => {
       this.productsByField = [...productArray];
       return productArray;
@@ -104,13 +95,10 @@ class ControlField {
   };
 
   includes = (fieldItemId) => {
-    console.log(this.field);
     return this.state[this.field].includes(fieldItemId);
   };
 
-  showMeOwnState = () => {
-    console.log(this.state);
-  };
+  showMeOwnState = () => {};
 }
 
 export default useControlField;

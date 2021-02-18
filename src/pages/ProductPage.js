@@ -34,6 +34,7 @@ const ProductPage = (props) => {
     colors = [],
     price = 0,
     sizes = [],
+    tags = [],
   } = product;
 
   useEffect(() => {
@@ -79,7 +80,7 @@ const ProductPage = (props) => {
             <section className="product-page-left-block">
               <ProductPhoto photos={product?.photoUrls} />
 
-              <SeeMoreProducts />
+              <SeeMoreProducts tags={tags} currentProductPageId={id} />
             </section>
             {/* product-page-photo block end */}
             <section className="product-page-desc-block">
