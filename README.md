@@ -15,4 +15,5 @@ New Project = Store
     reloads the page
 12. what is left: see more, filters, searchbar, mobile version and some styles.
 13. see more, carousel, mobile version, get help, advanced search, profile,
-14. firestore rules, firebase functions
+14. firestore rules, firebase functions, make all link click to > button or a clicks;
+15. see-more on the main page

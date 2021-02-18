@@ -1,12 +1,11 @@
-import './Container.css';
+import "./Container.css";
 
-const Container = ({ style, extraClasses = '', children }) => {
-    return (
-        <div className={`container ${extraClasses}`} style={style}>
-            {children}
-        </div>
-    )
-}
-
+const Container = ({ style, extraClasses = "", children, className = "" }) => {
+  return (
+    <div className={`container ${extraClasses} ${className}`} style={style}>
+      {children}
+    </div>
+  );
+};
 
 export default Container;

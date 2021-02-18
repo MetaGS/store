@@ -36,16 +36,17 @@ const data = [
     list: [
       {
         name: "How To Order",
-      },
-      {
-        name: "Order Status",
+        href: "/how-to-order",
       },
       {
         name: "Repayment Claim",
+        href: "/repayment-claim",
       },
       {
         name: "Contact Us",
+        href: "/contact-us",
       },
+      { name: "About", href: "/about" },
     ],
   },
 ];
@@ -63,9 +64,11 @@ const Footer = (props) => {
       <footer className="footer">
         <Container>
           <div className="footer-content">
-            {/* <div className="column">
-                            <FooterBlock {...data[0]} />
-                        </div> */}
+            {/* 
+                <div className="column">
+                  <FooterBlock {...data[0]} />
+                </div> 
+            */}
 
             <div className="column">
               <FooterBlock {...data[1]} />
@@ -82,6 +85,7 @@ const Footer = (props) => {
             </div>
           </div>
         </Container>
+
         <div className="footer-author">
           <Container
             style={{ height: "100%", display: "flex" }}
