@@ -1,14 +1,23 @@
 import "./Button.css";
 
-const Button = ({ text, type, className, onClick, disabled = false }) => {
+const Button = ({
+  text,
+  type = "",
+  className = "",
+  onClick,
+  disabled = false,
+  children,
+  ...props
+}) => {
   return (
     <>
       <button
+        {...props}
         className={`btn ${type} ${className}`}
         onClick={onClick}
         disabled={disabled}
       >
-        <span>{text}</span>
+        <span>{text ? text : children}</span>
       </button>
     </>
   );

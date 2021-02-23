@@ -1,17 +1,24 @@
-import './DescriptionP.css';
+import "./DescriptionP.css";
 
-
-
-const Description = ({ text, fontSize = '1.5rem', width = 'auto', extraClass, children }) => {
-    return (
-        <div className={`description-p ${extraClass}`} style={{ fontSize, width }}>
-            <p >
-                {text}
-                {children}
-            </p>
-        </div>
-    )
-}
-
+const Description = ({
+  text,
+  fontSize = "1.5rem",
+  width = "auto",
+  extraClass,
+  className = "",
+  children,
+}) => {
+  return (
+    <div
+      className={`description-p ${extraClass} ${className}`}
+      style={{ fontSize, width }}
+    >
+      <p>
+        {text}
+        {children}
+      </p>
+    </div>
+  );
+};
 
 export default Description;

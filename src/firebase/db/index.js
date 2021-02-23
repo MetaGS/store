@@ -13,3 +13,4 @@ export { default as getProductsWithFilters } from "./getProductsWithFilters";
 export { default as useSearchInDb } from "./useSearchInDb";
 export { getRelatedProducts } from "./getProducts";
 export { default as useGetRelatedProducts } from "./useGetRelatedProducts";
+export { default as submitQuestionToDb } from "./submitQuestionToDb";

@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Carousel } from "react-responsive-carousel";
+import { FiMail } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 import UtilsBlock from "../components/UtilsBlock";
 import Container from "../components/Container";
@@ -10,8 +12,17 @@ import pic1 from "../assets/about-page-pic1.jpg";
 
 import "./About.css";
 import videoBg from "../assets/about-page-video1.mp4";
+import Button from "../components/Button";
+import socialsArray from "../components/SvgSocial";
+import Header from "../components/Header";
 
 const About = (props) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    return () => {};
+  }, []);
+
+  console.log(props);
   const [slideIndex, setSlideIndex] = useState(0);
   let [bounceScroll, setBounceScroll] = useState(false);
 
@@ -19,11 +30,11 @@ const About = (props) => {
 
   const onScroll = (e) => {
     let index = slideIndex;
-    // console.log(e);
+
     const deltaY = e.deltaY;
-    console.log(index);
+
     if (!bounceScroll) {
-      console.log("%cscrolls", "color: red; font-size:1.2rem;");
+      // console.log("%cscrolls", "color: red; font-size:1.2rem;");
       setBounceScroll((bounceState) => true);
       setTimeout(() => {
         setBounceScroll((bounceState) => false);
@@ -33,54 +44,41 @@ const About = (props) => {
         return;
       }
       const newIndex = index + 1 > 6 ? index : ++index;
-      console.log(newIndex);
+
       setSlideIndex(newIndex);
     }
   };
 
   return (
     <div className="wrapper-about" onScroll={onScroll} onWheel={onScroll}>
-      <video
-        className="video-background-about"
-        autoPlay
-        muted
-        loop
-        src={videoBg}
-        type="video/mp4"
-      />
-      {/* <img src={pic1} className="video-background-about" alt="" /> */}
-      {/* <Container className="container-about"> */}
-      {/* <UtilsBlock className="utils-about" /> */}
-      {/* </Container> */}
-      <Carousel
-        showStatus={false}
-        axis="vertical"
-        showIndicators={false}
-        selectedItem={slideIndex}
-        onChange={(index) => {
-          console.log(index);
-        }}
-        renderThumbs={() => false}
-      >
-        <div className="slide-about" style={{ backgroundColor: "green" }}>
-          Name
+      <img src={pic1} className="video-background-about" alt="" />
+
+      <div className="slide-about">
+        <UtilsBlock className="about-utils" />
+        <div className="row-about">
+          <div
+            className="column1-about column-about"
+            // style={{ backgroundColor: "red" }}
+          >
+            <Header />
+          </div>
+          <div className="column2-about column-about">
+            <div className="svg-social-links">
+              {socialsArray.map(({ icon, href }, index) => {
+                return <a href="#">{icon}</a>;
+              })}
+            </div>
+            <div className="email-about">
+              <a href="mailto:marketdeal7788@gmail.com">
+                <FiMail />{" "}
+                <span className="email-text-about">
+                  marketdeal7788@gmail.com
+                </span>
+              </a>
+            </div>
+          </div>
         </div>
-        <div className="slide-about" style={{ backgroundColor: "red" }}>
-          Name
-        </div>
-        <div className="slide-about" style={{ backgroundColor: "blue" }}>
-          Name
-        </div>
-        <div className="slide-about" style={{ backgroundColor: "yellow" }}>
-          Name
-        </div>
-        <div className="slide-about" style={{ backgroundColor: "pink" }}>
-          Name
-        </div>
-        <div className="slide-about" style={{ backgroundColor: "grey" }}>
-          Name
-        </div>
-      </Carousel>
+      </div>
     </div>
   );
 };

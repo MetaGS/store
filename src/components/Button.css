@@ -16,6 +16,12 @@
   min-width: 100px;
 }
 
+.btn.md {
+  padding: 0.6em 1.5em;
+  font-size: 1.2rem;
+  min-width: 100px;
+}
+
 .btn.fullwidth {
   width: 100%;
 }
@@ -50,7 +56,8 @@
 
 /* Button Types */
 
-.primary-button {
+.primary-button,
+.btn.primary {
   background-color: var(--primary-color);
   color: white;
   /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */

@@ -1,0 +1,39 @@
+.job-icon {
+  width: 40px;
+  margin-right: 10px;
+  height: 40px;
+  font-size: 3rem;
+  padding: 5px;
+  border-radius: 2px;
+  background-color: rgb(49, 105, 192);
+  position: relative;
+  z-index: 0;
+}
+
+.job-icon-explanation {
+  font-size: 1.5rem;
+  position: absolute;
+  left: 0;
+  bottom: 120%;
+  padding: 5px 10px;
+  background-color: white;
+  border: 1px solid grey;
+  border-style: outset;
+  white-space: nowrap;
+  border-radius: 4px;
+  /* z-index: 0; */
+  /* z-index: 2; */
+}
+
+.job-icon-explanation::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: grey;
+  position: absolute;
+  top: 100%;
+  left: 15px;
+  z-index: -1;
+  transform: rotateZ(45deg);
+  transform-origin: top right;
+}

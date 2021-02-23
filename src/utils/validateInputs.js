@@ -18,6 +18,20 @@ export default (email, password, name = "Not used!") => {
   return errors;
 };
 
+const checkEmail = (email) => (isEmail(email) ? false : "Invalid email");
+
+const checkBlank = (text) => (!!text.trim() ? false : "Cannot be blank");
+
+export const validateEmailAndText = (email, text) => {
+  const errors = {};
+  errors.email = checkEmail(email);
+  errors.text = checkBlank(text);
+  errors.length = Object.values(errors).reduce((collected, current) => {
+    return current ? collected + 1 : collected;
+  }, 0);
+  return errors;
+};
+
 export const checkProductReliable = (title, desc, price, photos) => {
   let errors = {};
   if (title.length <= 0) {

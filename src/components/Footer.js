@@ -39,8 +39,8 @@ const data = [
         href: "/how-to-order",
       },
       {
-        name: "Repayment Claim",
-        href: "/repayment-claim",
+        name: "Careers",
+        href: "/careers",
       },
       {
         name: "Contact Us",
@@ -75,7 +75,7 @@ const Footer = (props) => {
             </div>
 
             <div className="column socials">
-              {socialsArray.map((icon, index) => {
+              {socialsArray.map(({ icon, href }, index) => {
                 return (
                   <a href="#" key={index}>
                     {icon}

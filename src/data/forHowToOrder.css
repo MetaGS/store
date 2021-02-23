@@ -1,0 +1,24 @@
+.steps-to-order {
+  min-height: 300px;
+
+  /* box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25); */
+}
+
+.steps-to-order {
+  color: var(--black);
+}
+
+.steps-to-order a {
+  color: rgb(35, 140, 209);
+}
+
+.steps-to-order p {
+  font-size: 1.5rem;
+  color: grey;
+  margin-top: 20px;
+}
+
+.steps-to-order img {
+  margin: 20px 0;
+  max-height: 500px;
+}

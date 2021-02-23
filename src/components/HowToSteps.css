@@ -1,0 +1,101 @@
+.how-to-steps {
+  max-width: 900px;
+  margin: 0 auto;
+  list-style: none;
+  overflow: hidden;
+  font-size: 1.5rem;
+  display: flex;
+  --on-hover-color: var(--primary-color);
+  --background-color: var(--primary-grey);
+  margin-bottom: 30px;
+}
+
+.how-to-step {
+  cursor: pointer;
+}
+
+.how-to-step a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 0 10px 45px;
+  background: var(--background-color);
+  position: relative;
+  display: block;
+  text-decoration: none;
+  /* float: left; */
+  height: 100%;
+}
+
+.how-to-step a,
+.how-to-step a::after {
+  transition: all 0.2s ease;
+}
+
+.how-to-step a::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+  border-left: 30px solid var(--background-color);
+  position: absolute;
+  top: 50%;
+  margin-top: -50px;
+  left: 100%;
+  z-index: 2;
+}
+.how-to-step a:hover {
+  background-color: var(--on-hover-color);
+  text-decoration: none;
+  color: white;
+}
+
+.how-to-step a:hover::after {
+  border-left-color: var(--on-hover-color);
+}
+
+.how-to-step.active a {
+  background-color: var(--on-hover-color);
+}
+.how-to-step.active a::after {
+  border-left-color: var(--on-hover-color);
+}
+
+.how-to-step a::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+  border-left: 30px solid white;
+  position: absolute;
+  top: 50%;
+  margin-top: -50px;
+  margin-left: 1px;
+  left: 100%;
+  z-index: 1;
+}
+
+.how-to-steps-body {
+  margin-bottom: 50px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  padding: 40px 40px;
+  border: 1px solid grey;
+  max-width: 900px;
+  margin: 0 auto 50px;
+}
+
+.steps-control-buttons {
+  margin: auto 0px 0px 0px;
+  display: flex;
+  justify-content: space-between;
+  text-align: right;
+}
+
+.how-to-control-next {
+  /* display: inline-block; */
+  margin-left: auto;
+}

@@ -17,7 +17,8 @@ import FavoritesPage from "./pages/FavoritesPage";
 import HowToOrder from "./pages/HowToOrder";
 import About from "./pages/About";
 import ContactUs from "./pages/ContactUs";
-import RepaymentClaim from "./pages/RepaymentClaim";
+import ScrollToTop from "./components/ScrollToTop";
+import Careers from "./pages/Careers";
 
 import "./App.css";
 
@@ -27,11 +28,11 @@ function App() {
   return (
     <div className="App">
       <Navbar />
+      <ScrollToTop />
       <Switch>
         <Route path="/" exact>
           <MainHTML />
         </Route>
-        <Route path="/about" component={About} />
         <>
           {/* This fragment is IMPORTANT, if you delete it, then the footer will go on */}
           <Main>
@@ -53,7 +54,8 @@ function App() {
             <Route path="/favorites" component={FavoritesPage} />
             <Route path="/how-to-order" component={HowToOrder} />
             <Route path="/contact-us" component={ContactUs} />
-            <Route path="/repayment-claim" component={RepaymentClaim} />
+            <Route path="/careers" component={Careers} />
+            <Route path="/about" component={About} />
           </Main>
           <Footer />
         </>
