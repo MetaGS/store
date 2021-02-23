@@ -16,8 +16,8 @@
   /* font-family: ; */
 }
 
-.header-title {
-  font-weight: 700;
+.header-block .header-title {
+  /* font-weight: 700; */
   margin-bottom: 0px;
   font-family: "Abril Fatface";
   text-transform: uppercase;

@@ -22,35 +22,8 @@ const About = (props) => {
     return () => {};
   }, []);
 
-  console.log(props);
-  const [slideIndex, setSlideIndex] = useState(0);
-  let [bounceScroll, setBounceScroll] = useState(false);
-
-  console.log(slideIndex);
-
-  const onScroll = (e) => {
-    let index = slideIndex;
-
-    const deltaY = e.deltaY;
-
-    if (!bounceScroll) {
-      // console.log("%cscrolls", "color: red; font-size:1.2rem;");
-      setBounceScroll((bounceState) => true);
-      setTimeout(() => {
-        setBounceScroll((bounceState) => false);
-      }, 500);
-      if (deltaY < 0) {
-        setSlideIndex(index - 1 < 0 ? index : --index);
-        return;
-      }
-      const newIndex = index + 1 > 6 ? index : ++index;
-
-      setSlideIndex(newIndex);
-    }
-  };
-
   return (
-    <div className="wrapper-about" onScroll={onScroll} onWheel={onScroll}>
+    <div className="wrapper-about">
       <img src={pic1} className="video-background-about" alt="" />
 
       <div className="slide-about">

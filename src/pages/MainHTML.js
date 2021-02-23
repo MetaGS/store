@@ -1,11 +1,10 @@
-import Navbar from "../components/Navbar";
+import { useState, useEffect } from "react";
+import { Carousel } from "react-responsive-carousel";
+
 import SeeMore from "../components/SeeMore";
 import SecondaryContainer from "../components/SecondaryContainer";
-import Button from "../components/Button.js";
-import DescriptionP from "../components/DescriptionP";
+import Products from "../components/Products";
 
-import mainGirl from "../assets/main-girl.png";
-import Main from "../components/Main";
 import "./MainHTML.css";
 import Header from "../components/Header";
 import videoBg from "../assets/about-page-video1.mp4";
@@ -21,9 +20,34 @@ const data = {
 };
 
 const MainHTML = (props) => {
+  const [slideIndex, setSlideIndex] = useState(0);
+  let [bounceScroll, setBounceScroll] = useState(false);
+
+  console.log(slideIndex);
+
+  const onScroll = (e) => {
+    let index = slideIndex;
+
+    const deltaY = e.deltaY;
+
+    if (!bounceScroll) {
+      // console.log("%cscrolls", "color: red; font-size:1.2rem;");
+      setBounceScroll((bounceState) => true);
+      setTimeout(() => {
+        setBounceScroll((bounceState) => false);
+      }, 500);
+      if (deltaY < 0) {
+        setSlideIndex(index - 1 < 0 ? index : --index);
+        return;
+      }
+      const newIndex = index + 1 > 6 ? index : ++index;
+
+      setSlideIndex(newIndex);
+    }
+  };
   return (
     <>
-      <Main className="main-page">
+      <div className="main-page main" onWheel={onScroll} onScroll={onScroll}>
         <video
           className="video-background-about"
           autoPlay
@@ -32,14 +56,49 @@ const MainHTML = (props) => {
           src={videoBg}
           type="video/mp4"
         />
-        <section className="left">
-          <SecondaryContainer>
-            <Header data={data} />
+        <section className="left"></section>
+        <Carousel
+          showStatus={false}
+          axis="vertical"
+          showIndicators={false}
+          selectedItem={slideIndex}
+          onChange={(index) => {}}
+          renderThumbs={() => false}
+        >
+          <div className="slide-about">
+            <div className="row-about">
+              <div
+                className="column1-about column-about"
+                // style={{ backgroundColor: "red" }}
+              >
+                <SecondaryContainer>
+                  <Header data={data} colors={{ title: "#fff" }} />
 
-            <SeeMore />
-          </SecondaryContainer>
-        </section>
-      </Main>
+                  <SeeMore />
+                </SecondaryContainer>
+              </div>
+              <div className="column2-about column-about">
+                {/* <img src={pic1} className="video-background-about" alt="" /> */}
+              </div>
+            </div>
+          </div>
+          <div className="slide-about" style={{ backgroundColor: "red" }}>
+            <Products />
+          </div>
+          <div className="slide-about" style={{ backgroundColor: "blue" }}>
+            Name
+          </div>
+          <div className="slide-about" style={{ backgroundColor: "yellow" }}>
+            Name
+          </div>
+          <div className="slide-about" style={{ backgroundColor: "pink" }}>
+            Name
+          </div>
+          <div className="slide-about" style={{ backgroundColor: "grey" }}>
+            Name
+          </div>
+        </Carousel>
+      </div>
     </>
   );
 };
@@ -55,59 +114,6 @@ const MainHTML = (props) => {
 //     />
 //
 
-//     <Carousel
-//       showStatus={false}
-//       axis="vertical"
-//       showIndicators={false}
-//       selectedItem={slideIndex}
-//       onChange={(index) => {}}
-//       renderThumbs={() => false}
-//     >
-//       <div className="slide-about">
-//         <div className="row-about">
-//           <div
-//             className="column1-about column-about"
-//             // style={{ backgroundColor: "red" }}
-//           >
-//             <header>
-//               <div className="topline-about">STYLISH COLLECTION</div>
-//               <TitleAbhaya className="about-title">ABOUT T-FIT</TitleAbhaya>
-//               <Description className="subtitle-about">
-//                 clothes selling company
-//               </Description>
-//               <p className="desc-about">
-//                 Our mission is to bring to the people Lorem ipsum, dolor sit
-//                 amet consectetur adipisicing elit. Perspiciatis maiores in aut?
-//                 Optio labore a debitis harum praesentium obcaecati quaerat
-//                 placeat cupiditate, nesciunt rem dicta repellendus explicabo
-//                 sapiente culpa eaque.
-//               </p>
-//               <Button type="rounded primary md" className="btn-about">
-//                 See Now
-//               </Button>
-//             </header>
-//           </div>
-//           <div className="column2-about column-about">
-//             {/* <img src={pic1} className="video-background-about" alt="" /> */}
-//           </div>
-//         </div>
-//       </div>
-//       <div className="slide-about" style={{ backgroundColor: "red" }}>
-//         Name
-//       </div>
-//       <div className="slide-about" style={{ backgroundColor: "blue" }}>
-//         Name
-//       </div>
-//       <div className="slide-about" style={{ backgroundColor: "yellow" }}>
-//         Name
-//       </div>
-//       <div className="slide-about" style={{ backgroundColor: "pink" }}>
-//         Name
-//       </div>
-//       <div className="slide-about" style={{ backgroundColor: "grey" }}>
-//         Name
-//       </div>
-//     </Carousel>
 //   </div>
 
 export default MainHTML;
