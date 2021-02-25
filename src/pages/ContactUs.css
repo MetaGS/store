@@ -1,9 +1,10 @@
 .wrapper-contact-us {
   width: 100%;
-  height: calc(100vh - 68px);
+  height: 100%;
   min-height: calc(100vh - 68px);
   position: relative;
   overflow: hidden;
+
   z-index: 0;
 
   --main-text-color: rgb(231, 229, 229);
@@ -24,6 +25,8 @@
 
 .row-contact {
   padding: 0 40px 40px 40px;
+  min-height: 600px;
+  margin-bottom: 40px;
   height: 90%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

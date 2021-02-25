@@ -9,6 +9,7 @@ import jeans from "../assets/jeans.svg";
 import jacket from "../assets/jacket.svg";
 import miniblockJacket from "../assets/miniblock-jacket.jpg";
 import { useGetProducts } from "../firebase/db";
+import { Link } from "react-router-dom";
 
 const data = [
   {
@@ -46,7 +47,9 @@ const SeeMore = (props) => {
             return <SeeMoreBlock key={product.id} {...product} />;
           })}
 
-          <div className="arrow ">arrow to see More</div>
+          <div className="arrow ">
+            <Link to="/products">arrow to see More</Link>
+          </div>
         </div>
       </div>
     </>

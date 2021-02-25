@@ -9,12 +9,15 @@ import Button from "../components/Button";
 import "./CartItem.css";
 import { limitText } from "../utils/limitText";
 
-const CartItem = ({ cartItem = {}, updateTotalPrice = () => {} }) => {
+const CartItem = ({
+  cartItem = {},
+  updateTotalPrice = () => {},
+  firstRow = false,
+}) => {
   const { removeFromField = () => {} } = useControlField("cart");
   const [state, dispatch] = useStorage();
 
   const {
-    firstRow = false,
     title,
     desc,
     photoUrls = ["https://via.placeholder.com/200"],
@@ -33,6 +36,8 @@ const CartItem = ({ cartItem = {}, updateTotalPrice = () => {} }) => {
     console.log(quantity, price);
     updateTotalPrice(quantity * price);
   }, []);
+
+  console.log(firstRow);
 
   return (
     <div className="table-row">

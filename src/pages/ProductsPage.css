@@ -20,7 +20,7 @@
   justify-content: center;
   font-family: var(--abhaya);
   font-weight: 400;
-  align-items: flex-start;
+  align-items: stretch;
   font-size: 2rem;
   color: var(--white);
 }

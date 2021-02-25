@@ -77,12 +77,21 @@
   text-decoration: initial;
 }
 
-.product-price {
-  font-weight: 600;
+.product-price,
+.rating-quantity {
+  font-family: var(--roboto);
+  font-weight: 400;
 }
 
-.rating span:last-child img {
-  transform: translateY(2px);
+.rating-quantity {
+  font-size: 1.5rem;
+  margin-right: 2px;
+}
+.product-rating-star-icons svg {
+  stroke: lightgray;
+}
+.product-rating-star-icons .filled {
+  fill: lightgray;
 }
 
 .product.mobile {

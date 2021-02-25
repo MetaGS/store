@@ -11,7 +11,7 @@ import SortBy from "../components/SortBy";
 
 import "./ProductsPage.css";
 
-const ProductsPage = (props) => {
+const ProductsPage = ({ className = "", onScroll = () => {}, ...props }) => {
   const [state, dispatch] = useStorage();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -61,7 +61,7 @@ const ProductsPage = (props) => {
   };
 
   return (
-    <main className="main--products">
+    <main className={`main--products ${className}`} onScroll={onScroll}>
       <SortBy setParentSortBy={setSortBy} />
 
       <section className="content">

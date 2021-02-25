@@ -13,6 +13,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body .carousel .slide {
+  background: transparent;
+  text-align: initial;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -39,6 +44,7 @@ html {
   --primary-color-text: #333231;
   --black: #000;
   --white: #fff;
+  --navbar-height: 68px;
 }
 
 body {

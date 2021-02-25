@@ -3,19 +3,13 @@ import { Link } from "react-router-dom";
 import { limitText } from "../utils/limitText.js";
 import "./Product.css";
 
+import Rating from "./Rating";
 import jeans from "../assets/jeans.jpg";
+
 import star from "../assets/star.svg";
 import starTransparent from "../assets/star-transparent.svg";
 
 const Product = ({ product = {}, mobile = false, className = "" }) => {
-  /* 
-colors: []
-desc: "asdfasd"
-id: "KbgkHTX3cj6QGndGa3sl"
-photoUrls: (3) ["https://firebasestorage.googleapis.com/v0/b/store-…=media&token=e7a87703-9abc-4086-9189-e04ecf3fed61", "https://firebasestorage.googleapis.com/v0/b/store-…=media&token=a1415522-60c9-4738-81bb-6f5a43cc2a60", "https://firebasestorage.googleapis.com/v0/b/store-…=media&token=956f8d9b-e857-49ff-949a-14f4f6bb97f6"]
-price: "234"
-sizes: []
-title: "asdf" */
   let {
     title = "No title Entered",
     desc: description = "No description entered",
@@ -27,7 +21,10 @@ title: "asdf" */
     colors = [],
     price = 0,
     sizes = [],
+    rating = 0,
+    ratings = [],
   } = product;
+  console.log(product);
 
   return (
     <article className={`product ${mobile ? "mobile" : ""} ${className}`}>
@@ -35,7 +32,7 @@ title: "asdf" */
         <img
           className="product-photo"
           alt="shoes product image"
-          src={mainPhoto}
+          src={mainPhoto} //add thumb pics in the future, so we dont use pic with high resolution
         />
       </Link>
       <div className="product-content">
@@ -49,22 +46,11 @@ title: "asdf" */
           <span className="product-price">${price}</span>
           {!mobile && (
             <div className="rating">
-              <span className="rating-quantity">(19)</span>
-              <span className="star">
-                <img src={star} alt="rating star" />
-              </span>
-              <span className="star">
-                <img src={star} alt="rating star" />
-              </span>
-              <span className="star">
-                <img src={star} alt="rating star" />
-              </span>
-              <span className="star">
-                <img src={star} alt="rating star" />
-              </span>
-              <span className="star">
-                <img src={starTransparent} alt="rating star" />
-              </span>
+              <span className="rating-quantity">({ratings.length})</span>
+              <Rating
+                productRating={rating}
+                className="product-rating-star-icons"
+              />
             </div>
           )}
         </div>

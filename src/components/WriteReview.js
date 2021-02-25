@@ -21,6 +21,7 @@ const WriteReview = ({ productId, reviewControl }) => {
 
   const [stars, setStars] = useState([
     { filled: false },
+
     { filled: false },
     { filled: false },
     { filled: false },

@@ -11,7 +11,7 @@
 
 .table-data {
   position: relative;
-  padding: 0 25px;
+  padding: 0 5px;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -30,10 +30,10 @@
   width: 100%;
 
   font-family: var(--roboto);
-  font-size: 2.1rem;
+  font-size: 1.3rem;
   color: var(--primary-grey);
   position: absolute;
-  top: -45px;
+  top: -40px;
   left: 0;
 }
 

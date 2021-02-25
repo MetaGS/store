@@ -8,6 +8,9 @@ import Products from "../components/Products";
 import "./MainHTML.css";
 import Header from "../components/Header";
 import videoBg from "../assets/about-page-video1.mp4";
+import ProductsPage from "./ProductsPage";
+import About from "./About";
+import Footer from "../components/Footer";
 
 const data = {
   intro: "t-fit",
@@ -22,28 +25,50 @@ const data = {
 const MainHTML = (props) => {
   const [slideIndex, setSlideIndex] = useState(0);
   let [bounceScroll, setBounceScroll] = useState(false);
+  const [allowSlide, setAllowSlide] = useState(false);
+
+  const canScroll = (e, vector) => {
+    console.log("onScrollInsideCarousel");
+    const slideTopElement = e.target.closest(".slide-me");
+    if (!slideTopElement) return true;
+    const { scrollHeight, scrollTop, offsetHeight } = slideTopElement;
+    const slideOnHisBottom = scrollHeight - scrollTop - offsetHeight < 20;
+    const slideOnHisTop = scrollTop < 20;
+    if (vector === "top") {
+      if (slideOnHisTop) return true;
+      return false;
+    } else {
+      if (slideOnHisBottom) return true;
+      return false;
+    }
+  };
 
   console.log(slideIndex);
 
-  const onScroll = (e) => {
+  const slidePage = (e) => {
     let index = slideIndex;
+    const deltaY = e.deltaY < 0 ? "top" : "bottom";
 
-    const deltaY = e.deltaY;
-
+    console.log("%cscrolls", "color: red; font-size:1.2rem;");
     if (!bounceScroll) {
-      // console.log("%cscrolls", "color: red; font-size:1.2rem;");
       setBounceScroll((bounceState) => true);
       setTimeout(() => {
         setBounceScroll((bounceState) => false);
       }, 500);
-      if (deltaY < 0) {
-        setSlideIndex(index - 1 < 0 ? index : --index);
+      if (deltaY === "top") {
+        canScroll(e, deltaY) && setSlideIndex(index - 1 < 0 ? index : --index);
         return;
       }
-      const newIndex = index + 1 > 6 ? index : ++index;
+      const newIndex = index + 1 > 4 ? index : ++index;
 
-      setSlideIndex(newIndex);
+      canScroll(e, deltaY) && setSlideIndex(newIndex);
     }
+  };
+
+  const onScroll = (e) => {
+    let index = slideIndex;
+
+    slidePage(e);
   };
   return (
     <>
@@ -56,7 +81,7 @@ const MainHTML = (props) => {
           src={videoBg}
           type="video/mp4"
         />
-        <section className="left"></section>
+
         <Carousel
           showStatus={false}
           axis="vertical"
@@ -65,37 +90,24 @@ const MainHTML = (props) => {
           onChange={(index) => {}}
           renderThumbs={() => false}
         >
-          <div className="slide-about">
+          <div className="slide-main-page slide-me">
             <div className="row-about">
-              <div
-                className="column1-about column-about"
-                // style={{ backgroundColor: "red" }}
-              >
+              <div className="column1-about column-about">
                 <SecondaryContainer>
                   <Header data={data} colors={{ title: "#fff" }} />
 
                   <SeeMore />
                 </SecondaryContainer>
               </div>
-              <div className="column2-about column-about">
-                {/* <img src={pic1} className="video-background-about" alt="" /> */}
-              </div>
+              <div className="column2-about column-about"></div>
             </div>
           </div>
-          <div className="slide-about" style={{ backgroundColor: "red" }}>
-            <Products />
-          </div>
-          <div className="slide-about" style={{ backgroundColor: "blue" }}>
-            Name
-          </div>
-          <div className="slide-about" style={{ backgroundColor: "yellow" }}>
-            Name
-          </div>
-          <div className="slide-about" style={{ backgroundColor: "pink" }}>
-            Name
-          </div>
-          <div className="slide-about" style={{ backgroundColor: "grey" }}>
-            Name
+
+          <ProductsPage className="home-products slide-me" />
+
+          <div className="slide-main-page footer">
+            <About />
+            <Footer />
           </div>
         </Carousel>
       </div>

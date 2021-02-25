@@ -48,6 +48,7 @@ const CartPage = (props) => {
             return (
               <CartItem
                 cartItem={cartItem}
+                firstRow={index === 0 ? true : false}
                 key={cartItem.id}
                 updateTotalPrice={updateTotalPrice(index)}
               />

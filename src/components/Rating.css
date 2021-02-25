@@ -1,0 +1,9 @@
+.all-classes {
+  position: relative;
+  stroke: grey;
+  margin-right: 2px;
+}
+
+svg .filled {
+  fill: grey;
+}

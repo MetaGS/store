@@ -5,7 +5,7 @@
   position: relative;
   overflow: hidden;
   z-index: 0;
-
+  padding: 20px;
   --main-text-color: rgb(231, 229, 229);
   --stylish-color: rgb(189, 136, 37);
 }
@@ -33,7 +33,6 @@
 .slide-about {
   height: calc(100vh - 68px);
   width: 100vw;
-  padding: 20px;
 }
 
 .row-about {

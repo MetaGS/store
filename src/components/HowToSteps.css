@@ -86,6 +86,7 @@
   border: 1px solid grey;
   max-width: 900px;
   margin: 0 auto 50px;
+  background: white;
 }
 
 .steps-control-buttons {

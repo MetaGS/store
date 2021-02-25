@@ -1,3 +1,14 @@
 .main.main-page {
-    display: flex;
+  display: flex;
+}
+
+.home-products {
+  height: calc(100vh - var(--navbar-height));
+  overflow-y: scroll;
+}
+
+.slide-main-page {
+  height: calc(100vh - 68px);
+  width: 100vw;
+  overflow-y: scroll;
 }
