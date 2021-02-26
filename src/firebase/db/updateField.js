@@ -13,6 +13,8 @@ const updateField = (
 
   return docRef.get().then((doc) => {
     const allDataFromDb = doc.data();
+    //additional callback is to updatate additional fields in db, but it should not interfere with main doc field, which you
+    // initially referring
     const additionalUpdate = callBack(allDataFromDb);
     const oldField = allDataFromDb[field] || [];
 

@@ -12,3 +12,7 @@
   width: 100vw;
   overflow-y: scroll;
 }
+
+.main.main-html {
+  background-position: right 100px;
+}

@@ -3,7 +3,7 @@
 
   position: relative;
   overflow-x: hidden;
-  background: url(../assets/background-vector.png) right 100px no-repeat;
+  background: url(../assets/background-vector.png) right bottom no-repeat;
   /* url(../assets/bg-secondary.png) 0% 110% no-repeat; */
   /* background-position: right bottom;
     background-repeat: no-repeat; */

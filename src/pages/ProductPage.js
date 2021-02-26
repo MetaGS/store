@@ -72,7 +72,7 @@ const ProductPage = (props) => {
         <UtilsBlock share />
 
         {download ? (
-          <h1>Downloading</h1>
+          <h1>Downloading...</h1>
         ) : error ? (
           <div styles={{ fontSize: "1.5rem", color: "red" }}>{error}</div>
         ) : (
@@ -87,14 +87,7 @@ const ProductPage = (props) => {
               <h1 className="product-page-price">{price}$</h1>
 
               <h2 className="product-page-title">{title}</h2>
-              <p className="product-page-desc">
-                {/* The Nike Air Zoom SuperRep 2 is designed for circuit training,
-                HIIT and other fast-paced exercise. Layers of support team up
-                with Zoom Air cushioning to keep your foot locked in and
-                comfortable as you lunge, jump and push your way through every
-                rep. */}
-                {description}
-              </p>
+              <p className="product-page-desc">{description}</p>
 
               {
                 /* sizes block */
@@ -123,15 +116,7 @@ const ProductPage = (props) => {
                               );
                             })}
                           </div>
-                          <div className="row">
-                            {/* {sizes.slice(5).map((size) => {
-                          return (
-                            <div className="size">
-                              <span>{size}</span>
-                            </div>
-                          );
-                        })} */}
-                          </div>
+                          <div className="row"></div>
                         </>
                       }
                     </div>

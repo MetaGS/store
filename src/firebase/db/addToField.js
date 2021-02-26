@@ -1,9 +1,11 @@
 import firebase from "firebase/app";
 
 export default (productId, userId, field) => {
+  //setup db connection and collection
   const db = firebase.firestore();
-
   const userRef = db.collection("users").doc(userId);
+
+  //main logic in addition to db field
   const userField = userRef
     .get()
     .then((userDoc) => {
@@ -13,7 +15,10 @@ export default (productId, userId, field) => {
 
       return userRef.update({ [field]: [...userDoc.data()[field], productId] });
     })
+
+    //secondary block, just confirming the addition and returning, if error throwing
     .then((docRef) => {
+      //update doesn return anything
       console.log(
         `%c Added to The ${field}`,
         "color: green; font-size: 1.2rem;"

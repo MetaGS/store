@@ -1,0 +1,32 @@
+.mobile-search-icon {
+  height: auto;
+  width: 30px;
+}
+
+.mobile-search-button {
+  border: none;
+  background-color: transparent;
+}
+
+.mobile-search-button {
+  outline: rgb(244, 244, 250);
+  outline-style: solid;
+  outline-width: 1px;
+  border: none;
+}
+
+.mobile-search-input {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background-color: var(--primary-color);
+  z-index: -1;
+  transition: transform, opacity, 0.3s ease-in-out;
+  transform: translateY(-200%);
+}
+
+.mobile-search-input.active {
+  transform: translateY(0);
+}

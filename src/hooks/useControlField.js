@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import {
-  addToField,
+  addToField as addToFieldInDb,
   removeFromField,
   getProductsAsArray,
 } from "../firebase/db";
@@ -63,11 +63,9 @@ class ControlField {
     if (this.includes(fieldItemId)) {
       return false;
     }
-    //here should be logic in addToField so it check is user Signed in? if so then source is remote db, if user is not
-    // signed in then, source is in window.localStorage;
 
     this.userSignedIn // better to use Proxy, in the future will change it
-      ? await addToField(fieldItemId, this.userId, this.field)
+      ? await addToFieldInDb(fieldItemId, this.userId, this.field)
       : this.localStorage.addToField(fieldItemId);
     this.dispatch(addTo[this.field]([fieldItemId]));
   };

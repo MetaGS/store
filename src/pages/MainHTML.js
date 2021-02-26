@@ -25,10 +25,14 @@ const data = {
 const MainHTML = (props) => {
   const [slideIndex, setSlideIndex] = useState(0);
   let [bounceScroll, setBounceScroll] = useState(false);
-  const [allowSlide, setAllowSlide] = useState(false);
+
+  console.log("runs MainHTML");
 
   const canScroll = (e, vector) => {
-    console.log("onScrollInsideCarousel");
+    console.log(
+      "%c consScroll in MainHTML runs",
+      "color: green; font-size: 1.2rem;"
+    );
     const slideTopElement = e.target.closest(".slide-me");
     if (!slideTopElement) return true;
     const { scrollHeight, scrollTop, offsetHeight } = slideTopElement;
@@ -59,35 +63,52 @@ const MainHTML = (props) => {
         canScroll(e, deltaY) && setSlideIndex(index - 1 < 0 ? index : --index);
         return;
       }
-      const newIndex = index + 1 > 4 ? index : ++index;
+      const newIndex = index + 1 > 2 ? index : ++index;
 
       canScroll(e, deltaY) && setSlideIndex(newIndex);
     }
   };
 
   const onScroll = (e) => {
-    let index = slideIndex;
-
     slidePage(e);
   };
   return (
     <>
-      <div className="main-page main" onWheel={onScroll} onScroll={onScroll}>
-        <video
+      <div
+        className="main-page main main-html"
+        onWheel={onScroll}
+        onScroll={onScroll}
+      >
+        <button
+          className="btn"
+          onClick={() => {
+            console.log(slideIndex);
+          }}
+        >
+          Click to see slideIndex
+        </button>
+        {/* <video
           className="video-background-about"
           autoPlay
           muted
           loop
           src={videoBg}
           type="video/mp4"
-        />
-
+        /> */}
+        {/* uncomment at production */}
         <Carousel
           showStatus={false}
           axis="vertical"
+          showArrows={false}
           showIndicators={false}
           selectedItem={slideIndex}
-          onChange={(index) => {}}
+          autoPlay={false}
+          onChange={(index, something) => {
+            console.log("it runs");
+            console.log(index);
+            console.log(something);
+            console.log("this is controlled MainHTML index", slideIndex);
+          }}
           renderThumbs={() => false}
         >
           <div className="slide-main-page slide-me">
@@ -102,10 +123,10 @@ const MainHTML = (props) => {
               <div className="column2-about column-about"></div>
             </div>
           </div>
-
-          <ProductsPage className="home-products slide-me" />
-
-          <div className="slide-main-page footer">
+          <div className="home-products slide-me">
+            <ProductsPage />
+          </div>
+          <div className="slide-main-page footer slide-me">
             <About />
             <Footer />
           </div>

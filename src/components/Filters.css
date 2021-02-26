@@ -1,13 +1,12 @@
-.filters {
-  width: 190px;
+.filter-items {
   flex-shrink: 0;
+  width: 190px;
 
-  margin-right: 25px;
   box-shadow: 2px 0 2px rgba(0, 0, 0, 0.15);
-  padding-right: 15px;
+  padding: 10px 15px 20px 0;
 }
 
-.filters a {
+.filter-items a {
   color: var(--primary-color);
   margin: 8px 0;
 }
@@ -16,6 +15,6 @@
   padding: 20px 0;
 }
 
-.filters section:not(:last-child) {
+.filters-items section:not(:last-child) {
   border-bottom: 1px var(--primary-color) solid;
 }

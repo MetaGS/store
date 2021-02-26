@@ -2,11 +2,12 @@ nav {
   height: var(--navbar-height);
   background-color: var(--primary-color);
   display: flex;
+  position: relative;
+  z-index: 1;
 }
 .top-nav {
 }
 
-/* products page mod of nav */
 .nav--products {
   height: auto;
 }
@@ -16,16 +17,6 @@ nav {
   width: 100%;
   align-items: center;
 }
-
-/* .nav--products .right {
-    margin-top: 10px;
-}
-    .nav--products .container {
-        align-items: start;
-}
- */
-
-/*  */
 
 nav .container {
   display: flex;
@@ -69,4 +60,104 @@ nav .right {
 
 nav .right .profile {
   margin-right: 31px;
+}
+
+nav .burger {
+  display: none;
+  width: 3rem;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  height: 2.5rem;
+  position: relative;
+  margin-left: 15px;
+}
+
+.burger-line {
+  font-size: 0;
+  color: transparent;
+
+  display: block;
+}
+
+.burger-line::after,
+.burger-line::before {
+  content: "";
+  position: absolute;
+}
+
+.burger-line,
+.burger-line::after,
+.burger-line::before {
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  display: block;
+}
+
+.burger-line::before {
+  top: 0;
+}
+.burger-line::after {
+  bottom: 0;
+}
+
+.nav-sidebar-wrapper {
+  display: none;
+  position: fixed;
+  transform: translateX(100%);
+  right: 0;
+  width: 100%;
+
+  transition: transform 0.3s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 100vh;
+  z-index: 100;
+}
+
+.nav-sidebar-wrapper.active {
+  transform: translateX(0);
+}
+.nav-sidebar {
+  background-color: var(--primary-color);
+  width: 80%;
+  max-width: 350px;
+  position: absolute;
+  right: 0;
+  height: 100%;
+  padding: 30px;
+}
+
+.nav-search-mobile {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .nav-search {
+    display: none;
+  }
+  .nav-search-mobile {
+    display: block;
+    margin-right: 10px;
+  }
+  nav .right .profile {
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 850px) {
+  nav .middle,
+  nav .right .signin-signup-buttons {
+    display: none;
+  }
+  .nav-sidebar-wrapper {
+    display: block;
+  }
+
+  .nav-sidebar .signin-signup {
+  }
+
+  nav .burger {
+    display: block;
+  }
 }

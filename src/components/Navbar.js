@@ -1,16 +1,24 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import useStorage from "../storage";
 import Container from "./Container";
 import CartNav from "./CartNav";
 import ProfileIcon from "./ProfileIcon";
+import DescriptionP from "./DescriptionP";
 import "./Navbar.css";
 
 import logo from "../assets/logo.svg";
 import SearchInput from "./SearchInput";
+import Sidebar from "./Sidebar";
+import SignButtons from "./SignButtons";
+
+import NavSearchMobile from "./NavSearchMobile";
 
 const Navbar = (props) => {
   const [state] = useStorage();
+  const [sidebar, setSidebar] = useState(false);
+
   const itemsInCart = state.cart.length;
   let { wideSearch, userSignedIn } = state;
 
@@ -25,53 +33,62 @@ const Navbar = (props) => {
           </div>
           <div className="middle">
             <ul>
-              {/* New Releases */}
               <li>
                 <NavLink to="/products">Products</NavLink>
               </li>{" "}
-              {/* Kids */}
               <li>
                 <NavLink to="/product/id">Product</NavLink>
               </li>{" "}
-              {/* Promotions */}
             </ul>
           </div>
           <div className="right">
-            <SearchInput />
+            <div className="nav-search">
+              <SearchInput />
+            </div>
+            {/* nax-search-mobile appears at 600px max by media */}
+
+            <div className="nav-search-mobile">
+              <NavSearchMobile />
+            </div>
+
             <div className="profile">
-              {/* <NavLink to="/profile"> */}
               {userSignedIn ? (
                 <ProfileIcon />
               ) : (
-                // <button
-                //   className="btn"
-                //   onClick={() => {
-                //     signOut();
-                //     console.log(state);
-                //   }}
-                // >
-                //   signOut
-                // </button>
-                <>
-                  <button className="btn sm">
-                    <NavLink to="/signup">SignUp</NavLink>
-                  </button>
-                  <button className="btn sm">
-                    <NavLink to="/signin">Sign in</NavLink>
-                  </button>
-                </>
+                <div className="signin-signup-buttons">
+                  <SignButtons />
+                </div>
               )}
-
-              {/* */}
-              {/* </NavLink> */}
             </div>
+
             <div className="cart">
               <NavLink to="/cart">
                 <CartNav items={itemsInCart} />
               </NavLink>
             </div>
+            <div>
+              <button
+                className="burger"
+                onClick={() => {
+                  setSidebar(!sidebar);
+                }}
+              >
+                <span className="burger-line"> className="burger"</span>
+              </button>
+            </div>
           </div>
         </Container>
+
+        <div
+          className={`nav-sidebar-wrapper ${sidebar ? "active" : ""}`}
+          onClick={() => {
+            setSidebar(!sidebar);
+          }}
+        >
+          <div className="nav-sidebar">
+            <Sidebar />
+          </div>
+        </div>
       </nav>
     </>
   );

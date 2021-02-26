@@ -1,6 +1,5 @@
 .sort-block {
   display: flex;
-  margin: 50px 0px;
 }
 .sort-block p {
   color: var(--primary-grey);
@@ -46,4 +45,10 @@
 .sort-items {
   display: flex;
   width: 100%;
+}
+
+@media (max-width: 600px) {
+  .sort-block p {
+    min-width: 70px;
+  }
 }

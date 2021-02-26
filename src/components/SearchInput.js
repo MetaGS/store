@@ -9,7 +9,7 @@ import ShowSearchResult from "./ShowSearchResult";
 import icon from "../assets/search-icon.svg";
 import "./SearchInput.css";
 
-const SearchInput = (props) => {
+const SearchInput = ({ className = "", ...props }) => {
   const wideSearch = false;
   const [searchText, setSearchText] = useState(null);
   const [inputFocused, setInputFocused] = useState(false);
@@ -31,7 +31,7 @@ const SearchInput = (props) => {
 
   return (
     <>
-      <div className={`search `}>
+      <div className={`search ${className}`}>
         <input
           type="text"
           className={`mainpage-search `}
@@ -51,7 +51,7 @@ const SearchInput = (props) => {
             wideSearch ? "BlackBird 72, Levi’s 1965, Nike 707 etc..." : "search"
           }
         />
-        <img src={icon} className={""} />
+        <img src={icon} className={"search-icon"} />
         {searchResult && (
           <div
             onMouseOver={() => {

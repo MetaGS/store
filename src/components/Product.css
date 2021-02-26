@@ -107,3 +107,9 @@
 .mobile .product-content {
   padding: 8px;
 }
+
+@media (max-width: 600px) {
+  .product {
+    margin: 10px 0;
+  }
+}

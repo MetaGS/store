@@ -5,6 +5,7 @@ import useStorage from "../storage";
 import { addProducts } from "../storage/actions";
 import { getProductsWithFilters } from "../firebase/db";
 
+import { BsFilterLeft } from "react-icons/bs";
 import Filters from "../components/FIlters";
 import Products from "../components/Products";
 import SortBy from "../components/SortBy";
@@ -17,14 +18,19 @@ const ProductsPage = ({ className = "", onScroll = () => {}, ...props }) => {
   const [loading, setLoading] = useState(true);
   const [sortBy, setSortBy] = useState([]);
   const [filters, setFilters] = useState({});
+  const [filterMobileActive, setFilterMobileActive] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-
+    console.log(
+      "%c runs productPage useEffect",
+      "color: green; font-size: 1.2rem;"
+    );
     const whereFilters = Object.values(filters).flat(1);
 
     getProductsWithFilters(whereFilters, sortBy)
       // .where("price", ">=", 200)
+
       .get()
       .then((productsSnapshot) => {
         console.log(productsSnapshot);
@@ -61,12 +67,36 @@ const ProductsPage = ({ className = "", onScroll = () => {}, ...props }) => {
   };
 
   return (
-    <main className={`main--products ${className}`} onScroll={onScroll}>
-      <SortBy setParentSortBy={setSortBy} />
+    <main className={`main--products ${className}`}>
+      <button
+        onClick={() => {
+          setLoading(!loading);
+        }}
+      >
+        TOggleLoading
+      </button>
+      <div className="sort-filter-row">
+        <SortBy setParentSortBy={setSortBy} />
+        <div
+          className={`mobile-filter-toggler ${
+            filterMobileActive ? "active" : ""
+          }`}
+        >
+          <button
+            onClick={() => {
+              setFilterMobileActive(!filterMobileActive);
+            }}
+          >
+            <span className="filter-text">Filters</span>
+            <BsFilterLeft />
+          </button>
+        </div>
+      </div>
 
       <section className="content">
-        <Filters updateParent={updateFilters} />
-
+        <div className={`filters ${filterMobileActive ? "mobile-active" : ""}`}>
+          <Filters updateParent={updateFilters} />
+        </div>
         {!loading && <Products {...{ products }} />}
         {loading && <h2>Loading...</h2>}
       </section>

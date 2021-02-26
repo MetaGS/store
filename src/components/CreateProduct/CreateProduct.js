@@ -211,7 +211,6 @@ const CreateProduct = (props) => {
         </div>
 
         <button type="submit" className="btn primary-button mid prod-submit">
-          {" "}
           submit
         </button>
       </div>

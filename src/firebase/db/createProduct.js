@@ -13,8 +13,7 @@ const createProduct = ({
   categories = [],
 }) => {
   let db = firebase.firestore();
-  console.log(tags);
-  console.log(title);
+
   return db
     .collection("products")
     .add({

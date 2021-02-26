@@ -24,7 +24,6 @@ const Product = ({ product = {}, mobile = false, className = "" }) => {
     rating = 0,
     ratings = [],
   } = product;
-  console.log(product);
 
   return (
     <article className={`product ${mobile ? "mobile" : ""} ${className}`}>

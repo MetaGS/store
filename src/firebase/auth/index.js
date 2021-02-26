@@ -29,31 +29,29 @@ export default () => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         dispatch(signIn(user));
-
         console.log("%csigned in", "color:green; font-weight: 600");
+
+        //setup db connection and get fields from localStorage
         const userRef = db.collection("users").doc(user.uid);
         let localFavorites = localStorageFavoritesControl.getField();
         let localCart = localStorageCartControl.getField();
-        console.log(localFavorites);
 
+        //main logic if user is signed in
         new Promise((resolve, reject) => {
-          if (localFavorites.length !== 0 || localCart.length !== 0) {
-            if (localFavorites.length !== 0) {
-              updateFieldInDb(user.uid, "favorites", localFavorites);
-
-              localStorageFavoritesControl.setField([]);
-            }
-            if (localCart.length !== 0) {
-              updateFieldInDb(user.uid, "cart", localCart);
-
-              localStorageCartControl.setField([]);
-            }
-            resolve("updated");
-          } else {
-            resolve("No need in update");
+          if (localFavorites.length !== 0) {
+            updateFieldInDb(user.uid, "favorites", localFavorites);
+            localStorageFavoritesControl.setField([]);
           }
+          if (localCart.length !== 0) {
+            updateFieldInDb(user.uid, "cart", localCart);
+            localStorageCartControl.setField([]);
+          }
+          //----------
+          if (localFavorites.length !== 0 || localCart.length !== 0)
+            resolve("No need in update");
+          else resolve("up to date");
         }).then((updatedMessage) => {
-          console.log(updatedMessage);
+          // check if there is no error and if so, update localappStorage ['redux', not localstorage ]
           userRef
             .get()
             .then((doc) => {
