@@ -23,7 +23,7 @@ const About = (props) => {
   }, []);
 
   return (
-    <div className="wrapper-about">
+    <Container className="wrapper-about">
       <img src={pic1} className="video-background-about" alt="" />
 
       <div className="slide-about">
@@ -52,7 +52,7 @@ const About = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    </Container>
   );
 };
 

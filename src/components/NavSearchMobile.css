@@ -1,6 +1,6 @@
-.mobile-search-icon {
+.navbar-mobile-search-icon {
   height: auto;
-  width: 30px;
+  width: calc(var(--navbar-height) * 0.45);
 }
 
 .mobile-search-button {
@@ -8,7 +8,7 @@
   background-color: transparent;
 }
 
-.mobile-search-button {
+.mobile-search-button:focus {
   outline: rgb(244, 244, 250);
   outline-style: solid;
   outline-width: 1px;

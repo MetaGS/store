@@ -1,18 +1,27 @@
 .main.main-page {
-  display: flex;
+  /* display: flex; */
+  height: 90vh;
 }
 
 .home-products {
   height: calc(100vh - var(--navbar-height));
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
 .slide-main-page {
-  height: calc(100vh - 68px);
-  width: 100vw;
-  overflow-y: scroll;
+  /* height: calc(100vh - 68px); */
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+
+  /* overflow-y: scroll; */
 }
 
 .main.main-html {
   background-position: right 100px;
+}
+
+.header-main-html {
+  /* margin-top: 100px; */
 }

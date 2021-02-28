@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+.test-221 {
+  height: 300px;
+  width: 100%;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -16,6 +21,8 @@ body {
 body .carousel .slide {
   background: transparent;
   text-align: initial;
+  height: calc(100vh - var(--navbar-height));
+  /* overflow-y: scroll; */
 }
 
 code {

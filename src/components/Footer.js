@@ -62,7 +62,7 @@ const Footer = (props) => {
   return (
     <>
       <footer className="footer">
-        <Container>
+        <Container className="footer-container-top">
           <div className="footer-content">
             {/* 
                 <div className="column">
@@ -89,7 +89,7 @@ const Footer = (props) => {
         <div className="footer-author">
           <Container
             style={{ height: "100%", display: "flex" }}
-            extraClasses={"footer-container"}
+            className="footer-container"
           >
             <div className="author-location">
               <img

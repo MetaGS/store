@@ -32,7 +32,7 @@ const ProductPhoto = ({ photos = [] }) => {
         <>
           <div
             className="product-page-photo"
-            onPointerUp={({ target }) => {
+            onClick={({ target }) => {
               if (target.className === "slide selected")
                 setShowChosenPhoto(true);
               // document.body.overflow = 'unset'
@@ -43,9 +43,13 @@ const ProductPhoto = ({ photos = [] }) => {
               renderThumbs={(childs) => {
                 return;
               }}
-              selectedItem={selectedPhotoIndex}
               onChange={(photoIndex) => {
                 setSelectedPhotoIndex(photoIndex);
+              }}
+              selectedItem={selectedPhotoIndex}
+              onClickItem={() => {
+                console.log("clicked");
+                return false;
               }}
             >
               {photos?.map((photoUrl) => {

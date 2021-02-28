@@ -28,7 +28,11 @@ const Navbar = (props) => {
         <Container>
           <div className="left">
             <NavLink to="/" activeClassName="active">
-              <img src={logo} alt="Main Logo on the site" />
+              <img
+                src={logo}
+                alt="Main Logo on the site"
+                className="navbar-site-icon"
+              />
             </NavLink>
           </div>
           <div className="middle">
@@ -70,6 +74,8 @@ const Navbar = (props) => {
               <button
                 className="burger"
                 onClick={() => {
+                  if (sidebar) window.document.body.style.overflow = "";
+                  else window.document.body.style.overflow = "hidden";
                   setSidebar(!sidebar);
                 }}
               >

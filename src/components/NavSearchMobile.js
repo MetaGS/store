@@ -24,14 +24,22 @@ const NavSearchMobile = (props) => {
     <>
       <button
         className="mobile-search-button"
-        onClick={() => {
+        onClick={(e) => {
+          e.currentTarget.focus(); // for ios safari
           setOpenSearch(!openSearch);
+        }}
+        onTouchCancel={() => {
+          setOpenSearch(false);
         }}
         onBlur={() => {
           setOpenSearch(false);
         }}
       >
-        <img src={searchIcon} alt="search" className="mobile-search-icon" />
+        <img
+          src={searchIcon}
+          alt="search"
+          className="navbar-mobile-search-icon"
+        />
       </button>
       <div
         onFocus={onFocus}

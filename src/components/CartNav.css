@@ -2,6 +2,11 @@
   position: relative;
 }
 
+.navbar-cart-icon {
+  height: auto;
+  width: calc(var(--navbar-height) * 0.7);
+}
+
 .items-in-cart {
   position: absolute;
 
