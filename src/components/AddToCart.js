@@ -20,7 +20,7 @@ const AddToCart = ({ productId }) => {
 
   return (
     <Button
-      type="big primary-button rounded"
+      type="big primary-button "
       className={"addToCart-button"}
       text="add to cart"
       onClick={onAddToCart}

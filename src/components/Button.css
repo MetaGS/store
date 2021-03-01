@@ -1,6 +1,6 @@
 .btn {
   font-size: 1.5rem;
-  padding: 0.7em 1.6em;
+  padding: 0.5em 1.6em;
   min-width: 137px;
   border-radius: 5px;
   cursor: pointer;
@@ -97,11 +97,9 @@
 .btn.big {
   width: 100%;
   max-width: 350px;
-  padding: 1.8% 0 1.8%;
-  min-height: 40px;
-  font-size: calc(8px + 0.6vw);
+
   min-height: 45px;
-  max-height: 55px;
+  max-height: 60px;
   position: relative;
 }
 

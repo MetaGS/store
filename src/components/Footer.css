@@ -10,6 +10,7 @@
 
 .footer-content {
   display: flex;
+  justify-content: space-between;
 }
 
 .footer-content .column:first-child {
@@ -104,7 +105,13 @@
 }
 
 @media (max-width: 600px) {
-  .footer {
+  .footer-content .column:first-child {
+    margin-right: 0;
+  }
+  .footer-content .column:last-child {
+    margin: 0;
+  }
+  /* .footer {
     height: 100%;
     min-height: calc(100vh - var(--navbar-height));
     background: linear-gradient(36deg, #070707, var(--primary-color) 60%);
@@ -138,5 +145,5 @@
     display: flex;
     margin: 50px 0;
     align-self: center;
-  }
+  } */
 }

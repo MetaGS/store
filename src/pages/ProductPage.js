@@ -65,6 +65,13 @@ const ProductPage = (props) => {
   //     `The Nike Air Zoom SuperRep 2 is designed for circuit training, HIIT and other fast-paced exercise. Layers of support team up with Zoom Air cushioning to keep your foot locked in and comfortable as you lunge, jump and push your way through every rep.`,
   //     125
   //   );
+  const seeMoreProductsBlock = (
+    <SeeMoreProducts
+      tags={tags}
+      currentProductPageId={id}
+      className={`see-more-block`}
+    />
+  );
 
   return (
     <div className="product-page">
@@ -79,14 +86,21 @@ const ProductPage = (props) => {
           <div className="product-page-content">
             <section className="product-page-left-block">
               <ProductPhoto photos={product?.photoUrls} />
-
-              <SeeMoreProducts tags={tags} currentProductPageId={id} />
+              <div className="see-more-desktop">
+                {
+                  seeMoreProductsBlock /* <SeeMoreProducts/> it is called before return, due to be used in few places */
+                }
+              </div>
             </section>
             {/* product-page-photo block end */}
             <section className="product-page-desc-block">
-              <h1 className="product-page-price">{price}$</h1>
-
-              <h2 className="product-page-title">{title}</h2>
+              <div className="product-title-price">
+                <div className="title-subtitle">
+                  <h4>{tags?.[0]}</h4>
+                  <h2 className="product-page-title">{title}</h2>
+                </div>
+                <h1 className="product-page-price">{price}$</h1>
+              </div>
               <p className="product-page-desc">{description}</p>
 
               {
@@ -150,6 +164,11 @@ const ProductPage = (props) => {
                 <Reviews reviews={reviewControl.reviews} />
               </div>
             </section>
+            <div className="see-more-mobile">
+              {
+                seeMoreProductsBlock /* <SeeMoreProducts/> it is called before return, due to be used in few places */
+              }
+            </div>
             {/* product-page-desc end */}
           </div>
         )}

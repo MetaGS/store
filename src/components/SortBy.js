@@ -14,7 +14,7 @@ const SortBy = ({ setParentSortBy }) => {
   const initialSetup = [null, null, null, null];
   const [sortBySelected, setSortBySelected] = useState(initialSetup);
 
-  const onFilterClick = (sortIndexInArray, sortValue) => {
+  const onSortClick = (sortIndexInArray, sortValue) => {
     let updatedSortBy = [];
 
     if (sortBySelected[sortIndexInArray]?.order === "desc") {
@@ -52,10 +52,13 @@ const SortBy = ({ setParentSortBy }) => {
       <ul className="sort-items">
         {sortBy.map((sort, index) => {
           return (
-            <li className={`sort-item `} key={index}>
+            <li
+              className={`sort-item ${handleItemClass(index) && "active"}`}
+              key={index}
+            >
               <button
                 onClick={() => {
-                  onFilterClick(index, sort.value);
+                  onSortClick(index, sort.value);
                 }}
               >
                 <span className={`asc-desc ${handleItemClass(index)}`}></span>{" "}

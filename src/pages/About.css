@@ -2,7 +2,7 @@
   width: 100%;
   height: calc(100vh - 68px);
   min-height: calc(100vh - 68px);
-  position: relative;
+
   overflow: hidden;
   z-index: 0;
 
@@ -26,18 +26,6 @@
   object-position: center;
 }
 
-.wrapper-footer {
-  width: 100%;
-  height: calc(100vh - 68px);
-  min-height: calc(100vh - 68px);
-  position: relative;
-  overflow: hidden;
-  z-index: 0;
-  display: flex;
-  align-items: flex-end;
-  --main-text-color: rgb(231, 229, 229);
-  --stylish-color: rgb(189, 136, 37);
-}
 .video-background-footer {
   position: absolute;
   z-index: -1;

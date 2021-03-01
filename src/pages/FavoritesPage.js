@@ -25,16 +25,26 @@ const FavoritesPage = (props) => {
   return (
     <Container>
       <section className="favorites-page">
-        <button
+        {/* <button
           onClick={() => {
-            console.log(productList);
+            alert(JSON.stringify(state));
           }}
         >
-          show control
+          show state
         </button>
+        <button
+          onClick={() => {
+            alert(JSON.stringify(productList));
+          }}
+        >
+          show favoritesList
+        </button> */}
         <UtilsBlock className={"favorites-utils"} />
-        <TitleAbhaya text={"Favorite"} />
-        <DescriptionP fontSize="2.1rem" text={`Your Favorited Products`} />
+        <TitleAbhaya text={"Favorites"} className="favorites-main-title" />
+        <DescriptionP
+          text={`Your Favorited Products`}
+          className="favorites-subtitle"
+        />
 
         <div className="favorite-items">
           {productList.map((favoriteItem) => {

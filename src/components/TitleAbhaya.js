@@ -8,7 +8,7 @@ const TitleAbhaya = ({
   fontSize = "",
   extraClasses = "",
   children,
-  className,
+  className = "",
 }) => {
   return (
     <h2

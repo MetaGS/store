@@ -1,28 +1,32 @@
 .sizes-self .size {
-    border: 2px solid var(--primary-grey);
-    border-radius: 20%;
-    font-size: 1.8rem;
-    min-width: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    padding: 8%;
-    max-width: 70px;
-    transition: border-color 0.2s ease-in-out, border-width 0.2s ease-out;
-  }
+  border: 1px solid var(--primary-grey);
+  border-radius: 5px;
+  font-size: 1.8rem;
+  min-width: 80px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  min-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 8vw;
+  width: 15vw;
+  max-width: 80px;
+  max-height: 40px;
+  transition: border-color 0.2s ease-in-out, border-width 0.2s ease-out;
+}
 
-  .size.size-active {
-      background-color: rgb(226, 226, 226);
-  }
-  
-  .sizes-self .size:hover {
-   /* background-color: rgba(141, 141, 141, 0.85)
+.size.size-active {
+  background-color: rgb(226, 226, 226);
+}
+
+.sizes-self .size:hover {
+  /* background-color: rgba(141, 141, 141, 0.85)
     */
-    border-color: rgba(40, 40, 140, 0.80);
-  }
-  
-  .sizes-self span {
-    position: absolute;
-  }
-  
+  border-color: rgba(10, 10, 10, 0.8);
+}
+
+.sizes-self span {
+  position: absolute;
+}

@@ -68,13 +68,6 @@ const ProductsPage = ({ className = "", onScroll = () => {}, ...props }) => {
 
   return (
     <main className={`main--products ${className}`}>
-      <button
-        onClick={() => {
-          setLoading(!loading);
-        }}
-      >
-        TOggleLoading
-      </button>
       <div className="sort-filter-row">
         <SortBy setParentSortBy={setSortBy} />
         <div

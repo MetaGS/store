@@ -1,87 +1,97 @@
 .cart-page {
-    margin-top: 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .cart-page .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(255,255,255, 1);
-    box-shadow: 1px 3px 4px rgba(0,0,0, 0.25);
-    border-radius: 5px;
-    /* border: 1px solid var(--primary-color); */
-    padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  /* border: 1px solid var(--primary-color); */
+  padding: 10px 20px;
+  margin-top: 40px;
 }
 
+.cart-page-desc {
+  margin-left: 10px;
+}
 
 .cart-page .products-table {
-    margin-top: 50px;
-    border-collapse: collapse;
-    display: block;
-    border-radius: 50px;
-    /* background:green; */
+  margin-top: 50px;
+  border-collapse: collapse;
+  display: block;
+  border-radius: 50px;
+  /* background:green; */
 }
 
 .table-background {
-    /* display: inline-block; */
-    background-color: var(--primary-color);
-    border-radius: 20px;
-    padding: 16px 30px;
-    /* border: 1px solid var(--primary-grey) */
+  /* display: inline-block; */
+  background-color: var(--primary-color);
+  border-radius: 20px;
+  padding: 16px 30px;
+  /* border: 1px solid var(--primary-grey) */
 }
 
 .product-properties td {
-    padding: 20px;
-   
+  padding: 20px;
 }
 
-.product-properties td:first-child  {
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+.product-properties td:first-child {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 
 .product-properties td:last-child {
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
-
 .table-headers {
-    font-family: var(--roboto);
-    font-size: 2.1rem;
-    color: var(--primary-grey);
-    
+  font-family: var(--roboto);
+  font-size: 2.1rem;
+  color: var(--primary-grey);
 }
 
 .table-headers th {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 .table-photo {
-
 }
-
-
 
 /* Table with divs implemented, html table is hard to style */
 
 .table {
-    margin-top: 50px;
-
+  margin-top: 50px;
 }
 
 .total-price {
-    font-size: 3rem;
-    color: var(--white);
-    margin:20px 0;
-    margin-top: 35px;
-    text-align: right;
+  font-size: 3rem;
+  color: var(--white);
+  margin: 20px 0;
+  margin-top: 35px;
+  text-align: right;
 }
 
 .total-price span {
-    border-radius: 5px;
-    background-color: var(--primary-color);
-    border: 1px solid var(--primary-grey);
-    border-style: outset;
-    padding: 5px 10px;
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-grey);
+  border-style: outset;
+  padding: 5px 10px;
+}
+
+@media (max-width: 850px) {
+  .cart-page {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 850px) {
+  .cart-page {
+    margin-top: 25px;
+  }
 }

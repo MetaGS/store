@@ -2,7 +2,7 @@ import "./DescriptionP.css";
 
 const Description = ({
   text,
-  fontSize = "1.5rem",
+  fontSize = "",
   width = "auto",
   extraClass,
   className = "",
@@ -10,7 +10,7 @@ const Description = ({
 }) => {
   return (
     <div
-      className={`description-p ${extraClass} ${className}`}
+      className={`description-p ${extraClass ?? ""} ${className ?? ""}`}
       style={{ fontSize, width }}
     >
       <p>

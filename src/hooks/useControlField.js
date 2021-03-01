@@ -27,16 +27,17 @@ const useControlField = (field) => {
   }, []);
 
   useEffect(() => {
+    // alert(!!control.getProductsByField);
     control?.setOwnState?.(state);
 
     control.getProductsByField?.().then((products) => {
+      // alert(JSON.stringify(products));
+
       setProductsByField(products);
     });
     control.userSignedIn = state.userSignedIn;
     //need to update again by setProductsByField()
   }, [state[field], control, state.userSignedIn]);
-
-  control.productsByField = productsByField;
 
   return control;
 };

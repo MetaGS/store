@@ -1,18 +1,30 @@
-.color-filter-list {
+.color-product-list {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
-.color-filter-list li {
+/* Helvetica Neu font-size: 1.6rem, font-weight: 400px; line-height: 1.7; */
+
+.color-product-list li {
   font-size: 0;
-  padding: 9%;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.75);
   margin-top: 5px;
-  min-width: 35px;
-  min-height: 35px;
-  border-radius: 20%;
+  /* min-width: 35px; */
+  /* min-height: 35px; */
+  /* border-radius: 20%; */
   position: relative;
+
+  /* border: 1px solid var(--primary-grey); */
+  border-radius: 5px;
+  min-width: 80px;
+  margin-right: 5px;
+  min-height: 40px;
+  /* display: flex; */
+  height: 20px;
+  width: 60px;
+  max-width: 120px;
+  transition: border-color 0.2s ease-in-out, border-width 0.2s ease-out;
 }
 
 .color:hover {
@@ -28,15 +40,14 @@
   border-radius: 10px;
   width: 110%;
   height: 110%;
-  left: 0%;
-  bottom: 0%;
+  left: -10%;
+  bottom: -10%;
 }
 
 .color.active:before {
   z-index: 0;
   content: "";
   left: -8%;
-
   border-color: grey;
 }
 

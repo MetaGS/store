@@ -15,10 +15,10 @@ const FavoriteItem = ({ itemData, removeItem }) => {
 
   return (
     <div className="favorite-item">
-      <Product mobile className="favorite-product" product={itemData} />
+      <Product className="favorite-product" product={itemData} />
       <div
         className="favorites-star"
-        style={{ backgroundColor: `${isFavorite ? "yellow" : "grey"}` }}
+        style={{ backgroundColor: `${isFavorite ? "#e9e900" : "grey"}` }}
         onClick={() => {
           removeFromField(itemData.id);
         }}

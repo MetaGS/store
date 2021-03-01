@@ -51,7 +51,70 @@ const data = [
   },
 ];
 
-const Footer = (props) => {
+export const FooterSocials = () => {
+  return (
+    <div className="column socials">
+      {socialsArray.map(({ icon, href }, index) => {
+        return (
+          <a href="#" key={index}>
+            {icon}
+          </a>
+        );
+      })}
+    </div>
+  );
+};
+
+export const FooterLinks = () => {
+  return (
+    <div className="column">
+      <FooterBlock {...data[1]} />
+    </div>
+  );
+};
+
+export const FooterSample = (props) => {
+  return (
+    <footer className="footer">
+      <Container className="footer-container-top">
+        <div className="footer-content">
+          {/* 
+          <div className="column">
+            <FooterBlock {...data[0]} />
+          </div> 
+      */}
+          {props.children}
+        </div>
+      </Container>
+
+      <div className="footer-author">
+        <Container
+          style={{ height: "100%", display: "flex" }}
+          className="footer-container"
+        >
+          <div className="author-location">
+            <img
+              src={locationIcon}
+              alt="location icon"
+              className="location-icon"
+            />
+            <p>Kyrgyzstan, Bishkek</p>
+          </div>
+          <div className="author">
+            <img
+              src={copyrightIcon}
+              alt="copyright icon"
+              className="copyright"
+            />
+            <p>T-Fit, Alymov M. Inc. All Rights Reserved</p>
+          </div>
+        </Container>
+      </div>
+    </footer>
+  );
+};
+
+const FooterDefault = (props) => {
   useEffect(() => {
     console.log("mounted");
     return () => {
@@ -60,58 +123,11 @@ const Footer = (props) => {
   }, []);
 
   return (
-    <>
-      <footer className="footer">
-        <Container className="footer-container-top">
-          <div className="footer-content">
-            {/* 
-                <div className="column">
-                  <FooterBlock {...data[0]} />
-                </div> 
-            */}
-
-            <div className="column">
-              <FooterBlock {...data[1]} />
-            </div>
-
-            <div className="column socials">
-              {socialsArray.map(({ icon, href }, index) => {
-                return (
-                  <a href="#" key={index}>
-                    {icon}
-                  </a>
-                );
-              })}
-            </div>
-          </div>
-        </Container>
-
-        <div className="footer-author">
-          <Container
-            style={{ height: "100%", display: "flex" }}
-            className="footer-container"
-          >
-            <div className="author-location">
-              <img
-                src={locationIcon}
-                alt="location icon"
-                className="location-icon"
-              />
-              <p>Kyrgyzstan, Bishkek</p>
-            </div>
-            <div className="author">
-              <img
-                src={copyrightIcon}
-                alt="copyright icon"
-                className="copyright"
-              />
-              <p>T-Fit, Alymov M. Inc. All Rights Reserved</p>
-            </div>
-          </Container>
-        </div>
-      </footer>
-    </>
+    <FooterSample>
+      <FooterLinks />
+      <FooterSocials />
+    </FooterSample>
   );
 };
 
-export default Footer;
+export default FooterDefault;

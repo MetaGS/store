@@ -61,12 +61,12 @@ const ProductPhoto = ({ photos = [] }) => {
           </div>
           <div className="hide-scroll-top">
             <div className="hide-scroll">
-              <div className="carousel">
+              <div className="carousel-thumb">
                 {photos?.map((photoUrl, photoIndex) => {
                   return (
                     <div
                       key={photoUrl.slice(-5)}
-                      className={`carousel-photo ${
+                      className={`carousel-thumb-photo ${
                         photoIndex == selectedPhotoIndex ? "active" : ""
                       } `}
                       onClick={(e) => {

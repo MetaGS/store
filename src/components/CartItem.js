@@ -33,78 +33,77 @@ const CartItem = ({
   };
 
   useEffect(() => {
-    console.log(quantity, price);
     updateTotalPrice(quantity * price);
   }, []);
 
-  console.log(firstRow);
-
   return (
     <div className="table-row">
-      <div className="table-data">
-        <span className="table-header"></span>
-        <div className="data">
-          <img
-            src={photoUrls[0]}
-            alt="cart product"
-            className="cart-product-img"
-          />
+      <div className="table-row-mobile">
+        <div className="table-row-mobile-block1">
+          <div className="table-data">
+            <span className="table-header"></span>
+            <div className="data">
+              <img
+                src={photoUrls[0]}
+                alt="cart product"
+                className="cart-product-img"
+              />
+            </div>
+          </div>
+          <div className="table-data">
+            <span className={`table-header ${!firstRow ?? "first-row"}`}>
+              {"Name"}
+            </span>
+            <Link to={`products/${id}`}>
+              <h4 className="data title-sm">{limitText(title, 30)}</h4>
+            </Link>
+          </div>
         </div>
-      </div>
-      {/* <button
-        onClick={() => {
-          console.log(state);
-        }}
-      >
-        Show state
-      </button> */}
-      <div className="table-data">
-        <span className="table-header">{firstRow && "Name"}</span>
-        <Link to={`products/${id}`}>
-          <h4 className="data title-sm">{limitText(title, 30)}</h4>
-        </Link>
-      </div>
 
-      <div className="table-data">
-        <span className="table-header">{firstRow && "Description"}</span>
+        <div className="table-row-mobile-block2">
+          {/* <div className="table-data">2
+        <span className="table-header">{ "Description"}</span>
         <Link to={`products/${id}`}>
           <div className="data desc-sm">{limitText(desc, 30)}</div>
         </Link>
-      </div>
+      </div> */}
 
-      <div className="table-data">
-        <span className="table-header">{firstRow && "Price"}</span>
-        <div className="data table-price">{`$${price}`}</div>
-      </div>
+          <div className="table-data">
+            <span className="table-header">{"Price"}</span>
+            <div className="data table-price">{`$${price}`}</div>
+          </div>
 
-      <div className="table-data">
-        <span className="table-header">{firstRow && "Quantity"}</span>
-        <div className="data table-quantity">
-          <input
-            type="number"
-            className="table-quantity-input"
-            value={quantity}
-            onChange={quantityChange}
-          />
-        </div>
-      </div>
+          <div className="table-data">
+            <span className="table-header">{"Quantity"}</span>
+            <div className="data table-quantity">
+              <input
+                type="number"
+                min={0}
+                className="table-quantity-input"
+                value={quantity}
+                onChange={quantityChange}
+              />
+            </div>
+          </div>
 
-      <div className="table-data">
-        <span className="table-header">{firstRow && "Total"}</span>
-        <div className="data table-price">{`$${price * quantity}`}</div>
-      </div>
+          <div className="table-data">
+            <span className="table-header">{"Total"}</span>
+            <div className="data table-price">{`$${price * quantity}`}</div>
+          </div>
 
-      <div className="table-data">
-        <span className="table-header"></span>
-        <div className="data">
-          <Button
-            type="primary-button-linear sm"
-            text={"Remove"}
-            onClick={() => {
-              removeFromField(id);
-              updateTotalPrice(0);
-            }}
-          />
+          <div className="table-data">
+            <span className="table-header"></span>
+            <div className="data">
+              <Button
+                type="primary-button-linear sm"
+                text={"Remove"}
+                onClick={() => {
+                  removeFromField(id);
+                  updateTotalPrice(0);
+                }}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

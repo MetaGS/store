@@ -45,10 +45,40 @@
 .sort-items {
   display: flex;
   width: 100%;
+  overflow: scroll;
 }
 
 @media (max-width: 600px) {
   .sort-block p {
     min-width: 70px;
+  }
+  .sort-block {
+    width: 100%;
+  }
+
+  .sort-item button {
+    background: none;
+    font-size: 2rem;
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    border: 1px solid lightgray;
+    padding: 3px 6px;
+    cursor: pointer;
+    font-size: 1.7rem;
+    /* border-radius: 3px; */
+    color: var(--white);
+  }
+
+  .sort-item.active {
+    background-color: var(--primary-grey);
+  }
+
+  .active-asc {
+    bottom: 3px;
+  }
+
+  .active-desc {
+    top: 3px;
   }
 }

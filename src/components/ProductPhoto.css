@@ -1,3 +1,7 @@
+.product-page-content {
+  --related-dimension: 25vw;
+}
+
 .product-page-photo {
   width: 100%;
   height: auto;
@@ -14,7 +18,7 @@
   object-fit: contain;
 }
 
-.carousel {
+.carousel-thumb {
   display: flex;
   margin-top: 30px;
   overflow-x: scroll;
@@ -23,17 +27,17 @@
   align-items: center;
 }
 
-.carousel::-webkit-scrollbar {
+.carousel-thumb::-webkit-scrollbar {
   display: none;
 }
 
-.carousel-photo {
+.carousel-thumb-photo {
   max-width: 150px;
   min-width: 70px;
-  height: auto;
-  padding: 12%;
+
   position: relative;
-  width: 25%;
+  width: var(--related-dimension);
+  height: var(--related-dimension);
   overflow: hidden;
   flex-shrink: 0;
   margin-right: 20px;
@@ -42,7 +46,7 @@
   border-radius: 10%;
 }
 
-.active.carousel-photo {
+.active.carousel-thumb-photo {
   /* border: 1px solid var(--primary-color); */
   /* border: 1px solid var(--primary-color); */
 
@@ -52,16 +56,16 @@
   background: #b9b9b9;
 }
 
-.carousel-photo:hover {
+.carousel-thumb-photo:hover {
   border-color: rgba(100, 120, 100, 0.25);
   background: rgba(100, 120, 100, 0.25);
 }
 
-.carousel-photo:last-child {
+.carousel-thumb-photo:last-child {
   margin-right: 0;
 }
 
-.carousel-photo img {
+.carousel-thumb-photo img {
   width: 100%;
   object-fit: cover;
   height: 100%;
@@ -71,7 +75,7 @@
   top: 0;
 }
 
-.product-page-photo .carousel .slide {
+.product-page-photo .carousel-thumb .slide {
   background: #e9e8e8;
 }
 
@@ -97,4 +101,21 @@
   position: absolute;
   top: 20px;
   right: 20px;
+}
+
+@media (max-width: 600px) {
+  .carousel-thumb {
+    margin-top: 10px;
+  }
+  .product-page-content {
+    --related-dimension: 20vw;
+  }
+  .carousel-thumb-photo {
+    border: 7px solid rgba(0, 0, 0, 0);
+    border-radius: 10%;
+  }
+
+  .carousel-thumb-photo {
+    margin-right: 5px;
+  }
 }

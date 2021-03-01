@@ -9,7 +9,7 @@
 }
 
 .mobile-search-button:focus {
-  outline: rgb(244, 244, 250);
+  outline: rgb(108, 108, 219);
   outline-style: solid;
   outline-width: 1px;
   border: none;

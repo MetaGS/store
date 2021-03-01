@@ -37,7 +37,7 @@ nav .mainpage-search {
   /* height: 100%; */
   font-size: 1.5rem;
   font-family: var(--poppins);
-  border: none;
+  border: 1px solid #5f5c5c;
   /* background: none; */
   caret-color: white;
   color: white;
@@ -133,5 +133,9 @@ nav .mainpage-search:hover {
 
   nav .search {
     margin-right: 0;
+  }
+
+  .search-result-block {
+    margin: 15px 0 0 0px;
   }
 }

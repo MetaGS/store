@@ -3,6 +3,10 @@
   cursor: pointer;
 }
 
+.profile-icon img {
+  height: calc(var(--navbar-height) * 0.55);
+}
+
 .profile-icon-body {
   position: absolute;
   width: 150px;

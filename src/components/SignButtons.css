@@ -1,6 +1,7 @@
 .signin-signup {
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 .signin-signup a {

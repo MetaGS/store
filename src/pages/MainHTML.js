@@ -9,6 +9,7 @@ import "./MainHTML.css";
 import Header from "../components/Header";
 import videoBg from "../assets/about-page-video1.mp4";
 import ProductsPage from "./ProductsPage";
+import SignButtons from "../components/SignButtons";
 import About from "./About";
 import Footer from "../components/Footer";
 import pic1 from "../assets/about-page-pic2.jpg";
@@ -95,6 +96,8 @@ const MainHTML = (props) => {
     console.log("onWheel runs");
     slidePage(e);
   };
+
+  const winDoc = window.document.documentElement;
   return (
     <>
       <div
@@ -113,34 +116,25 @@ const MainHTML = (props) => {
           src={videoBg}
           type="video/mp4"
         /> */}
-        <Carousel
-          showStatus={false}
-          axis="vertical"
-          showArrows={false}
-          showIndicators={false}
-          selectedItem={slideIndex}
-          preventMovementUntilSwipeScrollTolerance={true}
-          onClickItem={(index) => {}}
-          autoPlay={false}
-          onChange={(index, something) => {}}
-          renderThumbs={() => false}
-        >
-          <div className="slide-main-page slide-me">
-            <div className="row-about">
-              <div className="column1-about column-about">
-                <SecondaryContainer>
-                  <Header
-                    data={data}
-                    colors={{ title: "#3a3937" }}
-                    className="header-main-html"
-                  />
+        <div>clientHeight:{winDoc.clientHeight}</div>
+        <div>offsetHeight:{winDoc.offsetHeight}</div>
 
-                  <SeeMore />
-                </SecondaryContainer>
-              </div>
+        <div className="slide-main-page  slide-me">
+          <div className="row-about">
+            <div className="column1-about column-about">
+              <SecondaryContainer>
+                <Header
+                  data={data}
+                  colors={{ title: "#3a3937" }}
+                  className="header-main-html"
+                />
+
+                <SeeMore />
+              </SecondaryContainer>
             </div>
           </div>
-          {/* <div
+        </div>
+        {/* <div
             className="home-products slide-me"
             onTouchStart={(e) => {
               // e.stopPropagation();
@@ -152,16 +146,15 @@ const MainHTML = (props) => {
            
 
           {/*  */}
-          {/* </div> */}
-          <div className="slide-main-page footer-about slide-me">
-            <About />
-          </div>
+        {/* </div> */}
+        <div className="main-auto-height">
+          <ProductsPage className="main-page-products" />
+        </div>
 
-          <div className="wrapper-footer">
-            <img src={pic1} className="video-background-footer" alt="" />
-            <Footer />
-          </div>
-        </Carousel>
+        <div className="wrapper-footer ">
+          {/* <img src={pic1} className="video-background-footer" alt="" /> */}
+          <Footer />
+        </div>
       </div>
     </>
   );

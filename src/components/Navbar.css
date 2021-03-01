@@ -71,7 +71,7 @@ nav .right .profile {
 nav .burger {
   display: none;
   width: calc(var(--navbar-height) * 0.5);
-  height: 100%;
+
   background-color: transparent;
   border: none;
   height: calc(var(--navbar-height) * 0.4);
@@ -152,7 +152,7 @@ nav .burger {
     margin-right: 0px;
   }
   nav .right .profile {
-    margin-right: 10px;
+    margin: 0 7px 0 8px;
   }
 }
 

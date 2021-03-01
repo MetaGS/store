@@ -17,10 +17,9 @@
   margin-left: 50px;
 }
 .mobile-filter-toggler button {
-  border: none;
   background: none;
   font-size: 2rem;
-  color: var(--black);
+  color: var(--white);
   display: flex;
   align-items: center;
   border: 1px solid lightgray;
@@ -97,9 +96,6 @@
 
   .mobile-filter-toggler {
     display: block;
-  }
-
-  .sort-block {
   }
 
   .main--products .content {

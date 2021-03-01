@@ -29,7 +29,7 @@ const WriteReview = ({ productId, reviewControl }) => {
   ]);
 
   const [rate, setRating] = useState(0);
-  const [opened, setOpened] = useState(true);
+  const [opened, setOpened] = useState(false);
   const [redirectTo, setRedirectTo] = useState(false);
   const [comment, setComment] = useState("");
   const [phoneNumberCode, setPhoneNumberCode] = useState("996");
@@ -92,7 +92,6 @@ const WriteReview = ({ productId, reviewControl }) => {
     return state.userSignedIn ? (
       (opened && !userAlreadyReviewed && (
         <form className="write-review">
-          <div>{String(userAlreadyReviewed)}</div>
           {/* <button
             onClick={(e) => {
               e.preventDefault();
@@ -140,7 +139,8 @@ const WriteReview = ({ productId, reviewControl }) => {
                   onPointerOver={onHoverStar(index)}
                   onPointerLeave={onBlurStar}
                   onClick={() => {
-                    setRating(+index + 1);
+                    setRating(Number(index) + 1);
+                    onHoverStar(index)();
                   }}
                 >
                   {Star(starConfig)}
@@ -150,7 +150,7 @@ const WriteReview = ({ productId, reviewControl }) => {
             <InlineError error={errors.rate} />
           </div>
           <Button
-            type="big secondary rounded"
+            type="big secondary "
             text="Submit Review"
             onClick={onSubmit}
           />
@@ -159,7 +159,7 @@ const WriteReview = ({ productId, reviewControl }) => {
         (!opened && !userAlreadyReviewed && (
           <Button
             text="Write a Review"
-            type="big secondary rounded"
+            type="big secondary "
             onClick={() => {
               setOpened(!opened);
             }}
@@ -177,7 +177,7 @@ const WriteReview = ({ productId, reviewControl }) => {
       />
     ) : (
       <Button
-        type="big secondary rounded"
+        type="big secondary "
         text="Sign in First"
         onClick={() => {
           setRedirectTo(true);

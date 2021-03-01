@@ -63,6 +63,9 @@ const SearchInput = ({ className = "", ...props }) => {
             className={`search-result-block ${
               inputFocused || resultBlockFocused ? "active" : ""
             }`}
+            onClick={() => {
+              setResultBlockFocused(false);
+            }}
           >
             <ul>
               {downloading && <p style={{ color: "grey" }}>loading...</p>}

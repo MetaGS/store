@@ -38,8 +38,8 @@ const CartPage = (props) => {
         <div className="header">
           <TitleAbhaya text={"Items in your cart"} />
           <DescriptionP
-            fontSize="2.1rem"
             text={`You have ${itemsInCart} item${itemsInCart === 1 ? "" : "s"}`}
+            className="cart-page-desc"
           />
         </div>
 

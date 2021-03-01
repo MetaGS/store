@@ -16,7 +16,28 @@ import Button from "../components/Button";
 import socialsArray from "../components/SvgSocial";
 import Header from "../components/Header";
 
-const About = (props) => {
+export const SocialLinks = () => {
+  return (
+    <div className="svg-social-links">
+      {socialsArray.map(({ icon, href }, index) => {
+        return <a href="#">{icon}</a>;
+      })}
+    </div>
+  );
+};
+
+export const EmailTo = () => {
+  return (
+    <div className="email-about">
+      <a href="mailto:marketdeal7788@gmail.com">
+        <FiMail />{" "}
+        <span className="email-text-about">marketdeal7788@gmail.com</span>
+      </a>
+    </div>
+  );
+};
+
+export const About = ({ children, utils = false }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
     return () => {};
@@ -27,7 +48,7 @@ const About = (props) => {
       <img src={pic1} className="video-background-about" alt="" />
 
       <div className="slide-about">
-        <UtilsBlock className="about-utils" />
+        {utils && <UtilsBlock className="about-utils" />}
         <div className="row-about">
           <div
             className="column1-about column-about"
@@ -35,30 +56,25 @@ const About = (props) => {
           >
             <Header />
           </div>
-          <div className="column2-about column-about">
-            <div className="svg-social-links">
-              {socialsArray.map(({ icon, href }, index) => {
-                return <a href="#">{icon}</a>;
-              })}
-            </div>
-            <div className="email-about">
-              <a href="mailto:marketdeal7788@gmail.com">
-                <FiMail />{" "}
-                <span className="email-text-about">
-                  marketdeal7788@gmail.com
-                </span>
-              </a>
-            </div>
-          </div>
+          <div className="column2-about column-about">{children}</div>
         </div>
       </div>
     </Container>
   );
 };
 
-About.propTypes = {};
+About.propTypes = {
+  utils: PropTypes.bool,
+};
 
-export default About;
+export default (props) => {
+  return (
+    <About utils {...props}>
+      <SocialLinks />
+      <EmailTo />
+    </About>
+  );
+};
 
 const firtsVersion = (
   <article className="article-about">

@@ -29,7 +29,7 @@ const AddToFavorites = ({ productId }) => {
 
   return (
     <Button
-      type="big secondary rounded"
+      type="big secondary "
       text="add to Favorites"
       disabled={alreadyIncludes}
       onClick={onAddToFavorites}
