@@ -24,7 +24,28 @@
   height: 20px;
   width: 60px;
   max-width: 120px;
+}
+
+.color-product-list {
+  border: 1px solid transparent;
   transition: border-color 0.2s ease-in-out, border-width 0.2s ease-out;
+}
+
+.color-product-list.color-error {
+  animation: color-error 1.5s linear 3;
+}
+
+@keyframes color-error {
+  0% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: red;
+  }
+
+  100% {
+    border-color: transparent;
+  }
 }
 
 .color:hover {

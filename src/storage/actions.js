@@ -9,6 +9,7 @@ import {
   SET_CART,
   SET_FAVORITES,
   ADD_CART_ORDER,
+  REMOVE_FROM_CART_ORDER,
 } from "./types";
 
 export const signIn = (user) => {
@@ -86,6 +87,7 @@ export const removeFrom = {
 export const addTo = {
   favorites: addToFavoritesAction,
   cart: addToCartAction,
+  cartOrder: addCartOrder,
 };
 
 export const setField = {

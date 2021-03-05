@@ -11,7 +11,7 @@ const Review = ({ data }) => {
   const time = data?.createdAt
     ? parseDate(data.createdAt.seconds)
     : "updating...";
-  console.log(data);
+  // console.log(data);
   return (
     <div className="review">
       <div className="author-and-date">

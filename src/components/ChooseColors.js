@@ -4,22 +4,30 @@ import "./ChooseColors.css";
 
 const FilterColors = ({
   colors = [" #BB3737", " #B6A935", "#1AC25D", "#5f0de4"],
+  updateParent,
+  error,
   ...props
 }) => {
-  let { size = "", style = {} } = props;
-  let { marginRight = "" } = style;
+  const [activeColor, setActiveColor] = useState({});
+  const [errorClass, setErrorClass] = useState("");
 
-  const [colorFilter, setColorFilter] = useState({});
+  const clickOnColor = (index) => {
+    setActiveColor(index);
+    updateParent(colors[index]);
+  };
 
   return (
-    <ul className="color-product-list">
-      {colors.map((color) => {
+    <ul className={`color-product-list ${!!error ? "color-error" : ""}`}>
+      {colors.map((color, index) => {
         return (
           <li
             key={color}
-            className="color"
+            className={`color ${activeColor === index && "active"}`}
             style={{
               backgroundColor: color,
+            }}
+            onClick={() => {
+              clickOnColor(index);
             }}
           >
             color

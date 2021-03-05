@@ -12,6 +12,7 @@ import {
   SET_CART,
   SET_FAVORITES,
   ADD_CART_ORDER,
+  REMOVE_FROM_CART_ORDER,
 } from "./types";
 
 export default (state, action) => {
@@ -64,13 +65,13 @@ export default (state, action) => {
         cart: action.payload,
       };
     case ADD_CART_ORDER:
-      let filterCartOrder = state.cartOrder.filter((cartOrderItem) => {
-        return cartOrderItem.cartItemId !== action.payload.cartItemId;
+      let filterCartOrders = state.cartOrders.filter((cartOrder) => {
+        return cartOrder.cartItemId !== action.payload.cartItemId;
       });
 
       return {
         ...state,
-        cartOrder: [...filterCartOrder, action.payload],
+        cartOrders: [...filterCartOrders, action.payload],
       };
 
     default:

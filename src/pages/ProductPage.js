@@ -17,13 +17,17 @@ import { createProduct, getProduct } from "../firebase/db";
 import useStorage from "../storage";
 import { useReviewsControl } from "../firebase/db";
 import "./ProductPage.css";
+import ChooseSizes from "../components/ChooseSizes";
 
 const ProductPage = (props) => {
   const [state, dispatch] = useStorage();
   const [download, setDownload] = useState(false);
   const [product, setProduct] = useState({});
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState({});
   const [activeSize, setActiveSize] = useState(null);
+  const [activeColor, setActiveColor] = useState(null);
+
+  console.log(errors);
   const { id } = useParams();
   const reviewControl = useReviewsControl(id);
 
@@ -54,7 +58,7 @@ const ProductPage = (props) => {
           setDownload(false);
         })
         .catch((error) => {
-          setError(error.message);
+          setErrors({ errorDB: error.message });
           setDownload(false);
         });
     }
@@ -80,8 +84,10 @@ const ProductPage = (props) => {
 
         {download ? (
           <h1>Downloading...</h1>
-        ) : error ? (
-          <div styles={{ fontSize: "1.5rem", color: "red" }}>{error}</div>
+        ) : errors?.errorDB ? (
+          <div styles={{ fontSize: "1.5rem", color: "red" }}>
+            {errors.errorDB}
+          </div>
         ) : (
           <div className="product-page-content">
             <section className="product-page-left-block">
@@ -107,33 +113,11 @@ const ProductPage = (props) => {
                 /* sizes block */
                 sizes.length > 0 && (
                   <div className="product-page-sizes">
-                    <div className="sub-block">
-                      <span className="sub-block-title">sizes</span>
-                      <span className="sub-block-guide">
-                        <a href="#">Size guide</a>
-                      </span>
-                    </div>
-                    <div className="sizes-self">
-                      {
-                        <>
-                          <div className="row">
-                            {sizes.map((size, index) => {
-                              return (
-                                <SizesComponent
-                                  key={index}
-                                  size={size}
-                                  active={activeSize === index}
-                                  onClick={(e) => {
-                                    setActiveSize(index);
-                                  }}
-                                />
-                              );
-                            })}
-                          </div>
-                          <div className="row"></div>
-                        </>
-                      }
-                    </div>
+                    <ChooseSizes
+                      sizes={sizes}
+                      updateParent={setActiveSize}
+                      error={errors.size}
+                    />
                   </div>
                 )
               }
@@ -145,15 +129,23 @@ const ProductPage = (props) => {
                     <span className="sub-block-title">Colors</span>
                   </div>
                   <ChooseColors
+                    error={errors?.color}
                     style={{ padding: "7%", marginRight: "7%" }}
                     colors={colors}
+                    updateParent={setActiveColor}
                   />
                 </div>
               )}
 
               {/* Add to cart or save block */}
               <div className={"product-page-actions"}>
-                <AddToCart productId={id} />
+                <AddToCart
+                  productId={id}
+                  color={activeColor}
+                  size={activeSize}
+                  setErrors={setErrors}
+                  product={product}
+                />
 
                 <AddToFavorites productId={id} />
               </div>

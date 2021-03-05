@@ -67,33 +67,10 @@
   margin-top: 35px;
 }
 
-.product-page-sizes .sub-block {
-  display: flex;
-  justify-content: space-between;
-}
-
 .sub-block-title {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   text-transform: uppercase;
   color: var(--black);
-}
-
-.sub-block-guide {
-  font-size: 2rem;
-  color: var(--primary-grey);
-  text-transform: capitalize;
-}
-
-.sizes-self {
-  width: 100%;
-}
-
-.sizes-self .row {
-  display: flex;
-  /* justify-content: space-between; */
-  margin-top: 10px;
-  width: 100%;
-  flex-wrap: wrap;
 }
 
 .product-page-colors .sub-block {

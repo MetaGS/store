@@ -6,12 +6,21 @@ import {
 } from "../firebase/db";
 import { addTo, removeFrom, setField } from "../storage/actions";
 import useStorage from "../storage";
-import LocalStorage from "../localStorage";
+import { LocalCart } from "../localStorage";
+
+const defaultControl = {
+  productsByField: [],
+  addToField() {},
+  removeFromField() {},
+  getProductsByField() {
+    return Promise.resolve([]);
+  },
+};
 
 const useControlField = (field) => {
   const [state, dispatch] = useStorage();
-  const [control, setControl] = useState({ productsByField: [] });
-  const [productsByField, setProductsByField] = useState([]);
+  //initially setting control to object, because if i do not do so, and caller will call productsByField
+  const [control, setControl] = useState(defaultControl);
 
   useEffect(() => {
     setControl(
@@ -20,21 +29,16 @@ const useControlField = (field) => {
         state.user?.uid,
         dispatch,
         state,
-        new LocalStorage(field),
-        productsByField
+        new LocalCart(field),
+        [] //productsByField
       )
     );
   }, []);
 
   useEffect(() => {
-    // alert(!!control.getProductsByField);
     control?.setOwnState?.(state);
 
-    control.getProductsByField?.().then((products) => {
-      // alert(JSON.stringify(products));
-
-      setProductsByField(products);
-    });
+    control.getProductsByField?.()?.then((products) => {});
     control.userSignedIn = state.userSignedIn;
     //need to update again by setProductsByField()
   }, [state[field], control, state.userSignedIn]);
@@ -60,15 +64,15 @@ class ControlField {
     this.productsByField = productsByField;
   }
 
-  addToField = async (fieldItemId, fieldItemObject) => {
-    if (this.includes(fieldItemId)) {
+  addToField = async (fieldItemObject) => {
+    if (this.includes(fieldItemObject)) {
       return false;
     }
 
     this.userSignedIn // better to use Proxy, in the future will change it
-      ? await addToFieldInDb(fieldItemId, this.userId, this.field)
-      : this.localStorage.addToField(fieldItemId);
-    this.dispatch(addTo[this.field]([fieldItemId]));
+      ? await addToFieldInDb(fieldItemObject, this.userId, this.field) // need to do again
+      : this.localStorage.addToField(fieldItemObject);
+    this.dispatch(addTo[this.field]([fieldItemObject]));
   };
 
   removeFromField = async (fieldItemId) => {
@@ -93,8 +97,12 @@ class ControlField {
     this.state = state;
   };
 
-  includes = (fieldItemId) => {
-    return this.state[this.field].includes(fieldItemId);
+  includes = (fieldItemObject) => {
+    const cartOrders = this.state[this.field];
+    const doesInclude = cartOrders.find((cartOrder) => {
+      return cartOrder.cartOrderId === fieldItemObject.cartOrderId;
+    });
+    return !!doesInclude;
   };
 
   showMeOwnState = () => {};
