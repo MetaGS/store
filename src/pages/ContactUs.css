@@ -191,4 +191,8 @@
     border-radius: var(--border-radius);
     order: 1;
   }
+
+  .grecaptcha-badge {
+    transform: scale(0.85);
+  }
 }

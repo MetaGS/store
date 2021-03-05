@@ -9,3 +9,4 @@ export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const REMOVE_FROM_FAVORITES = "REMOVE_FROM_FAVORITES";
 export const SET_FAVORITES = "SET_FAVORITES";
 export const SET_CART = "SET_CART";
+export const ADD_CART_ORDER = "ADD_CART_ORDER";

@@ -8,6 +8,7 @@ import {
   REMOVE_FROM_FAVORITES,
   SET_CART,
   SET_FAVORITES,
+  ADD_CART_ORDER,
 } from "./types";
 
 export const signIn = (user) => {
@@ -70,6 +71,10 @@ export const setCart = (array) => {
     type: SET_CART,
     payload: array,
   };
+};
+
+export const addCartOrder = (cartOrdersArray) => {
+  return { type: ADD_CART_ORDER, payload: cartOrdersArray };
 };
 
 //unification, I can use as removeFrom['cart']()

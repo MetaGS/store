@@ -11,6 +11,7 @@ import {
   REMOVE_FROM_FAVORITES,
   SET_CART,
   SET_FAVORITES,
+  ADD_CART_ORDER,
 } from "./types";
 
 export default (state, action) => {
@@ -64,6 +65,11 @@ export default (state, action) => {
       return {
         ...state,
         cart: action.payload,
+      };
+    case ADD_CART_ORDER:
+      return {
+        ...state,
+        cartOrder: action.payload,
       };
 
     default:

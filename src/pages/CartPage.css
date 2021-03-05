@@ -65,7 +65,7 @@
 /* Table with divs implemented, html table is hard to style */
 
 .table {
-  margin-top: 30px;
+  margin-top: 45px;
 }
 
 .total-price {
@@ -90,7 +90,10 @@
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 600px) {
+  .table {
+    margin-top: 30px;
+  }
   .cart-page {
     margin-top: 25px;
   }

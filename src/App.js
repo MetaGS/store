@@ -16,6 +16,8 @@ import CreateProduct from "./components/CreateProduct";
 import FavoritesPage from "./pages/FavoritesPage";
 import HowToOrder from "./pages/HowToOrder";
 import About from "./pages/About";
+import OrderPage from "./pages/OrderPage";
+
 import ContactUs from "./pages/ContactUs";
 import ScrollToTop from "./components/ScrollToTop";
 import Careers from "./pages/Careers";
@@ -56,6 +58,7 @@ function App() {
             <Route path="/contact-us" component={ContactUs} />
             <Route path="/careers" component={Careers} />
             <Route path="/about" component={About} />
+            <Route path="/order" component={OrderPage} />
           </Main>
           <Footer />
         </>
