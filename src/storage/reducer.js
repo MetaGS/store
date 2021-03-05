@@ -34,8 +34,6 @@ export default (state, action) => {
       return { ...state, cart: [...state.cart, ...newCart] };
 
     case ADD_TO_FAVORITES:
-      console.log(action.payload);
-      // throw Error("Reducer true error");
       let newFavorites = Array.isArray(action.payload)
         ? action.payload
         : [action.payload];
@@ -56,7 +54,6 @@ export default (state, action) => {
         }),
       };
     case SET_FAVORITES:
-      console.log(action.payload);
       return {
         ...state,
         favorites: action.payload,
@@ -67,9 +64,13 @@ export default (state, action) => {
         cart: action.payload,
       };
     case ADD_CART_ORDER:
+      let filterCartOrder = state.cartOrder.filter((cartOrderItem) => {
+        return cartOrderItem.cartItemId !== action.payload.cartItemId;
+      });
+
       return {
         ...state,
-        cartOrder: action.payload,
+        cartOrder: [...filterCartOrder, action.payload],
       };
 
     default:

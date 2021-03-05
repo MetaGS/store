@@ -23,7 +23,12 @@ const CartItem = ({
     photoUrls = ["https://via.placeholder.com/200"],
     price = 0,
     id,
+    colors,
+    sizes,
   } = cartItem;
+  const color = colors?.[0];
+
+  const size = sizes?.[0];
 
   let [quantity, setQuantity] = useState(1);
 
@@ -40,14 +45,11 @@ const CartItem = ({
     <div className={`table-row ${!firstRow || "first-row"}`}>
       <div className="table-data table-data-image">
         <span className="table-header"></span>
-        <div className="data">
-          <img
-            src={photoUrls[0]}
-            alt="cart product"
-            className="cart-product-img"
-          />
+        <div className="data data-image">
+          <img src={photoUrls[0]} alt="cart product" className="table-img" />
         </div>
       </div>
+
       <div className="table-data table-data-title">
         <span className={`table-header ${!firstRow ?? "first-row"}`}>
           {"Name"}
@@ -57,12 +59,17 @@ const CartItem = ({
         </Link>
       </div>
 
-      {/* <div className="table-data table-data-">2
-        <span className="table-header">{ "Description"}</span>
-        <Link to={`products/${id}`}>
-          <div className="data desc-sm">{limitText(desc, 30)}</div>
-        </Link>
-      </div> */}
+      <div className="table-data table-data-color">
+        <span className="table-header">{"Color"}</span>
+        <div className="data table-color" style={{ backgroundColor: color }}>
+          item color
+        </div>
+      </div>
+
+      <div className="table-data table-data-size">
+        <span className="table-header">{"Size"}</span>
+        <div className="data table-size">{size}</div>
+      </div>
 
       <div className="table-data table-data-price">
         <span className="table-header">{"Price"}</span>
@@ -107,3 +114,12 @@ const CartItem = ({
 CartItem.propTypes = {};
 
 export default CartItem;
+
+{
+  /* <div className="table-data table-data-">2
+        <span className="table-header">{ "Description"}</span>
+        <Link to={`products/${id}`}>
+          <div className="data desc-sm">{limitText(desc, 30)}</div>
+        </Link>
+      </div> */
+}

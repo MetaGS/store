@@ -20,3 +20,4 @@ New Project = Store
 16. Profile page
 17. Redo frontend cart, firestore mechanism
 18. add downloading spinners, create before one in svg
+19. change clientside validation: it should check on every change and mark as green or pink

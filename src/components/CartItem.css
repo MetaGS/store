@@ -8,14 +8,24 @@
 
   margin-top: 30px;
 
-  grid-template-areas: "image title price quantity total-price remove";
+  grid-template-areas: "image title color2 size price quantity total-price remove";
 }
 
 .table-data-image {
   grid-area: image;
+  /* height: 100%; */
+  /* width: 100%; */
 }
 .table-data-title {
   grid-area: title;
+}
+
+.table-data-color {
+  grid-area: color2;
+}
+
+.table-data-size {
+  grid-area: size;
 }
 .table-data-price {
   grid-area: price;
@@ -38,6 +48,13 @@
   display: flex;
 }
 
+.data-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
 .table-data {
   position: relative;
   padding: 0 5px;
@@ -47,10 +64,9 @@
   align-items: center;
 }
 
-.cart-product-img {
-  max-width: 120px;
-  min-height: 90px;
-  max-height: 120px;
+.table-img {
+  max-width: 300px;
+  width: 100%;
   object-fit: cover;
 }
 
@@ -89,6 +105,19 @@
   text-align: right;
 }
 
+.table-color {
+  width: 40px;
+  height: 20px;
+  border-radius: 3px;
+  border: 1px solid grey;
+  font-size: 0;
+}
+
+.table-size {
+  color: var(--white);
+  font-size: 2rem;
+}
+
 .table-quantity-input {
   height: 40px;
   width: 70px;
@@ -107,6 +136,54 @@
 @media (max-width: 850px) {
   .table-row {
     padding: 7px 15px;
+
+    grid-template-areas:
+      "image  title"
+      "price  price"
+      "color2 color2"
+      "size size"
+      "quantity  quantity"
+      "total-price total-price"
+      "remove .";
+
+    grid-template-areas:
+      "image image title  title"
+      "image image price  price"
+      "image image color2 color2"
+      "image image size size"
+      "image image quantity  quantity"
+      "image image total-price total-price"
+      "image image remove .";
+  }
+
+  .table-header {
+    display: block;
+    top: 0;
+    left: 0px;
+    text-align: left;
+  }
+
+  .table-data.table-data-title {
+    margin: 10px 0;
+    justify-content: center;
+  }
+  .table-row .table-data-title .table-header {
+    display: none;
+  }
+
+  .table-data {
+    /* text-align: left; */
+    margin-bottom: 5px;
+    justify-content: flex-end;
+    padding: 0;
+  }
+
+  .table-data-image {
+    justify-content: flex-start;
+  }
+
+  .table-data-remove {
+    justify-content: center;
   }
 }
 @media (max-width: 600px) {
@@ -115,6 +192,8 @@
     grid-template-areas:
       "image  title"
       "price  price"
+      "color2 color2"
+      "size size"
       "quantity  quantity"
       "total-price total-price"
       "remove .";
@@ -135,6 +214,12 @@
     margin-bottom: 5px;
     justify-content: flex-end;
     padding: 0;
+  }
+
+  .table-img {
+    max-width: 120px;
+    min-height: 90px;
+    max-height: 120px;
   }
 
   .table-data-image {

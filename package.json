@@ -16,6 +16,7 @@
     "react-responsive-carousel": "^3.2.12",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "sha256": "^0.2.0",
     "swiper": "^6.4.11",
     "validator": "^13.5.2",
     "web-vitals": "^0.2.4"

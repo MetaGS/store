@@ -73,8 +73,8 @@ export const setCart = (array) => {
   };
 };
 
-export const addCartOrder = (cartOrdersArray) => {
-  return { type: ADD_CART_ORDER, payload: cartOrdersArray };
+export const addCartOrder = (cartOrderItem) => {
+  return { type: ADD_CART_ORDER, payload: cartOrderItem };
 };
 
 //unification, I can use as removeFrom['cart']()
