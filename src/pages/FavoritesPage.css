@@ -1,6 +1,6 @@
 .favorites-page {
   margin-top: 50px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 .favorites-subtitle {
@@ -18,7 +18,7 @@
   max-width: 250px;
   /* min-width: 250px; */
   margin-right: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 
 .favorite-product {

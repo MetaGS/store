@@ -37,7 +37,7 @@ const steps = [
     ),
   },
   {
-    stepHeader: "Add to the Cart",
+    stepHeader: "Add to Cart",
     stepBody: (
       <div className="steps-to-order">
         <h1>4. Add the product to the cart</h1>
@@ -51,7 +51,7 @@ const steps = [
     ),
   },
   {
-    stepHeader: "Order from the cart",
+    stepHeader: "proceed in cart page",
     stepBody: (
       <div className="steps-to-order">
         <h1>4. Order and fill properties</h1>

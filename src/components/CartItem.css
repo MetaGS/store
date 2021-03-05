@@ -1,12 +1,33 @@
 .table-row {
-  display: flex;
+  display: grid;
   justify-content: space-between;
   background-color: var(--primary-color);
-  border-radius: 20px;
+  border-radius: 10px;
   border: 1px solid var(--primary-grey);
   padding: 16px 30px;
 
   margin-top: 30px;
+
+  grid-template-areas: "image title price quantity total-price remove";
+}
+
+.table-data-image {
+  grid-area: image;
+}
+.table-data-title {
+  grid-area: title;
+}
+.table-data-price {
+  grid-area: price;
+}
+.table-data-quantity {
+  grid-area: quantity;
+}
+.table-data-total-price {
+  grid-area: total-price;
+}
+.table-data-remove {
+  grid-area: remove;
 }
 
 .table-row-mobile {
@@ -45,7 +66,7 @@
   left: 0;
 }
 
-.table-header.first-row {
+.table-row.first-row .table-header {
   display: block;
 }
 
@@ -65,30 +86,70 @@
   font-size: 2rem;
   color: var(--white);
   min-width: 50px;
+  text-align: right;
 }
 
 .table-quantity-input {
   height: 40px;
   width: 70px;
-  background-color: #232121;
+  background-color: #3c3c3c;
   border-radius: 5px;
   font-size: 2rem;
   color: var(--white);
   text-align: center;
 }
 
+.table-quantity-input {
+  width: 63px;
+  margin-right: -5px;
+}
+
 @media (max-width: 850px) {
   .table-row {
-    flex-direction: column;
+    padding: 7px 15px;
   }
 }
 @media (max-width: 600px) {
   .table-row {
+    padding: 15px 15px;
+    grid-template-areas:
+      "image  title"
+      "price  price"
+      "quantity  quantity"
+      "total-price total-price"
+      "remove .";
   }
-
   .table-header {
     display: block;
+    top: 0;
+    left: 0px;
+    text-align: left;
   }
+
+  .table-row .table-data-title .table-header {
+    display: none;
+  }
+
+  .table-data {
+    /* text-align: left; */
+    margin-bottom: 5px;
+    justify-content: flex-end;
+    padding: 0;
+  }
+
+  .table-data-image {
+    justify-content: flex-start;
+  }
+
+  .table-data-remove {
+    justify-content: center;
+  }
+
+  /* .table-row {
+  }
+
+  
+
 
   .table-row-mobile {
     display: flex;
@@ -101,5 +162,5 @@
   .table-row-mobile-block2 {
     display: flex;
     flex-direction: column;
-  }
+  } */
 }

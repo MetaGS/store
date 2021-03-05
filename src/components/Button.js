@@ -9,6 +9,7 @@ const Button = ({
   children,
   ...props
 }) => {
+  console.log(props);
   return (
     <>
       <button

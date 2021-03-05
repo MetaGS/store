@@ -3,6 +3,7 @@
   margin: 0 auto;
   list-style: none;
   overflow: hidden;
+  overflow-x: auto;
   font-size: 1.5rem;
   display: flex;
   --on-hover-color: var(--primary-color);
@@ -20,7 +21,9 @@
   padding: 10px 0 10px 45px;
   background: var(--background-color);
   position: relative;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   text-decoration: none;
   /* float: left; */
   height: 100%;
@@ -99,4 +102,20 @@
 .how-to-control-next {
   /* display: inline-block; */
   margin-left: auto;
+}
+
+@media (max-width: 850px) {
+}
+@media (max-width: 600px) {
+  .how-to-step {
+    font-size: 1.3rem;
+  }
+
+  .how-to-step:first-child a {
+    padding: 3px 0 3px 15px;
+  }
+
+  .how-to-step a {
+    padding: 6px 0 6px 40px;
+  }
 }

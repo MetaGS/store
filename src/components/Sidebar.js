@@ -2,15 +2,22 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import DescriptionP from "./DescriptionP";
 import PropTypes from "prop-types";
+import useState from "../storage";
 
 import { GrCircleQuestion as AiOutlineQuestion } from "react-icons/gr";
+import { signOut } from "../firebase/auth";
 
 import SignButtons from "./SignButtons";
 import "./Sidebar.css";
+import useStorage from "../storage";
+import Button from "./Button";
 const Sidebar = (props) => {
+  const [{ userSignedIn }, dispatch] = useStorage();
+
   return (
     <div className="sidebar-comp">
-      <SignButtons className="sidebar-sign" />
+      {!userSignedIn && <SignButtons className="sidebar-sign" />}
+
       <ul className="sidebar-links">
         <li className="sidebar-link">
           <NavLink to="/products">Collections</NavLink>
@@ -33,6 +40,11 @@ const Sidebar = (props) => {
           maiores rerum harum explicabo rem ut?
         </DescriptionP>
       </div>
+      {userSignedIn && (
+        <Button type="secondary" className="sidebar-logout" onClick={signOut}>
+          Log out
+        </Button>
+      )}
       <div className="sidebar-utils">
         <button>
           <NavLink to="/contact-us">

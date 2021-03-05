@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Container from "../components/Container";
-import UtilsBlock from "../components/UtilsBlock";
+import { Utils as UtilsBlock, BackButton } from "../components/UtilsBlock";
 import "./Careers.css";
 import Header from "../components/Header";
 import JobBlock from "../components/JobBlock";
@@ -24,8 +24,10 @@ const Careers = (props) => {
     <div className="repayment">
       <div className="repay-top">
         <Container>
-          <UtilsBlock className="repay-utils" />
-          <Header data={headerData} colors={colors} />
+          <UtilsBlock className="repay-utils">
+            <BackButton type="primary-button">BACK</BackButton>
+          </UtilsBlock>
+          <Header data={headerData} colors={colors} linkTo="/about" />
         </Container>
       </div>
       <Container>

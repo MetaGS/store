@@ -17,3 +17,6 @@ New Project = Store
 13. see more, carousel, mobile version, get help, advanced search, profile,
 14. firestore rules, firebase functions, make all link click to > button or a clicks;
 15. see-more on the main page
+16. Profile page
+17. Redo frontend cart, firestore mechanism
+18. add downloading spinners, create before one in svg

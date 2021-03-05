@@ -91,11 +91,7 @@ const JobBlock = ({ data = dataDefault }) => {
             return <JobIcon {...data} key={data?.placeholder + index} />;
           })}
         </ul>
-        <Button
-          type="rounded md primary"
-          className="job-apply"
-          onClick={applyToJob}
-        >
+        <Button type="  primary" className="job-apply" onClick={applyToJob}>
           Apply
         </Button>
       </div>

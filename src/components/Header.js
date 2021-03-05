@@ -18,7 +18,13 @@ const defaultData = {
   buttonText: "See Now",
 };
 
-const Header = ({ data = defaultData, colors = {}, className = "" }) => {
+export const HeaderWrapper = ({
+  children,
+  data,
+  colors = {},
+  className = "",
+  linkTo = "/products",
+}) => {
   return (
     <header
       className={`header-block ${className}`}
@@ -28,14 +34,54 @@ const Header = ({ data = defaultData, colors = {}, className = "" }) => {
         "--title-color": colors.title ?? colors.main ?? "rgb(231, 229, 229)",
       }}
     >
-      <div className="topline-header">{data.intro}</div>
-      <TitleAbhaya className="header-title">{data.title}</TitleAbhaya>
-      <Description className="subtitle-header">{data.subtitle}</Description>
-      <p className="desc-header">{data.description}</p>
+      {children}
       <Button type="rounded primary md" className="btn-header">
-        <Link to="/products">{data.buttonText}</Link>
+        <Link to={linkTo}>{data.buttonText}</Link>
       </Button>
     </header>
+  );
+};
+
+export const HeaderTopline = ({ children, className = "" }) => {
+  return <div className={`topline-header`}>{children}</div>;
+};
+
+export const HeaderTitle = ({ className = "", children = "", ...props }) => {
+  return (
+    <TitleAbhaya className={`header-title ${className}`} {...props}>
+      {children.split(" ").map((word) => {
+        return (
+          <>
+            {word} <br />
+          </>
+        );
+      })}
+    </TitleAbhaya>
+  );
+};
+
+export const HeaderSubtitle = ({ children, className = "", ...props }) => {
+  return (
+    <Description className={`subtitle-header ${className}`} {...props}>
+      {children}
+    </Description>
+  );
+};
+
+export const HeaderDescription = ({ children, className, ...props }) => {
+  return <p className={`desc-header ${className}`}>{children}</p>;
+};
+
+const Header = ({ data = defaultData, ...props }) => {
+  const { intro, title, subtitle, description, ...leftData } = data;
+
+  return (
+    <HeaderWrapper {...props} data={leftData}>
+      <HeaderTopline>{intro}</HeaderTopline>
+      <HeaderTitle>{title}</HeaderTitle>
+      <HeaderSubtitle>{subtitle}</HeaderSubtitle>
+      <HeaderDescription>{description}</HeaderDescription>
+    </HeaderWrapper>
   );
 };
 

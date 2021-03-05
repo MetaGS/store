@@ -45,7 +45,6 @@
 .sort-items {
   display: flex;
   width: 100%;
-  overflow: scroll;
 }
 
 @media (max-width: 600px) {
@@ -80,5 +79,13 @@
 
   .active-desc {
     top: 3px;
+  }
+}
+
+@media (max-width: 850px) {
+}
+@media (max-width: 600px) {
+  .sort-items {
+    overflow: scroll;
   }
 }

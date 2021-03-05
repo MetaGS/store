@@ -21,7 +21,7 @@
 }
 
 .job-title {
-  font-weight: 600;
+  font-weight: 400;
   font-family: var(--roboto);
   font-size: 3.5rem;
   line-height: 1.1;
@@ -95,4 +95,31 @@
 
 .job-submit-btn.btn {
   max-width: 400px;
+}
+
+@media (max-width: 700px) {
+  .job-column1 {
+    max-width: none;
+  }
+}
+@media (max-width: 600px) {
+  .job-block {
+    padding: 0;
+  }
+
+  .job-column {
+    padding: 25px 20px;
+  }
+
+  .job-title {
+    font-size: 2.5rem;
+  }
+
+  .job-image {
+    border-radius: 3px;
+  }
+
+  .job-column2 {
+    padding-top: 0;
+  }
 }

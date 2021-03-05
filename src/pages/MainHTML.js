@@ -6,7 +6,12 @@ import SecondaryContainer from "../components/SecondaryContainer";
 import Products from "../components/Products";
 
 import "./MainHTML.css";
-import Header from "../components/Header";
+import {
+  HeaderWrapper as Header,
+  HeaderTitle,
+  HeaderTopline,
+  HeaderSubtitle,
+} from "../components/Header";
 import videoBg from "../assets/about-page-video1.mp4";
 import ProductsPage from "./ProductsPage";
 import SignButtons from "../components/SignButtons";
@@ -14,25 +19,16 @@ import About from "./About";
 import Footer from "../components/Footer";
 import pic1 from "../assets/about-page-pic2.jpg";
 
-const data = {
-  intro: "t-fit",
-  title: "Bring  Dreams True",
-  subtitle: "best collection in bishkek",
-  description: `It is a long established fact that a reader will be distracted by
-  the readable content of a page when looking at its layout. The
-  point of using Lorem Ipsum is that it has a more-or-less normal`,
-  buttonText: "See collection now",
-};
-
 const MainHTML = (props) => {
   const [slideIndex, setSlideIndex] = useState(0);
   let [bounceScroll, setBounceScroll] = useState(false);
   const [stopSwipe, setStopSwipe] = useState(false);
+  const [backgroundVideoDownloading, setVideoDownloading] = useState(true);
   const numberOfPages = 2; //this is zero based index so there is 2 pages
 
-  const checkEvent = (e) => {
-    console.log(e.type);
-  };
+  // const checkEvent = (e) => {
+  //   console.log(e.type);
+  // };
 
   const stopPropagation = (e) => {
     console.log(e);
@@ -60,9 +56,6 @@ const MainHTML = (props) => {
     const { scrollHeight, scrollTop, offsetHeight } = slideTopElement;
     const slideOnHisBottom = scrollHeight - scrollTop - offsetHeight < 20;
     const slideOnHisTop = scrollTop < 20;
-    console.log("slide on his bottom ", slideOnHisBottom);
-    console.log("slide on his top ", slideOnHisTop);
-    console.log("vector", vector);
     if (vector === "top") {
       if (slideOnHisTop) return true;
       return false;
@@ -76,7 +69,6 @@ const MainHTML = (props) => {
     let index = slideIndex;
     const deltaY = e.deltaY < 0 ? "top" : "bottom";
 
-    console.log("%cscrolls", "color: red; font-size:1.2rem;");
     if (!bounceScroll) {
       setBounceScroll((bounceState) => true);
       setTimeout(() => {
@@ -93,41 +85,44 @@ const MainHTML = (props) => {
   };
 
   const onScroll = (e) => {
-    console.log("onWheel runs");
     slidePage(e);
   };
 
   const winDoc = window.document.documentElement;
   return (
     <>
-      <div
-        className="main-page main main-html"
-        onWheel={onScroll}
-        onScroll={() => {
-          console.log("its top div");
-        }}
-      >
+      <div className="main-page main main-html" onWheel={onScroll}>
         {/* uncomment at production */}
+        {backgroundVideoDownloading && (
+          <img className="video-background-about" src={pic1} />
+        )}
         {/* <video
           className="video-background-about"
           autoPlay
           muted
           loop
+          onLoad={() => {
+            setVideoDownloading(false);
+          }}
           src={videoBg}
           type="video/mp4"
         /> */}
-        <div>clientHeight:{winDoc.clientHeight}</div>
-        <div>offsetHeight:{winDoc.offsetHeight}</div>
+        {/* <div>clientHeight:{winDoc.clientHeight}</div>
+        <div>offsetHeight:{winDoc.offsetHeight}</div> */}
 
         <div className="slide-main-page  slide-me">
           <div className="row-about">
             <div className="column1-about column-about">
               <SecondaryContainer>
                 <Header
-                  data={data}
-                  colors={{ title: "#3a3937" }}
+                  data={{ buttonText: "See collection now" }}
+                  colors={{ title: "lightgray" }}
                   className="header-main-html"
-                />
+                >
+                  <HeaderTopline>t-fit</HeaderTopline>
+                  <HeaderTitle>Bring Dreams True</HeaderTitle>
+                  <HeaderSubtitle>Best Collection in Bishkek</HeaderSubtitle>
+                </Header>
 
                 <SeeMore />
               </SecondaryContainer>
@@ -147,9 +142,9 @@ const MainHTML = (props) => {
 
           {/*  */}
         {/* </div> */}
-        <div className="main-auto-height">
+        {/* <div className="main-auto-height">
           <ProductsPage className="main-page-products" />
-        </div>
+        </div> */}
 
         <div className="wrapper-footer ">
           {/* <img src={pic1} className="video-background-footer" alt="" /> */}

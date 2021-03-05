@@ -66,3 +66,19 @@
 .footer-sign-buttons {
   justify-self: flex-end;
 }
+
+.video-background-about {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 850px) {
+}
+@media (max-width: 600px) {
+}
