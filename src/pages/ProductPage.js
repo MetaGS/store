@@ -34,7 +34,6 @@ const ProductPage = (props) => {
   let {
     title = "No title Entered",
     desc: description = "No description entered",
-
     colors = [],
     price = 0,
     sizes = [],

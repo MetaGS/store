@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import useControlField from "../hooks/useControlField";
+import useControlCart from "../hooks/useControlCart";
 import useStorage from "../storage";
 
 import Button from "../components/Button";
@@ -14,26 +14,28 @@ const CartItem = ({
   updateTotalPrice = () => {},
   firstRow = false,
 }) => {
-  const { removeFromField = () => {} } = useControlField("cart");
+  const { removeFromField, updateItemInField } = useControlCart("cartOrders");
   const [state, dispatch] = useStorage();
 
   const {
     title,
-    desc,
-    photoUrls = ["https://via.placeholder.com/200"],
+    image = ["https://via.placeholder.com/200"],
     price = 0,
-    id,
-    colors,
-    sizes,
+    productId,
+    cartOrderId,
+    color,
+    size,
+    quantity: quantityFromStorage,
   } = cartItem;
-  const color = colors?.[0];
 
-  const size = sizes?.[0];
-
-  let [quantity, setQuantity] = useState(1);
+  let [quantity, setQuantity] = useState(quantityFromStorage);
 
   let quantityChange = (e) => {
+    let newQuantity = Number(e.target.value);
     setQuantity(e.target.value);
+
+    const dbUpdateObject = { ...cartItem, quantity: newQuantity };
+    !Number.isNaN(newQuantity) && updateItemInField(dbUpdateObject);
     updateTotalPrice(e.target.value * +price);
   };
 
@@ -46,7 +48,7 @@ const CartItem = ({
       <div className="table-data table-data-image">
         <span className="table-header"></span>
         <div className="data data-image">
-          <img src={photoUrls[0]} alt="cart product" className="table-img" />
+          <img src={image} alt="cart product" className="table-img" />
         </div>
       </div>
 
@@ -54,7 +56,7 @@ const CartItem = ({
         <span className={`table-header ${!firstRow ?? "first-row"}`}>
           {"Name"}
         </span>
-        <Link to={`products/${id}`}>
+        <Link to={`products/${productId}`}>
           <h4 className="data title-sm">{limitText(title, 30)}</h4>
         </Link>
       </div>
@@ -82,6 +84,7 @@ const CartItem = ({
           <input
             type="number"
             min="0"
+            step="1"
             className="table-quantity-input"
             value={quantity}
             onChange={quantityChange}
@@ -101,7 +104,7 @@ const CartItem = ({
             type="primary-button-linear sm"
             text={"Remove"}
             onClick={() => {
-              removeFromField(id);
+              removeFromField(cartOrderId);
               updateTotalPrice(0);
             }}
           />

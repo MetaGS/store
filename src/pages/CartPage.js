@@ -16,10 +16,11 @@ import "./CartPage.css";
 
 const CartPage = (props) => {
   const [state, dispatch] = useStorage();
-  const { productsByField = [] } = useControlField("cart");
+  // const { productsByField = [] } = useControlField("cart");
+  const { cartOrders: productsByField } = state;
   const [totalPrice, setTotalPrice] = useState([]);
   const cart = state.cart;
-  const itemsInCart = cart.length;
+  const itemsInCart = productsByField.length;
 
   const updateTotalPrice = (index) => (itemTotalPrice) => {
     setTotalPrice((prevPriceList) => {
@@ -49,7 +50,7 @@ const CartPage = (props) => {
               <CartItem
                 cartItem={cartItem}
                 firstRow={index === 0 ? true : false}
-                key={cartItem.id}
+                key={cartItem.cartOrderId}
                 updateTotalPrice={updateTotalPrice(index)}
               />
             );

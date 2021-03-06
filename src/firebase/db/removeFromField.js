@@ -1,8 +1,23 @@
 import firebase from "firebase/app";
+import updateUserField from "./updateUserField";
 
 export default (productId, userId, field) => {
   const db = firebase.firestore();
   const userRef = db.collection("users").doc(userId);
+
+  // const filter = (fieldDb, updateArray) => {
+  //   return dbField.filter((idsInField) => {
+  //     return idsInField !== productId;
+  //   });
+  // };
+
+  // const removeFromField = updateUserField(
+  //   userId,
+  //   field,
+  //   productId,
+  //   undefined,
+  //   filter
+  // );
 
   const fieldResponse = userRef
     .get()

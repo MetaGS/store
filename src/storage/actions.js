@@ -10,6 +10,7 @@ import {
   SET_FAVORITES,
   ADD_CART_ORDER,
   REMOVE_FROM_CART_ORDER,
+  SET_CART_ORDERS,
 } from "./types";
 
 export const signIn = (user) => {
@@ -74,20 +75,29 @@ export const setCart = (array) => {
   };
 };
 
-export const addCartOrder = (cartOrderItem) => {
+export const setCartOrders = (cartOrders) => {
+  return { type: SET_CART_ORDERS, payload: cartOrders };
+};
+
+export const addCartOrderAction = (cartOrderItem) => {
   return { type: ADD_CART_ORDER, payload: cartOrderItem };
+};
+
+export const removeFromCartOrders = (cartOrderId) => {
+  return { type: REMOVE_FROM_CART_ORDER, payload: cartOrderId };
 };
 
 //unification, I can use as removeFrom['cart']()
 export const removeFrom = {
   favorites: removeFromFavoritesAction,
   cart: removeFromCartAction,
+  cartOrders: removeFromCartOrders,
 };
 
 export const addTo = {
   favorites: addToFavoritesAction,
   cart: addToCartAction,
-  cartOrder: addCartOrder,
+  cartOrders: addCartOrderAction,
 };
 
 export const setField = {

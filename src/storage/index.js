@@ -9,7 +9,7 @@ const initialState = {
   products: [],
   cart: [],
   favorites: [],
-  cartOrder: [],
+  cartOrders: [],
 };
 
 export const StorageInitialize = ({ children }) => {

@@ -11,3 +11,4 @@ export const SET_FAVORITES = "SET_FAVORITES";
 export const SET_CART = "SET_CART";
 export const ADD_CART_ORDER = "ADD_CART_ORDER";
 export const REMOVE_FROM_CART_ORDER = "REMOVE_FROM_CART_ORDER";
+export const SET_CART_ORDERS = "SET_CART_ORDERS";

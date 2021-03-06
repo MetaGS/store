@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import {
-  addToField as addToFieldInDb,
+  updateUserField as updateUserFieldDB,
   removeFromField,
+  addCartOrderObject,
+  removeCartOrderById,
   getProductsAsArray,
+  updateCartOrderObject,
 } from "../firebase/db";
 import { addTo, removeFrom, setField } from "../storage/actions";
 import useStorage from "../storage";
@@ -15,6 +18,8 @@ const defaultControl = {
   getProductsByField() {
     return Promise.resolve([]);
   },
+  updateItemInField() {},
+  includes() {},
 };
 
 const useControlField = (field) => {
@@ -38,7 +43,7 @@ const useControlField = (field) => {
   useEffect(() => {
     control?.setOwnState?.(state);
 
-    control.getProductsByField?.()?.then((products) => {});
+    // control.getProductsByField?.()?.then((products) => {});
     control.userSignedIn = state.userSignedIn;
     //need to update again by setProductsByField()
   }, [state[field], control, state.userSignedIn]);
@@ -68,17 +73,40 @@ class ControlField {
     if (this.includes(fieldItemObject)) {
       return false;
     }
-
-    this.userSignedIn // better to use Proxy, in the future will change it
-      ? await addToFieldInDb(fieldItemObject, this.userId, this.field) // need to do again
+    // debugger;
+    const status = this.userSignedIn // better to use Proxy, in the future will change it
+      ? await addCartOrderObject(this.userId, this.field, fieldItemObject) // need to do again
       : this.localStorage.addToField(fieldItemObject);
-    this.dispatch(addTo[this.field]([fieldItemObject]));
+    this.dispatch(addTo[this.field](fieldItemObject));
+  };
+
+  updateItemInField = async (fieldItemObject) => {
+    const status = this.userSignedIn
+      ? await updateCartOrderObject(this.userId, this.field, fieldItemObject)
+      : this.localStorage.updateItemInField(fieldItemObject);
+    status
+      ? console.log(
+          "%cUpdated Success",
+          "color:green; font-size:1.2rem;padding-bottom:5px;border-bottom: 1px solid green;"
+        )
+      : console.log("%cUpdated error", "color:red; font-size:1.2rem;");
+    return status;
   };
 
   removeFromField = async (fieldItemId) => {
-    this.userSignedIn
-      ? await removeFromField(fieldItemId, this.userId, this.field)
+    const result = this.userSignedIn
+      ? await removeCartOrderById(this.userId, this.field, fieldItemId)
       : this.localStorage.removeFromField(fieldItemId);
+
+    if (result) {
+      console.log(
+        "%cDeleted",
+        "color:green; font-size:1.2rem;padding-bottom:5px;border-bottom: 1px solid green;"
+      );
+    } else {
+      console.log("%cNot Deleted", "color:red; font-size:1.2rem;");
+    }
+
     this.dispatch(removeFrom[this.field](fieldItemId));
   };
 

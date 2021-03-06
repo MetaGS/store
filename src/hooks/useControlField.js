@@ -79,6 +79,7 @@ class ControlField {
   };
 
   getProductsByField = () => {
+    // debugger;
     return getProductsAsArray(this.field, this.state).then((productArray) => {
       this.productsByField = [...productArray];
       return productArray;

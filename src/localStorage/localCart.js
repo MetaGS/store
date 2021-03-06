@@ -46,7 +46,7 @@ export default class LocalField {
     return field;
   }
 
-  hasInField(idHash) {
+  includes(idHash) {
     const field = this.getField();
 
     const doesInclude = field.find((cartOrder) => {
@@ -67,7 +67,7 @@ export default class LocalField {
     if (!this.storageIsAvaiable) return false;
 
     const field = this.getField(this.fieldName);
-    if (field.includes(cartOrderObject.cartOrderId)) {
+    if (this.includes(cartOrderObject.cartOrderId)) {
       console.log(
         `%cAlready in the ${this.fieldName}`,
         "color: yellow; font-size: 1.2rem;"
@@ -78,8 +78,23 @@ export default class LocalField {
     let newField = [...field, cartOrderObject];
 
     this.setField(newField);
-
     return this.getField();
+  }
+
+  updateItemInField(cartOrderObject) {
+    if (!this.storageIsAvaiable) return false;
+    let field = this.getField(this.fieldName);
+
+    if (this.includes(cartOrderObject.cartOrderId)) {
+      field = field.filter(
+        (order) => cartOrderObject.cartOrderId !== order.cartOrderId
+      );
+    }
+
+    let newUpdatedField = [...field, cartOrderObject];
+
+    this.setField(newUpdatedField);
+    return newUpdatedField;
   }
 
   removeFromField(fieldItemId) {

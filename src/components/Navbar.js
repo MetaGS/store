@@ -19,7 +19,7 @@ const Navbar = (props) => {
   const [state] = useStorage();
   const [sidebar, setSidebar] = useState(false);
 
-  const itemsInCart = state.cart.length;
+  const itemsInCart = state.cartOrders.length;
   let { wideSearch, userSignedIn } = state;
 
   return (
@@ -27,6 +27,13 @@ const Navbar = (props) => {
       <nav className={wideSearch ? "nav--products" : "top-nav"}>
         <Container>
           <div className="left">
+            <button
+              onClick={() => {
+                console.log(state);
+              }}
+            >
+              Show state
+            </button>
             <NavLink to="/" activeClassName="active">
               <img
                 src={logo}
