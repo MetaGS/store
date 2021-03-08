@@ -7,6 +7,11 @@ import { AiFillCreditCard } from "react-icons/ai";
 import { FaAddressCard } from "react-icons/fa";
 import { IoIosPerson } from "react-icons/io";
 import { MdContactPhone } from "react-icons/md";
+import {
+  handleMinMaxDate,
+  isNotANumber,
+  useHandlers,
+} from "../utils/orderPageUtilsAndHandlers";
 
 import "./OrderPage.css";
 import Container from "../components/Container";
@@ -27,64 +32,11 @@ const OrderPage = (props) => {
     return (previous += current.price);
   }, 0);
 
-  const [creditCard, setCreditCard] = useState({
-    number: "",
-    expire: "",
-    cvv: "",
-  });
+  const [
+    creditCard,
+    { handleCvv, handleCreditCardNumber, handleExpiration },
+  ] = useHandlers();
 
-  const handleCvv = ({ target }) => {
-    if (isNotANumber(target.value)) return;
-
-    setCreditCard({ ...creditCard, cvv: target.value });
-  };
-
-  const handleExpiration = ({ target }) => {
-    let { value, name } = target;
-    const oldValue = creditCard.expire;
-    const newValLength = value.length;
-    const oldValLength = creditCard.expire.length;
-    const removingCharacter = oldValLength > newValLength; // if addingNewCharacter is false
-    //it means that we are removing
-    if (removingCharacter) {
-      setCreditCard({ ...creditCard, expire: value });
-      return;
-    }
-
-    if (isNotANumber(value)) return;
-
-    if (newValLength === 2 && newValLength >= oldValLength) value = value + "/";
-    else if (newValLength < oldValLength && newValLength === 3) {
-      value = value.slice(0, 2);
-    } else if (newValLength === 3 && oldValue[2] !== "/" && value[2] !== "/") {
-      value = `${value.slice(0, 2)}/${value.slice(2)}`;
-    }
-    setCreditCard({ ...creditCard, expire: value });
-  };
-
-  const handleCreditCardNumber = ({ target }) => {
-    let { value, name } = target;
-    if (isNotANumber(value)) return;
-
-    if (value.length > creditCard.number.length) {
-      value = value.split(" ").join("");
-      let valueWithWhiteSpace = "";
-
-      for (
-        ;
-        (value.length % 4 === 0 && value.length > 1) || value.length >= 4;
-
-      ) {
-        valueWithWhiteSpace += value.slice(0, 4) + " ";
-        value = value.slice(4);
-      }
-      valueWithWhiteSpace += value;
-
-      setCreditCard({ ...creditCard, [name]: valueWithWhiteSpace });
-    } else {
-      setCreditCard({ ...creditCard, [name]: value });
-    }
-  };
   return (
     <div className="order-page">
       <Container>
@@ -200,30 +152,5 @@ const OrderPage = (props) => {
 };
 
 OrderPage.propTypes = {};
-
-const handleMinMaxDate = (max = 0) => {
-  //if you did not pass max argument, then used as min, and min is Today. If you pass max
-  // then max date you can choose starting from now. Counted in Months
-  const today = new Date();
-  const month = today.getMonth() + 1 + max;
-  const day = today.getDate();
-
-  const addZero = (date) => {
-    return date < 10 ? "0" + date : date;
-  };
-  const minDate = `${today.getFullYear()}-${addZero(month)}-${addZero(day)}`;
-  return minDate;
-};
-
-const isNotANumber = (value) => {
-  let cvvOrCardNumber = value.includes("/")
-    ? value.split("/")
-    : value.split(" ");
-  if (value[value.length - 1] === "/" && value.length !== 3) return true; //we are not allowing enter [/], allow to enter [/] only if it is the 3d character: meaning [32/]
-
-  //check if value entered in input field is number, joining because
-  if (Number.isNaN(Number(cvvOrCardNumber.join("")))) return true;
-  return false;
-};
 
 export default OrderPage;
