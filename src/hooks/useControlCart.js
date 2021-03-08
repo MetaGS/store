@@ -42,7 +42,6 @@ const useControlField = (field) => {
 
   useEffect(() => {
     control?.setOwnState?.(state);
-
     // control.getProductsByField?.()?.then((products) => {});
     control.userSignedIn = state.userSignedIn;
     //need to update again by setProductsByField()
@@ -125,8 +124,8 @@ class ControlField {
     this.state = state;
   };
 
-  includes = (fieldItemObject) => {
-    const cartOrders = this.state[this.field];
+  includes = (fieldItemObject, userInputCartOrders) => {
+    const cartOrders = userInputCartOrders || this.state[this.field];
     const doesInclude = cartOrders.find((cartOrder) => {
       return cartOrder.cartOrderId === fieldItemObject.cartOrderId;
     });

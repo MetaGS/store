@@ -24,12 +24,22 @@ const AddToCart = ({ productId, color, size, setErrors, product }) => {
     color,
     size,
   });
-  const alreadyInCart = controlCartUpdgrade.includes(cartOrder);
+
+  const alreadyInCart = controlCartUpdgrade.includes(
+    cartOrder,
+    state.cartOrders
+  );
+
+  console.log(alreadyInCart);
+  console.log(
+    "%cAlreade In cart",
+    "color:green; font-size:1.2rem;padding-bottom:5px;border-bottom: 1px solid green;"
+  );
 
   const onAddToCart = (e) => {
     if (color && size) {
       // controlCart.addToField(productId);
-
+      console.log(alreadyInCart);
       console.log(cartOrder);
       controlCartUpdgrade.addToField(cartOrder);
     } else {

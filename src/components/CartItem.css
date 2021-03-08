@@ -3,7 +3,7 @@
   justify-content: space-between;
   background-color: var(--primary-color);
   border-radius: 10px;
-  border: 1px solid var(--primary-grey);
+  border: var(--border-primary);
   padding: 16px 30px;
 
   margin-top: 30px;
@@ -65,7 +65,7 @@
 }
 
 .table-img {
-  max-width: 300px;
+  max-width: 225px;
   width: 100%;
   object-fit: cover;
 }

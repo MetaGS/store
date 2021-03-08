@@ -1,0 +1,134 @@
+.order-page {
+  --icon-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.order-page-title,
+.order-page-total {
+  font-size: 2.5rem;
+  color: var(--black);
+}
+
+.order-page-icon {
+  font-size: var(--icon-size);
+  margin-right: 10px;
+}
+
+.order-page-title {
+  margin-right: auto;
+}
+
+.order-page-total {
+}
+
+.order-details {
+  margin-top: 40px;
+}
+
+.order-form-label {
+  font-size: 1.2rem;
+  margin: 20px 0 10px;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.pay-details,
+.delivery-details,
+.delivery-date-time input {
+  height: 40px;
+  border-radius: 10px;
+  border: 2px solid lightgray;
+  background-color: white;
+  position: relative;
+  padding: 0 40px;
+}
+.pay-details:focus-within,
+.delivery-details:focus-within,
+.delivery-date-time input:focus {
+  border-color: rgb(129, 129, 221);
+}
+
+.pay-details input:focus,
+.delivery-details input:focus,
+.delivery-date-time input {
+  outline: none;
+}
+
+.pay-details {
+  display: flex;
+}
+
+.delivery-details {
+}
+
+/* .delivery-details.mid-size {
+  max-width: 400px;
+} */
+
+.pay-details input,
+.delivery-details input {
+  border: none;
+  height: 100%;
+  font-size: 1.5rem;
+  margin: 0 10px;
+}
+
+.pay-details input::placeholder {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.credit-card-icon {
+  position: absolute;
+  left: 0;
+  font-size: var(--icon-size);
+  top: 50%;
+  margin-left: 8px;
+  transform: translateY(-50%);
+}
+
+.cd-number {
+  flex-grow: 1;
+}
+
+.cd-expire {
+  margin-left: auto;
+}
+
+.cd-cv {
+}
+
+.delivery-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: stretch;
+}
+
+.detail-row > div {
+  flex-grow: 1;
+  min-width: 270px;
+}
+
+.detail-row > div ~ div {
+  margin-left: 10px;
+}
+
+.delivery-details input {
+}
+
+.delivery-date-time label {
+  display: block;
+}
+
+.delivery-date-time input {
+  padding: 0 20px;
+}
+
+.delivery-date-time input ~ input {
+  margin-left: 10px;
+}

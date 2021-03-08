@@ -47,7 +47,7 @@ html {
     rgba(139, 139, 139, 1),
     rgba(11, 9, 10, 1)
   );
-  --primary-grey: #999898;
+  --primary-grey: #929292;
   --primary-color-text: #333231;
   --black: #000;
   --white: #fff;
@@ -56,6 +56,8 @@ html {
   --media-tablet: 850px;
   --media-mobile: 600px;
   --media-desktop: 1200px;
+
+  --border-primary: 1px outset var(--primary-grey);
 }
 
 body {

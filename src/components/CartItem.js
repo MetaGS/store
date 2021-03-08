@@ -31,7 +31,7 @@ const CartItem = ({
   let [quantity, setQuantity] = useState(quantityFromStorage);
 
   let quantityChange = (e) => {
-    let newQuantity = Number(e.target.value);
+    let newQuantity = Number(e.target.value).toFixed(0);
     setQuantity(e.target.value);
 
     const dbUpdateObject = { ...cartItem, quantity: newQuantity };

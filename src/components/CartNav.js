@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 
 import "./CartNav.css";
 import cart from "../assets/shopping-cart.svg";
+// import { IoMdCart } from "react-icons/io"; may be will change to this icon
+
 const CartNav = ({ items }) => {
   return (
     <div className="cartNav">

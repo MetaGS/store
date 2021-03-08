@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 import useStorage from "../storage";
 import useGetProductsByFieldName from "../hooks/useGetProductsByFieldName";
@@ -64,8 +65,12 @@ const CartPage = (props) => {
               }, 0)}
             </span>
           </div>
-          <div className="cart-order-btn">
-            <Button text="Order" type="primary-button big" />
+          <div className="cart-order-btn-wrapper">
+            <div className="primary-button big btn" role="button">
+              <Link to="/order" className="cart-order-link">
+                Order
+              </Link>
+            </div>
           </div>
         </div>
       </section>
