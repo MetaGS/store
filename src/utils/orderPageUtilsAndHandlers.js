@@ -52,8 +52,9 @@ export const useHandlers = () => {
       return;
     }
     if (isNotANumber(value)) return; //if it is not a number or 3d [/] splash char, then do not allow to enter
-    if (newValLength === 2) value = value + "/";
+    if (newValLength === 2) value = value + "/"; // if it is not deleting, and entered 2nd char, then automatically put [/]
     if (newValLength === 3 && value[2] !== "/") {
+      // if deleted previously, and entered number again, then put [/] between 2nd and 3rd char
       value = `${value.slice(0, 2)}/${value.slice(2)}`;
     }
     setCreditCard({ ...creditCard, expire: value });
@@ -61,26 +62,29 @@ export const useHandlers = () => {
 
   const handleCreditCardNumber = ({ target }) => {
     let { value, name } = target;
+    const valLength = value.length;
     if (isNotANumber(value)) return;
-
-    if (value.length > creditCard.number.length) {
-      value = value.split(" ").join("");
-      let valueWithWhiteSpace = "";
-
-      for (
-        ;
-        (value.length % 4 === 0 && value.length > 1) || value.length >= 4;
-
-      ) {
-        valueWithWhiteSpace += value.slice(0, 4) + " ";
-        value = value.slice(4);
-      }
-      valueWithWhiteSpace += value;
-
-      setCreditCard({ ...creditCard, [name]: valueWithWhiteSpace });
-    } else {
+    // debugger;
+    if (valLength < creditCard.number.length) {
       setCreditCard({ ...creditCard, [name]: value });
+      return;
     }
+
+    let clearValue = value.split(" ").join("");
+    let valueWithWhiteSpace = "";
+
+    for (
+      ;
+      (clearValue.length % 4 === 0 && clearValue.length > 1) ||
+      clearValue.length >= 4; //  using here clearValue.length instead of valLength, because length changes
+
+    ) {
+      valueWithWhiteSpace += clearValue.slice(0, 4) + " ";
+      clearValue = clearValue.slice(4);
+    }
+    valueWithWhiteSpace += clearValue;
+
+    setCreditCard({ ...creditCard, [name]: valueWithWhiteSpace });
   };
 
   return [

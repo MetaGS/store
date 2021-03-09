@@ -29,9 +29,9 @@ const supportTimeType = typeTime.type === "time"; // in case if I want to implem
 const OrderPage = (props) => {
   const [{ cartOrders }, dispatch] = useStorage();
   const totalPrice = cartOrders.reduce((previous, current) => {
-    return (previous += current.price);
+    return (previous += current.price * Number(current.quantity));
   }, 0);
-
+  const formDisabled = totalPrice === 0;
   const [
     creditCard,
     { handleCvv, handleCreditCardNumber, handleExpiration },
@@ -49,7 +49,7 @@ const OrderPage = (props) => {
         </HeaderTitle>
 
         <div className="order-details">
-          <form className="order-form">
+          <form className="order-form" disabled={formDisabled}>
             <label for="c-d" className="order-form-label">
               Credit Card
             </label>
@@ -60,43 +60,58 @@ const OrderPage = (props) => {
                 console.log("focused");
               }}
             >
-              <AiFillCreditCard className="credit-card-icon" />
+              <AiFillCreditCard className="detail-field-icon" />
               <input
                 onChange={handleCreditCardNumber}
                 value={creditCard.number}
                 id="c-d"
                 type="tel"
-                maxLength="19"
+                maxLength="20"
+                size="22"
+                minLength="16" // actually it is 19, wrote 16 just to do not confuse users, because only 16 numbers in card
                 name="number"
                 className="cd-number"
                 placeholder="Card Number"
+                required
               />
-              <input
-                type="tel"
-                name="expire"
-                className="cd-expire"
-                placeholder="MM/YY"
-                maxLength="5"
-                value={creditCard.expire}
-                onChange={handleExpiration}
-              />
-              <input
-                type="tel"
-                name="cvv"
-                className="cd-cv"
-                maxLength="3"
-                value={creditCard.cvv}
-                onChange={handleCvv}
-                placeholder="CVV"
-              />
+              <div className="expire-cvv">
+                <input
+                  type="tel"
+                  name="expire"
+                  className="cd-expire"
+                  placeholder="MM/YY"
+                  maxLength="5"
+                  minLength="4"
+                  value={creditCard.expire}
+                  onChange={handleExpiration}
+                  required
+                />
+                <input
+                  type="tel"
+                  name="cvv"
+                  className="cd-cv"
+                  size="4"
+                  minLength="3"
+                  maxLength="3"
+                  value={creditCard.cvv}
+                  onChange={handleCvv}
+                  placeholder="CVV"
+                  required
+                />
+              </div>
             </div>
             <label for="address" className="order-form-label">
               Delivery address
             </label>
 
             <div className="delivery-details">
-              <FaAddressCard className="credit-card-icon" />
-              <input type="address" id="address" className="delivery-address" />
+              <FaAddressCard className="detail-field-icon" />
+              <input
+                type="address"
+                id="address"
+                className="delivery-address"
+                required
+              />
             </div>
             <div className="detail-row">
               <div>
@@ -104,7 +119,7 @@ const OrderPage = (props) => {
                   Whom to Deliver
                 </label>
                 <div className="delivery-details mid-size">
-                  <IoIosPerson className="credit-card-icon" />
+                  <IoIosPerson className="detail-field-icon" />
                   <input
                     type="text"
                     id="owner"
@@ -118,32 +133,44 @@ const OrderPage = (props) => {
                   Contact number
                 </label>
                 <div className="delivery-details mid-size">
-                  <MdContactPhone className="credit-card-icon" />
-                  <input type="tel" id="owner-tel" className="owner-tel" />
+                  <MdContactPhone className="detail-field-icon" />
+                  <input
+                    type="tel"
+                    id="owner-tel"
+                    className="owner-tel"
+                    required
+                  />
                 </div>
               </div>
             </div>
             <div className="delivery-date-time">
               <label for="address" id="date" className="order-form-label">
-                Preferable time and date
+                Preferable date and time
               </label>
-              <input
-                type="date"
-                name=""
-                min={handleMinMaxDate()}
-                max={handleMinMaxDate(1)}
-                id="date"
-                className="delivery-date"
-                placeholder="2021-07-31 Enter in this format please" // case if browser does not support type="date", if user still enter wrong format date, will handle in server
-              />
-              <input
-                type="time"
-                min="11:00"
-                max="21:00"
-                placeholder="11:00 to 21:00" // in case if browser does not support type="time"
-              />
+              <div className="date-time-input-wrapper">
+                <input
+                  type="date"
+                  name=""
+                  required
+                  min={handleMinMaxDate()}
+                  max={handleMinMaxDate(1)}
+                  id="date"
+                  className="delivery-date"
+                  placeholder="2021-07-31 Enter in this format please" // case if browser does not support type="date", if user still enter wrong format date, will handle in server
+                />
+                <input
+                  type="time"
+                  min="11:00"
+                  max="21:00"
+                  placeholder="11:00 to 21:00" // in case if browser does not support type="time"
+                />
+              </div>
             </div>
-            <Button type="secondary-button">Pay And Submit</Button>
+            <div className="pay-submit-wrapper">
+              <Button type="primary-button" className="pay-submit">
+                Pay And Submit
+              </Button>
+            </div>
           </form>
         </div>
       </Container>

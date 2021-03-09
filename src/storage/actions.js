@@ -11,6 +11,7 @@ import {
   ADD_CART_ORDER,
   REMOVE_FROM_CART_ORDER,
   SET_CART_ORDERS,
+  UPDATE_CART_ORDER_OBJECT,
 } from "./types";
 
 export const signIn = (user) => {
@@ -85,6 +86,10 @@ export const addCartOrderAction = (cartOrderItem) => {
 
 export const removeFromCartOrders = (cartOrderId) => {
   return { type: REMOVE_FROM_CART_ORDER, payload: cartOrderId };
+};
+
+export const updateCartOrderObject = (cartOrderItem) => {
+  return { type: UPDATE_CART_ORDER_OBJECT, payload: cartOrderItem };
 };
 
 //unification, I can use as removeFrom['cart']()

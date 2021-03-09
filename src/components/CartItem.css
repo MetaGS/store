@@ -1,6 +1,6 @@
 .table-row {
   display: grid;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: var(--primary-color);
   border-radius: 10px;
   border: var(--border-primary);
@@ -65,7 +65,7 @@
 }
 
 .table-img {
-  max-width: 225px;
+  max-width: 150px;
   width: 100%;
   object-fit: cover;
 }
@@ -90,6 +90,8 @@
   font-family: var(--abhaya);
   color: var(--white);
   font-size: 1.7rem;
+  margin: 0 5px;
+  max-width: 150px;
 }
 
 .desc-sm {
@@ -101,8 +103,8 @@
 .table-price {
   font-size: 2rem;
   color: var(--white);
-  min-width: 50px;
-  text-align: right;
+  min-width: 70px;
+  text-align: center;
 }
 
 .table-color {
@@ -181,6 +183,13 @@
   .table-data-image {
     justify-content: flex-start;
   }
+  .table-img {
+    max-width: 300px;
+  }
+
+  .table-price {
+    text-align: right;
+  }
 
   .table-data-remove {
     justify-content: center;
@@ -189,6 +198,7 @@
 @media (max-width: 600px) {
   .table-row {
     padding: 15px 15px;
+    justify-content: space-between;
     grid-template-areas:
       "image  title"
       "price  price"

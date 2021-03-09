@@ -22,6 +22,7 @@ const CartPage = (props) => {
   const [totalPrice, setTotalPrice] = useState([]);
   const cart = state.cart;
   const itemsInCart = productsByField.length;
+  const cartIsEmpty = itemsInCart === 0;
 
   const updateTotalPrice = (index) => (itemTotalPrice) => {
     setTotalPrice((prevPriceList) => {
@@ -66,11 +67,13 @@ const CartPage = (props) => {
             </span>
           </div>
           <div className="cart-order-btn-wrapper">
-            <div className="primary-button big btn" role="button">
-              <Link to="/order" className="cart-order-link">
-                Order
-              </Link>
-            </div>
+            {!cartIsEmpty && (
+              <div className="primary-button big btn" role="button">
+                <Link to="/order" className="cart-order-link">
+                  Order
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </section>

@@ -14,6 +14,7 @@ import {
   ADD_CART_ORDER,
   REMOVE_FROM_CART_ORDER,
   SET_CART_ORDERS,
+  UPDATE_CART_ORDER_OBJECT,
 } from "./types";
 
 export default (state, action) => {
@@ -78,6 +79,15 @@ export default (state, action) => {
         ...state,
         cartOrders: [...filterCartOrders, action.payload],
       };
+
+    case UPDATE_CART_ORDER_OBJECT:
+      let { value: newValue, update } = action.payload;
+      let findObjectRef = state.cartOrders.find((order) => {
+        return order.cartOrderId === action.payload.cartOrderId;
+      });
+      debugger;
+      findObjectRef && (findObjectRef[update] = newValue);
+      return state;
 
     case REMOVE_FROM_CART_ORDER:
       let removedFromCartOrders = state.cartOrders.filter((cartOrder) => {

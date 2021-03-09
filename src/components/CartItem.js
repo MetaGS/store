@@ -8,6 +8,7 @@ import useStorage from "../storage";
 import Button from "../components/Button";
 import "./CartItem.css";
 import { limitText } from "../utils/limitText";
+import { updateCartOrderObject } from "../storage/actions";
 
 const CartItem = ({
   cartItem = {},
@@ -32,10 +33,13 @@ const CartItem = ({
 
   let quantityChange = (e) => {
     let newQuantity = Number(e.target.value).toFixed(0);
-    setQuantity(e.target.value);
-
     const dbUpdateObject = { ...cartItem, quantity: newQuantity };
-    !Number.isNaN(newQuantity) && updateItemInField(dbUpdateObject);
+    const localUpdate = { cartOrderId, update: "quantity", value: newQuantity };
+    if (!Number.isNaN(newQuantity)) {
+      setQuantity(e.target.value);
+      updateItemInField(dbUpdateObject);
+      dispatch(updateCartOrderObject(localUpdate));
+    }
     updateTotalPrice(e.target.value * +price);
   };
 
