@@ -27,13 +27,13 @@ const Navbar = (props) => {
       <nav className={wideSearch ? "nav--products" : "top-nav"}>
         <Container>
           <div className="left">
-            <button
+            {/* <button
               onClick={() => {
                 console.log(state);
               }}
             >
               Show state
-            </button>
+            </button> */}
             <NavLink to="/" activeClassName="active">
               <img
                 src={logo}

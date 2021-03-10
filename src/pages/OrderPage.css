@@ -3,6 +3,10 @@
   margin-bottom: 40px;
 }
 
+.order-page-container {
+  max-width: 800px;
+}
+
 .order-page-title,
 .order-page-total {
   font-size: 2.5rem;
@@ -32,16 +36,20 @@
   font-weight: 500;
 }
 
+.select-pay-method {
+  display: block;
+  width: 100%;
+}
+
 .order-form-label {
   background-color: rgb(243, 242, 242);
   padding: 2px 8px;
   color: black;
   border-radius: 5px;
 }
-
-.pay-details,
 .delivery-details,
-.delivery-date-time input {
+.delivery-date-time input,
+.select-pay-method {
   height: 40px;
   border-radius: 10px;
   border: 2px solid lightgray;
@@ -49,28 +57,32 @@
   position: relative;
   padding: 0 40px;
 }
-.pay-details:focus-within,
 .delivery-details:focus-within,
-.delivery-date-time input:focus {
+.delivery-date-time input:focus,
+.select-pay-method:focus {
   border-color: rgb(129, 129, 221);
 }
 
-.pay-details input:focus,
 .delivery-details input:focus,
-.delivery-date-time input {
+.delivery-date-time input,
+.delivery-details select {
   outline: none;
 }
-.pay-details input,
-.delivery-details input {
+
+.delivery-details input,
+.delivery-details select {
   border: none;
   height: 100%;
   font-size: 1.5rem;
   margin: 0 10px;
 }
 
-.pay-details {
-  display: flex;
-  padding-bottom: 2px;
+.delivery-details select {
+  width: 100%;
+}
+
+.select-pay-method {
+  background-color: transparent;
 }
 
 .expire-cvv {
@@ -79,28 +91,12 @@
   flex-grow: 1;
 }
 
-.pay-details input {
-  border-bottom: 2px solid transparent;
-  transition: border 0.4s ease-in-out;
-  position: relative;
-  border-radius: 0;
-}
-
-.pay-details input:focus {
-  border-bottom-color: greenyellow;
-}
-
 .delivery-details {
 }
 
 /* .delivery-details.mid-size {
   max-width: 400px;
 } */
-
-.pay-details input::placeholder {
-  font-size: 1.5rem;
-  font-weight: 500;
-}
 
 .detail-field-icon {
   position: absolute;
@@ -152,14 +148,29 @@
   display: block;
   text-align: right;
 }
+*/
+.input-detail__date-time {
+  padding-right: 0;
+}
 
 .date-time-input-wrapper {
   display: flex;
-  justify-content: flex-end;
-} */
+  align-items: stretch;
+  height: 100%;
+  justify-content: space-around;
+}
 
-.delivery-date-time input {
-  padding: 0 20px;
+.delivery-date,
+.delivery-time {
+  background-color: transparent;
+  max-width: 200px;
+  padding: 0 40px;
+  display: flex;
+  vertical-align: center;
+}
+
+.delivery-date {
+  flex-grow: 1;
 }
 
 .delivery-date-time input ~ input {
@@ -183,16 +194,6 @@
 @media (max-width: 850px) {
 }
 @media (max-width: 600px) {
-  .cd-number {
-  }
-
-  .cd-expire {
-    max-width: 100px;
-  }
-
-  .cd-cv {
-  }
-
   .detail-row {
     flex-direction: column;
   }
@@ -207,22 +208,9 @@
 
   .date-time-input-wrapper input {
     flex-grow: 1;
+    padding: 0;
   }
 }
 
 @media (max-width: 500px) {
-  .pay-details {
-    flex-direction: column;
-    height: 120px;
-  }
-
-  .cd-number {
-  }
-
-  .cd-expire {
-    max-width: 100px;
-  }
-
-  .cd-cv {
-  }
 }

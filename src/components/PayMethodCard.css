@@ -1,0 +1,118 @@
+.pay-card-label {
+  font-size: 1.2rem;
+  margin: 25px 0 7px;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.select-pay-method {
+  display: block;
+  width: 100%;
+}
+
+.pay-card-label {
+  background-color: rgb(243, 242, 242);
+  padding: 2px 8px;
+  color: black;
+  border-radius: 5px;
+}
+
+.pay-details {
+  height: 40px;
+  border-radius: 10px;
+  border: 2px solid lightgray;
+  background-color: white;
+  position: relative;
+  padding: 0 40px;
+}
+.pay-details:focus-within {
+  border-color: rgb(129, 129, 221);
+}
+
+.pay-details input:focus {
+  outline: none;
+}
+.pay-details input {
+  border: none;
+  height: 100%;
+  font-size: 1.5rem;
+  margin: 0 10px;
+}
+
+.pay-details {
+  display: flex;
+  padding-bottom: 2px;
+}
+
+.expire-cvv {
+  display: flex;
+  height: 100%;
+  flex-grow: 1;
+}
+
+.pay-details input {
+  border-bottom: 2px solid transparent;
+  transition: border 0.4s ease-in-out;
+  position: relative;
+  border-radius: 0;
+}
+
+.pay-details input:focus {
+  border-bottom-color: greenyellow;
+}
+
+.pay-details input::placeholder {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.payment-field-icon {
+  position: absolute;
+  left: 0;
+  font-size: var(--icon-size);
+  top: 50%;
+  margin-left: 8px;
+  transform: translateY(-50%);
+}
+
+.cd-number {
+  flex-grow: 1;
+}
+
+.cd-expire {
+  margin-left: auto;
+}
+
+.cd-cv {
+}
+
+@media (max-width: 850px) {
+}
+@media (max-width: 600px) {
+  .cd-number {
+  }
+
+  .cd-expire {
+    max-width: 100px;
+  }
+
+  .cd-cv {
+  }
+}
+
+@media (max-width: 500px) {
+  .pay-details {
+    flex-direction: column;
+    height: 120px;
+  }
+
+  .cd-number {
+  }
+
+  .cd-expire {
+    max-width: 100px;
+  }
+
+  .cd-cv {
+  }
+}

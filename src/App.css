@@ -51,6 +51,7 @@ html {
   --primary-color-text: #333231;
   --black: #000;
   --white: #fff;
+  --danger-color: rgb(197, 79, 79);
   --navbar-height: 68px;
 
   --media-tablet: 850px;
