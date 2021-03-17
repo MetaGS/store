@@ -50,7 +50,7 @@ const updateField = (
         })
         .catch((error) => {
           console.log(
-            "%c Here is Error on Update Whole field",
+            "%c Here is Error on Update While updating",
             "color: red; font-size: 1.2rem;"
           );
           console.log(error.message);

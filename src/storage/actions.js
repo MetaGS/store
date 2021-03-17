@@ -108,4 +108,5 @@ export const addTo = {
 export const setField = {
   favorites: setFavorites,
   cart: setCart,
+  cartOrders: setCartOrders,
 };

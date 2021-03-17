@@ -6,7 +6,8 @@
   cursor: pointer;
   text-transform: uppercase;
   font-family: var(--roboto);
-  transition: transform 0.2s ease-out;
+  transition: transform 0.2s ease-out, color, width, height, padding,
+    background-color 0.2s ease-in-out;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -119,15 +120,22 @@
   border-radius: 146px;
 }
 
+.btn a,
+.btn a:hover {
+  text-decoration: none;
+}
+
 .btn:disabled {
   background-color: rgb(231 231 231);
+  color: rgba(255, 255, 255, 0.85);
+  border-color: grey;
+  text-shadow: none;
+  box-shadow: none;
+  transform: none;
 }
-.btn.disabled:hover,
-.btn.secondary:disabled:hover,
-.btn.secondary:disabled:focus,
+/* .btn:disabled:hover,
 .btn.primary-button:disabled:hover {
   transform: scale(1);
-  color: white;
-  outline-style: "";
-  outline-color: "";
-}
+  outline-style: none;
+  outline-color: transparent;
+} */

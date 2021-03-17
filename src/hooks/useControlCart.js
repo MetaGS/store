@@ -6,6 +6,7 @@ import {
   removeCartOrderById,
   getProductsAsArray,
   updateCartOrderObject,
+  clearCartOrderObjects,
 } from "../firebase/db";
 import { addTo, removeFrom, setField } from "../storage/actions";
 import useStorage from "../storage";
@@ -118,6 +119,15 @@ class ControlField {
 
   set = (arrayField) => {
     this.dispatch(setField[this.field](arrayField));
+  };
+
+  dangerousClear = async () => {
+    const result = this.userSignedIn
+      ? await clearCartOrderObjects(this.userId, this.field, [])
+      : this.localStorage.set([]);
+    this.set([]);
+    if (result) return true;
+    return false;
   };
 
   setOwnState = (state) => {

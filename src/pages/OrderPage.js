@@ -16,13 +16,16 @@ import {
 import "./OrderPage.css";
 import Container from "../components/Container";
 import HeaderTitle from "../components/HeaderTitle";
-import TitleAbhaya from "../components/TitleAbhaya";
+import TitleAbhaya from "../components/TitleAbhayaWithoutAnimations";
 import DescriptionP from "../components/DescriptionP";
 import PayMethodCard from "../components/PayMethodCard";
-
-import useStorage from "../storage";
 import Button from "../components/Button";
 import InputDetail from "./InputDetail";
+
+import useStorage from "../storage";
+import submitOrder from "../firebase/db";
+import useControlCart from "../hooks/useControlCart";
+import { Redirect } from "react-router-dom";
 
 const typeTime = document.createElement("input");
 typeTime.type = "time";
@@ -31,9 +34,8 @@ const supportTimeType = typeTime.type === "time"; // in case if I want to implem
 const OrderPage = (props) => {
   //component init
   const [{ cartOrders }, dispatch] = useStorage();
-  const totalPrice = cartOrders.reduce((previous, current) => {
-    return (previous += current.price * Number(current.quantity));
-  }, 0);
+  const controlCart = useControlCart("cartOrders");
+
   const [deliveryDetails, setDeliveryDetails] = useState({
     address: "",
     owner: "",
@@ -41,9 +43,13 @@ const OrderPage = (props) => {
     date: "",
     time: "",
   });
-
+  const [cardInformation, setCardInformation] = useState({});
   const [payMethod, setpayMethod] = useState("visa");
-
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const totalPrice = cartOrders.reduce((previous, current) => {
+    return (previous += current.price * Number(current.quantity));
+  }, 0);
   const formDisabled = totalPrice === 0;
 
   //handlers
@@ -55,6 +61,28 @@ const OrderPage = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
     console.log("submitted");
+    setSubmitting(true);
+    submitOrder({
+      deliveryDetails,
+      ...cartOrders,
+      totalPrice,
+      payMethod,
+      cardInformation,
+    }).then((response) => {
+      setSubmitting(false);
+      if (response?.error) {
+        console.log("Error happened");
+        return;
+      }
+      controlCart.dangerousClear().then((success) => {
+        if (success) {
+          setSubmitted("submitted");
+          setTimeout(() => {
+            setSubmitted("redirect");
+          }, 5000);
+        }
+      });
+    });
   };
 
   const onPayMethodChange = ({ target }) => {
@@ -88,6 +116,13 @@ const OrderPage = (props) => {
 
   return (
     <div className="order-page">
+      {submitting && <div className="order-submitting">Submitting...</div>}
+      {submitted === "submitted" && (
+        <div className="order-submitting">
+          Successfully submitted. Our operator will call you soon.
+        </div>
+      )}
+      {submitted === "redirect" && <Redirect to="/products" />}
       <Container className="order-page-container">
         <Utils className="order-utils" />
 
@@ -122,7 +157,11 @@ const OrderPage = (props) => {
               </select>
             </InputDetail>
 
-            {payMethod === "pay-on-delivery" ? "" : <PayMethodCard />}
+            {payMethod === "pay-on-delivery" ? (
+              ""
+            ) : (
+              <PayMethodCard updateParent={setCardInformation} />
+            )}
 
             <InputDetail
               labelId="address"

@@ -34,7 +34,7 @@
 .carousel-thumb-photo {
   max-width: 150px;
   min-width: 70px;
-
+  max-height: 150px;
   position: relative;
   width: var(--related-dimension);
   height: var(--related-dimension);
@@ -103,6 +103,16 @@
   right: 20px;
 }
 
+@media (max-width: 850px) {
+  .product-page-content {
+    --related-dimension: 12vw;
+  }
+  .carousel-thumb-photo {
+    border: 7px solid rgba(0, 0, 0, 0);
+    border-radius: 25%;
+  }
+}
+
 @media (max-width: 600px) {
   .carousel-thumb {
     margin-top: 10px;
@@ -111,8 +121,7 @@
     --related-dimension: 20vw;
   }
   .carousel-thumb-photo {
-    border: 7px solid rgba(0, 0, 0, 0);
-    border-radius: 10%;
+    border-radius: 25%;
   }
 
   .carousel-thumb-photo {

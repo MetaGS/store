@@ -17,7 +17,8 @@ import ProductsPage from "./ProductsPage";
 import SignButtons from "../components/SignButtons";
 import About from "./About";
 import Footer from "../components/Footer";
-import pic1 from "../assets/about-page-pic2.jpg";
+import pic1 from "../assets/about-page-pic1.jpg";
+import Container from "../components/Container";
 
 const MainHTML = (props) => {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -110,26 +111,27 @@ const MainHTML = (props) => {
         {/* <div>clientHeight:{winDoc.clientHeight}</div>
         <div>offsetHeight:{winDoc.offsetHeight}</div> */}
 
-        <div className="slide-main-page  slide-me">
-          <div className="row-about">
-            <div className="column1-about column-about">
-              <SecondaryContainer>
-                <Header
-                  data={{ buttonText: "See collection now" }}
-                  colors={{ title: "lightgray" }}
-                  className="header-main-html"
-                >
-                  <HeaderTopline>t-fit</HeaderTopline>
-                  <HeaderTitle>Bring Dreams True</HeaderTitle>
-                  <HeaderSubtitle>Best Collection in Bishkek</HeaderSubtitle>
-                </Header>
+        <Container>
+          <div className="slide-main-page  slide-me">
+            <div className="row-about">
+              <div className="column1-about column-about">
+                <SecondaryContainer>
+                  <Header
+                    data={{ buttonText: "See collection now" }}
+                    colors={{ title: "lightgray" }}
+                    className="header-main-html"
+                  >
+                    <HeaderTopline>t-fit</HeaderTopline>
+                    <HeaderTitle>Bring Dreams True</HeaderTitle>
+                    <HeaderSubtitle>Best Collection in Bishkek</HeaderSubtitle>
+                  </Header>
 
-                <SeeMore />
-              </SecondaryContainer>
+                  <SeeMore />
+                </SecondaryContainer>
+              </div>
             </div>
           </div>
-        </div>
-        {/* <div
+          {/* <div
             className="home-products slide-me"
             onTouchStart={(e) => {
               // e.stopPropagation();
@@ -141,11 +143,11 @@ const MainHTML = (props) => {
            
 
           {/*  */}
-        {/* </div> */}
-        {/* <div className="main-auto-height">
+          {/* </div> */}
+          {/* <div className="main-auto-height">
           <ProductsPage className="main-page-products" />
         </div> */}
-
+        </Container>
         <div className="wrapper-footer ">
           {/* <img src={pic1} className="video-background-footer" alt="" /> */}
           <Footer />

@@ -1,5 +1,5 @@
 .product-page {
-  padding: 50px 0;
+  padding: 0px 0 50px;
   width: 100%;
   --relative-size: 20vw;
 }
@@ -168,4 +168,23 @@
   .sub-block-title {
     font-size: 2rem;
   }
+}
+
+@media (max-width: 850px) {
+  .product-page-reviews {
+    padding: 15px 7px;
+  }
+  .author-and-date {
+    font-size: 1.5rem;
+  }
+
+  .review .author-block time {
+    font-size: 1.2rem;
+  }
+
+  .review-text {
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 600px) {
 }

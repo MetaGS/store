@@ -30,6 +30,14 @@ export const updateCartOrderObject = (userId, field, updatingOrder) => {
   return userUpdate(userId, field, undefined, undefined, filter);
 };
 
+export const clearCartOrderObjects = (userId, field, []) => {
+  const filter = () => {
+    return [];
+  };
+
+  return userUpdate(userId, field, undefined, undefined, filter);
+};
+
 export const removeCartOrderById = (userId, field, removeId) => {
   const filter = (dbField) => {
     return dbField.filter((dbItem) => {

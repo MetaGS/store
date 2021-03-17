@@ -115,13 +115,6 @@ export const FooterSample = (props) => {
 };
 
 const FooterDefault = (props) => {
-  useEffect(() => {
-    console.log("mounted");
-    return () => {
-      console.log("unmounted");
-    };
-  }, []);
-
   return (
     <FooterSample>
       <FooterLinks />

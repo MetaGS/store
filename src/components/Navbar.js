@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import useStorage from "../storage";
 import Container from "./Container";
@@ -22,9 +23,19 @@ const Navbar = (props) => {
   const itemsInCart = state.cartOrders.length;
   let { wideSearch, userSignedIn } = state;
 
+  const sidebarClick = () => {
+    if (sidebar) window.document.body.style.overflow = "";
+    else window.document.body.style.overflow = "hidden";
+    setSidebar(!sidebar);
+  };
+
   return (
     <>
-      <nav className={wideSearch ? "nav--products" : "top-nav"}>
+      <motion.nav
+        initial={{ y: -150 }}
+        animate={{ y: 0 }}
+        className={wideSearch ? "nav--products" : "top-nav"}
+      >
         <Container>
           <div className="left">
             {/* <button
@@ -78,14 +89,7 @@ const Navbar = (props) => {
               </NavLink>
             </div>
             <div>
-              <button
-                className="burger"
-                onClick={() => {
-                  if (sidebar) window.document.body.style.overflow = "";
-                  else window.document.body.style.overflow = "hidden";
-                  setSidebar(!sidebar);
-                }}
-              >
+              <button className="burger" onClick={sidebarClick}>
                 <span className="burger-line"> className="burger"</span>
               </button>
             </div>
@@ -94,15 +98,13 @@ const Navbar = (props) => {
 
         <div
           className={`nav-sidebar-wrapper ${sidebar ? "active" : ""}`}
-          onClick={() => {
-            setSidebar(!sidebar);
-          }}
+          onClick={sidebarClick}
         >
           <div className="nav-sidebar">
             <Sidebar />
           </div>
         </div>
-      </nav>
+      </motion.nav>
     </>
   );
 };

@@ -90,6 +90,15 @@ a:focus {
   font-family: var(--roboto);
 }
 
+input:disabled {
+  background-color: transparent;
+  color: rgba(139, 139, 139, 0.3);
+}
+
+input:disabled::placeholder {
+  color: rgba(139, 139, 139, 0.7);
+}
+
 /* End of Univ */
 /* Main Section */
 

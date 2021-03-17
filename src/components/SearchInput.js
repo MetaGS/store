@@ -25,10 +25,6 @@ const SearchInput = ({ className = "", ...props }) => {
     "/products/tags"
   );
 
-  console.log(searchResultFromTags);
-
-  console.log("searchInput.js runs");
-
   return (
     <>
       <div className={`search ${className}`}>

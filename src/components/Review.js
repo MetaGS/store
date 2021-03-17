@@ -6,25 +6,21 @@ import star from "../assets/star.svg";
 import Star from "../assets/Star";
 
 import "./Review.css";
+import Rating from "./Rating";
 
 const Review = ({ data }) => {
   const time = data?.createdAt
     ? parseDate(data.createdAt.seconds)
     : "updating...";
-  // console.log(data);
   return (
     <div className="review">
       <div className="author-and-date">
         <div className="author-block">
-          <p className="author"> {data.userId}</p>
+          <p className="author"> {data.userName || "anonym"}</p>
           <time className="review-time">{time}</time>
         </div>
         <div className="rate">
-          {Array(+data.rate)
-            .fill("star")
-            .map((ar, index) => {
-              return <span key={index}>{Star("var(--primary-color)")}</span>;
-            })}
+          <Rating productRating={data.rate} />
         </div>
       </div>
       <div className="review-text">

@@ -11,8 +11,6 @@ const useSearchInDb = (searchTerm, location = "products/tags") => {
     location[0] === "/" ? location.slice(1).split("/") : location.split("/");
   const [collection = "products", field = "tags", ...rest] = locationClean;
 
-  console.log("useSearchInDb.js runs");
-
   useEffect(() => {
     timeout && clearTimeout(timeout);
     console.log("search run");

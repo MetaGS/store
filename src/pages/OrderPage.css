@@ -3,6 +3,22 @@
   margin-bottom: 40px;
 }
 
+.order-submitting {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.4);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  display: flex;
+  font-size: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
 .order-page-container {
   max-width: 800px;
 }

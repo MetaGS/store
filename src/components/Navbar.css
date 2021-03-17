@@ -115,14 +115,17 @@ nav .burger {
   right: 0;
   width: 100%;
 
-  transition: transform 0.3s ease-in-out;
-  background-color: rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out 0.2s, background-color 0.2s ease-out;
+
+  background-color: rgba(0, 0, 0, 0);
   height: 100vh;
   z-index: 100;
 }
 
 .nav-sidebar-wrapper.active {
   transform: translateX(0);
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out, background-color 0.2s ease-out 0.3s;
 }
 .nav-sidebar {
   background-color: var(--primary-color);

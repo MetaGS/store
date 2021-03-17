@@ -1,0 +1,18 @@
+.title-abhaya__no-anim {
+  font-family: var(--poppins);
+  font-weight: 400;
+  font-size: 3.5rem;
+  color: var(--primary-color);
+  min-height: 120px;
+}
+
+@media (max-width: 850px) {
+  .title-abhaya__no-anim {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .title-abhaya__no-anim {
+  }
+}

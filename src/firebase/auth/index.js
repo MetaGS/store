@@ -67,9 +67,9 @@ export default () => {
             .then((doc) => {
               if (doc.exists) {
                 const dbFields = doc.data();
-                dispatch(addToCartAction(dbFields.cart));
-                dispatch(addToFavoritesAction(dbFields.favorites));
-                dispatch(setCartOrders(dbFields.cartOrders));
+                dispatch(addToCartAction(dbFields.cart ?? []));
+                dispatch(addToFavoritesAction(dbFields.favorites ?? []));
+                dispatch(setCartOrders(dbFields.cartOrders ?? []));
               }
             })
             .catch((error) => {

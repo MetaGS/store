@@ -15,9 +15,11 @@ export { getRelatedProducts } from "./getProducts";
 export { default as useGetRelatedProducts } from "./useGetRelatedProducts";
 export { default as useGetProducts } from "./useGetProducts";
 export { default as submitQuestionToDb } from "./submitQuestionToDb";
+export { default } from "./submitOrder";
 export {
   addCartOrderObject,
   removeCartOrderById,
   mergeCartOrders,
   updateCartOrderObject,
+  clearCartOrderObjects,
 } from "./updateCart";

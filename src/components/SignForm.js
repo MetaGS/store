@@ -4,6 +4,7 @@ import { NavLink as Link, useHistory } from "react-router-dom";
 import SigningHeader from "./SigningHeader";
 
 import "./SignForm.css";
+import Button from "./Button";
 
 const SignForm = ({
   children,
@@ -64,13 +65,13 @@ const SignForm = ({
               )}
             </div>
 
-            <button
-              className="btn primary-button submit"
-              type="submit"
+            <Button
+              type="primary-button"
+              className="sign-in-form__submit"
               disabled={!conditionsChecked}
             >
               {submitButtonText}
-            </button>
+            </Button>
           </div>
           <div className="extra">
             <p className="option">

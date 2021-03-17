@@ -49,13 +49,7 @@ export const HeaderTopline = ({ children, className = "" }) => {
 export const HeaderTitle = ({ className = "", children = "", ...props }) => {
   return (
     <TitleAbhaya className={`header-title ${className}`} {...props}>
-      {children.split(" ").map((word) => {
-        return (
-          <>
-            {word} <br />
-          </>
-        );
-      })}
+      {children.split(" ")}
     </TitleAbhaya>
   );
 };

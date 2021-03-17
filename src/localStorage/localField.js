@@ -39,9 +39,7 @@ export default class LocalField {
 
   getField() {
     let field = JSON.parse(this.#storage.getItem(this.fieldName));
-    console.log(field);
     if (!field) field = [];
-    console.log(field);
     return field;
   }
 

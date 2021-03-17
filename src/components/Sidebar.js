@@ -23,6 +23,9 @@ const Sidebar = (props) => {
           <NavLink to="/products">Collections</NavLink>
         </li>
         <li className="sidebar-link">
+          <NavLink to="/favorites">Favorites</NavLink>
+        </li>
+        <li className="sidebar-link">
           <NavLink to="/about">About</NavLink>
         </li>
         <li className="sidebar-link">

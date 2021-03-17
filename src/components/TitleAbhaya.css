@@ -1,18 +1,29 @@
 .title-abhaya {
   font-family: var(--poppins);
   font-weight: 400;
-  font-size: 3.5rem;
+  font-size: 5rem;
   color: var(--primary-color);
+  min-height: 170px;
+}
+
+.title-abhaya__child-wrapper {
+  overflow: hidden;
+}
+
+.title-abhaya__span {
+  overflow: hidden;
+  display: block;
 }
 
 @media (max-width: 850px) {
   .title-abhaya {
-    font-size: 3rem;
+    font-size: 4rem;
+    min-height: 170px;
   }
 }
 
 @media (max-width: 600px) {
   .title-abhaya {
-    font-size: 3rem;
+    font-size: 4rem;
   }
 }

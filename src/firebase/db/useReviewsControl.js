@@ -38,7 +38,7 @@ export default (productId) => {
         unsubscribelistener()
       );
     };
-  }, [state.user]);
+  }, [state.user, productId]);
   return control;
 };
 
@@ -104,6 +104,7 @@ class ControlReviews {
 
         console.log(reviews);
         this.reviews = reviews;
+        this.updateCaller();
       },
       (error) => {
         console.log(
@@ -133,6 +134,7 @@ class ControlReviews {
         phoneNumber,
         rate: Number(rate),
         userId: this.userId,
+        userName: this.state?.user?.name ?? "anonym",
         productId: this.productId,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       })

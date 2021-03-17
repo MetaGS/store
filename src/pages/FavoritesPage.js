@@ -6,7 +6,7 @@ import useStorage from "../storage";
 
 import Container from "../components/Container";
 import UtilsBlock from "../components/UtilsBlock";
-import TitleAbhaya from "../components/TitleAbhaya";
+import TitleAbhaya from "../components/TitleAbhayaWithoutAnimations";
 import DescriptionP from "../components/DescriptionP";
 import FavoriteItem from "../components/FavoriteItem";
 

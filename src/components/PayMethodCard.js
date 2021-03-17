@@ -5,11 +5,16 @@ import { AiFillCreditCard } from "react-icons/ai";
 import CautionP from "./CautionP";
 
 import "./PayMethodCard.css";
-const PayMethoCard = (props) => {
-  const [
-    creditCard,
-    { handleCvv, handleCreditCardNumber, handleExpiration },
-  ] = useHandlers();
+const PayMethoCard = ({ updateParent = () => {} }) => {
+  const [creditCard, handlers] = useHandlers();
+
+  const hanleCvvAndUpdateParent = (e) => {
+    const result = handlers[e.target.name](e);
+    if (!!result) {
+      updateParent(result);
+    }
+  };
+
   return (
     <>
       <label for="pay-option" className="pay-card-label">
@@ -27,39 +32,42 @@ const PayMethoCard = (props) => {
       >
         <AiFillCreditCard className="payment-field-icon" />
         <input
-          onChange={handleCreditCardNumber}
+          disabled
+          onChange={hanleCvvAndUpdateParent}
           value={creditCard.number}
           id="pay-option"
           type="tel"
           maxLength="20"
           size="22"
           minLength="16" // actually it is 19, wrote 16 just to do not confuse users, because only 16 numbers in card
-          name="number"
+          name="handleCreditCardNumber"
           className="cd-number"
           placeholder="Card Number"
           required
         />
         <div className="expire-cvv">
           <input
+            disabled
             type="tel"
-            name="expire"
+            name="handleExpiration"
             className="cd-expire"
             placeholder="MM/YY"
             maxLength="5"
             minLength="4"
             value={creditCard.expire}
-            onChange={handleExpiration}
+            onChange={hanleCvvAndUpdateParent}
             required
           />
           <input
+            disabled
             type="tel"
-            name="cvv"
+            name="handleCvv"
             className="cd-cv"
             size="4"
             minLength="3"
             maxLength="3"
             value={creditCard.cvv}
-            onChange={handleCvv}
+            onChange={hanleCvvAndUpdateParent}
             placeholder="CVV"
             required
           />

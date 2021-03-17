@@ -8,7 +8,7 @@ import useControlField from "../hooks/useControlField";
 
 import UtilsBlock from "../components/UtilsBlock";
 import Container from "../components/Container";
-import TitleAbhaya from "../components/TitleAbhaya";
+import TitleAbhaya from "../components/TitleAbhayaWithoutAnimations";
 import DescriptionP from "../components/DescriptionP";
 
 import Button from "../components/Button";

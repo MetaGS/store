@@ -1,93 +1,94 @@
 .center {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .signing {
-    width: 503px;
-    padding: 26px 0 45px;
-    margin: 71px 0;
-    display: flex;
-    justify-content: center;
-    background-color: white;
-    box-shadow: 0 4px 4px rgba(0, 0 , 0, 0.25);
-    border-radius: 5px;
+  width: 503px;
+  padding: 26px 0 45px;
+  margin: 71px 0;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
 }
-
-
 
 .signing form {
-    max-width: 327px;
+  max-width: 327px;
 }
 
-
-
-
- 
+.inputs {
+  text-align: center;
+  padding: 0 10px;
+}
 
 .checkbox-terms {
-    display: flex;
-    margin-top: 30px;
-    align-items: center;
+  display: flex;
+  margin-top: 30px;
+  align-items: center;
 }
 
 .checkbox-terms .checkbox {
-    width: 24px;
-    height: 24px;
-    margin-right: 11px;
+  width: 24px;
+  height: 24px;
+  margin-right: 11px;
 }
 
 .checkbox-terms .terms-self {
-    font-size: 1.3rem;
-    font-family: var(--roboto);
-    color: var(--primary-grey);
+  font-size: 1.3rem;
+  font-family: var(--roboto);
+  color: var(--primary-grey);
 }
-
 
 /* for sign-in modification */
 main .signing--sign-in {
-    min-height: 674px;
-    align-items: center;
-    padding: 0 0 30px;
+  min-height: 674px;
+  align-items: center;
+  padding: 0 0 30px;
 }
 .checkbox-terms .terms-self--sign-in {
-    margin: 0 0 0 auto;
+  margin: 0 0 0 auto;
 }
 /* ------------- */
 
-
 .checkbox-terms .terms-self a {
-    color: inherit;
+  color: inherit;
 }
 
-
-
-.primary-button.submit {
-    width: 327px;
-    margin-top: 35px;
+.sign-in-form__submit {
+  width: 327px;
+  max-width: 100%;
+  margin-top: 35px;
 }
-
-
-
-
-
 
 .extra {
-    margin-top: 35px;
-    text-align: center;
-    font-size: 1.5rem;
-    color: var(--primary-grey);
+  margin-top: 35px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--primary-grey);
 }
-
 
 .extra .extra-link {
-    color: var(--primary-color-text);
-    text-decoration: none;
+  color: var(--primary-color-text);
+  text-decoration: none;
 }
 
-.extra .extra-link:hover, .extra .extra-link:focus {
-    text-decoration: underline;
+.extra .extra-link:hover,
+.extra .extra-link:focus {
+  text-decoration: underline;
+}
+
+@media (max-width: 850px) {
+}
+@media (max-width: 600px) {
+  .inputs {
+    padding: 0 20px;
+  }
+  .input {
+    width: 100%;
+  }
 }

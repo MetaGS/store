@@ -27,9 +27,15 @@ const ProductPage = (props) => {
   const [activeSize, setActiveSize] = useState(null);
   const [activeColor, setActiveColor] = useState(null);
 
-  console.log(errors);
   const { id } = useParams();
   const reviewControl = useReviewsControl(id);
+
+  useEffect(() => {
+    console.log("mouted Product Page");
+    return () => {
+      console.log("Unmounted piece of shit mother fucker");
+    };
+  }, []);
 
   let {
     title = "No title Entered",

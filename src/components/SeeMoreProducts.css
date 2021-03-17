@@ -32,7 +32,7 @@
 
 .see-more-list {
   display: flex;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 .product-see-more-item {

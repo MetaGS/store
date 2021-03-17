@@ -4,6 +4,10 @@
   margin-right: 2px;
 }
 
+.rating-stars {
+  display: flex;
+}
+
 svg .filled {
   fill: grey;
 }

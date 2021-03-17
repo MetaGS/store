@@ -37,7 +37,9 @@ export const useHandlers = () => {
   const handleCvv = ({ target }) => {
     if (isNotANumber(target.value)) return;
 
-    setCreditCard({ ...creditCard, cvv: target.value });
+    const newValue = { ...creditCard, cvv: target.value };
+    setCreditCard(newValue);
+    return newValue;
   };
 
   const handleExpiration = ({ target }) => {
@@ -57,7 +59,10 @@ export const useHandlers = () => {
       // if deleted previously, and entered number again, then put [/] between 2nd and 3rd char
       value = `${value.slice(0, 2)}/${value.slice(2)}`;
     }
-    setCreditCard({ ...creditCard, expire: value });
+
+    const newValue = { ...creditCard, expire: value };
+    setCreditCard(newValue);
+    return newValue;
   };
 
   const handleCreditCardNumber = ({ target }) => {
@@ -66,7 +71,7 @@ export const useHandlers = () => {
     if (isNotANumber(value)) return;
     // debugger;
     if (valLength < creditCard.number.length) {
-      setCreditCard({ ...creditCard, [name]: value });
+      setCreditCard({ ...creditCard, number: value });
       return;
     }
 
@@ -83,8 +88,9 @@ export const useHandlers = () => {
       clearValue = clearValue.slice(4);
     }
     valueWithWhiteSpace += clearValue;
-
-    setCreditCard({ ...creditCard, [name]: valueWithWhiteSpace });
+    const newValue = { ...creditCard, number: valueWithWhiteSpace };
+    setCreditCard(newValue);
+    return newValue;
   };
 
   return [
