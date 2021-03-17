@@ -19,6 +19,7 @@ import HowToOrder from "./pages/HowToOrder";
 import About from "./pages/About";
 import OrderPage from "./pages/OrderPage";
 import Buttons from "./components/Buttons";
+import ErrorPage from "./components/404";
 
 import ContactUs from "./pages/ContactUs";
 import ScrollToTop from "./components/ScrollToTop";
@@ -63,6 +64,7 @@ function App() {
               <Route path="/about" component={About} />
               <Route path="/order" component={OrderPage} />
               <Route path="/buttons" component={Buttons} />
+              <Route component={ErrorPage} />
             </Main>
             <Footer />
           </>

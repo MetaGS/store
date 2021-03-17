@@ -1,0 +1,24 @@
+.error-page {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  flex-direction: column;
+  padding: 20px;
+  text-align: center;
+}
+
+.error-page__title {
+  font-size: 7rem;
+  color: blueviolet;
+}
+
+.error-page__subtitle {
+  font-size: 2.2rem;
+}
+
+.error-page__description {
+  color: grey;
+  font-size: 1.8rem;
+}
