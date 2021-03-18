@@ -11,6 +11,27 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+.btn:hover,
+.btn:focus {
+  animation: pulse 1.5s infinite;
+  opacity: 0.8;
+  transition: opacity 1s ease;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(3, 19, 1, 0.6);
+  }
+
+  50% {
+    box-shadow: 0 0 0 10px rgba(12, 176, 0, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(12, 176, 0, 0);
+  }
+}
+
 .btn.sm {
   padding: 0.5em 1.4em;
   font-size: 1.2rem;
@@ -27,7 +48,7 @@
   width: 100%;
 }
 .btn:hover {
-  transform: scale(1.1);
+  /* transform: scale(1.1); */
 }
 
 .btn:focus {
@@ -52,7 +73,7 @@
 }
 
 .btn:focus {
-  transform: scale(1.05);
+  /* transform: scale(1.05); */
 }
 
 /* Button Types */
@@ -132,6 +153,46 @@
   text-shadow: none;
   box-shadow: none;
   transform: none;
+  animation: none;
+}
+
+.button-downloading {
+}
+
+.button-downloading:hover {
+}
+
+.button-downloading__spinner {
+  display: flex;
+  font-size: 0;
+  width: 100%;
+  justify-content: center;
+}
+
+.button-downloading__spinner:after {
+  display: block;
+
+  content: "";
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: white;
+  border-left-color: white;
+  border-bottom-color: white;
+  animation-name: downloading;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes downloading {
+  0% {
+    transform: rotateZ(0);
+  }
+
+  100% {
+    transform: rotateZ(360deg);
+  }
 }
 /* .btn:disabled:hover,
 .btn.primary-button:disabled:hover {

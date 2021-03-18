@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Button from "./Button";
 import { Link } from "react-router-dom";
@@ -16,6 +16,8 @@ const icon = {
 };
 
 const Buttons = (props) => {
+  const [toggle, setToggle] = useState(false);
+
   return (
     <div
       style={{
@@ -53,7 +55,18 @@ const Buttons = (props) => {
           <div className="box-check downloading-icon"></div>
         </div>
 
-        <Button type={"primary"}>Button Primary</Button>
+        <div className="downloading-button">
+          <Button type="primary-button">
+            {toggle && (
+              <span className="button-downloading__spinner">downloading</span>
+            )}
+            {!toggle && "This is A button"}
+          </Button>
+        </div>
+
+        <Button type={"primary"} onClick={() => setToggle(!toggle)}>
+          Button Primary
+        </Button>
         <Button type={"primary"} disabled>
           Button Primary Disabled
         </Button>
