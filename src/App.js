@@ -35,40 +35,39 @@ function App() {
       <Navbar />
       <ScrollToTop />
       <AnimatePresence>
-        <Switch location={location} key={location.pathname}>
-          <Route path="/" exact>
-            <MainHTML />
-          </Route>
-          <>
+        <Main>
+          <Switch location={location} key={location.pathname}>
+            <Route path="/" exact>
+              <MainHTML />
+            </Route>
+
             {/* This fragment is IMPORTANT, if you delete it, then the footer will go on */}
-            <Main>
-              <Route path="/signup">
-                <SignUpPage />
-              </Route>
-              <Route path="/signin">
-                <SignInPage hi={"wtf it works"} />
-              </Route>
-              <Route path="/products" exact>
-                <ProductsPage />
-              </Route>
-              <Route path="/products/:id">
-                <ProductPage />
-              </Route>
-              <Route path="/cart" component={CartPage} />
-              <Route path="/profile" component={ProfilePage} />
-              <Route path="/create" component={CreateProduct} />
-              <Route path="/favorites" component={FavoritesPage} />
-              <Route path="/how-to-order" component={HowToOrder} />
-              <Route path="/contact-us" component={ContactUs} />
-              <Route path="/careers" component={Careers} />
-              <Route path="/about" component={About} />
-              <Route path="/order" component={OrderPage} />
-              <Route path="/buttons" component={Buttons} />
-              <Route component={ErrorPage} />
-            </Main>
-            <Footer />
-          </>
-        </Switch>
+            <Route path="/signup">
+              <SignUpPage />
+            </Route>
+            <Route path="/signin">
+              <SignInPage hi={"wtf it works"} />
+            </Route>
+            <Route path="/products" exact>
+              <ProductsPage />
+            </Route>
+            <Route path="/products/:id">
+              <ProductPage />
+            </Route>
+            <Route path="/cart" component={CartPage} />
+            <Route path="/profile" component={ProfilePage} />
+            <Route path="/create" component={CreateProduct} />
+            <Route path="/favorites" component={FavoritesPage} />
+            <Route path="/how-to-order" component={HowToOrder} />
+            <Route path="/contact-us" component={ContactUs} />
+            <Route path="/careers" component={Careers} />
+            <Route path="/about" component={About} />
+            <Route path="/order" component={OrderPage} />
+            <Route path="/buttons" component={Buttons} />
+            <Route component={ErrorPage} />
+          </Switch>
+        </Main>
+        <Footer />
       </AnimatePresence>
     </div>
   );

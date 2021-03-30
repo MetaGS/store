@@ -87,7 +87,12 @@ const ProductsPage = ({ className = "", onScroll = () => {}, ...props }) => {
       </div>
 
       <section className="content">
-        <div className={`filters ${filterMobileActive ? "mobile-active" : ""}`}>
+        <div
+          className={`filters ${filterMobileActive ? "mobile-active" : ""}`}
+          onClick={() => {
+            setFilterMobileActive(!filterMobileActive);
+          }}
+        >
           <Filters updateParent={updateFilters} />
         </div>
         {!loading && <Products {...{ products }} />}

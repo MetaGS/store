@@ -23,7 +23,7 @@
 
 .favorite-product {
   position: relative;
-  z-index: 10;
+  z-index: 2;
   width: 80%;
   height: 100%;
 }

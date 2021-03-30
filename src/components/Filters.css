@@ -3,7 +3,8 @@
   width: 190px;
 
   box-shadow: 2px 0 2px rgba(0, 0, 0, 0.15);
-  padding: 10px 15px 20px 0;
+  padding: 10px 15px 20px 20px;
+  background-color: var(--white);
 }
 
 .filter-items a {

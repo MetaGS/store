@@ -19,7 +19,7 @@
 .mobile-filter-toggler button {
   background: none;
   font-size: 2rem;
-  color: var(--white);
+  color: var(--black);
   display: flex;
   align-items: center;
   border: 1px solid lightgray;
@@ -71,10 +71,10 @@
   vertical-align: middle;
 }
 .main--products .filters {
-  background-color: white;
   transition: transform 0.3s ease-in-out;
-  padding: 0 0px 0 20px;
   margin-right: 25px;
+  width: 100%;
+
   z-index: 1;
   left: 0;
   border-top-right-radius: 10px;

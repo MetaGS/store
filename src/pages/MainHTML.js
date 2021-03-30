@@ -150,7 +150,6 @@ const MainHTML = (props) => {
         </Container>
         <div className="wrapper-footer ">
           {/* <img src={pic1} className="video-background-footer" alt="" /> */}
-          <Footer />
         </div>
       </div>
     </>
