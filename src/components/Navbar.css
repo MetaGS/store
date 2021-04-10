@@ -111,8 +111,8 @@ nav .burger {
 .nav-sidebar-wrapper {
   display: none;
   position: fixed;
-  transform: translateX(100%);
-  right: 0;
+  transform: translateX(99%);
+  right: -1px;
   width: 100%;
 
   transition: transform 0.3s ease-in-out 0.2s, background-color 0.2s ease-out;
