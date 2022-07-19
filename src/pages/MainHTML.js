@@ -29,7 +29,6 @@ const MainHTML = (props) => {
 
 
   const stopPropagation = (e) => {
-    console.log(e);
     if (!canScroll(e)) {
       e.stopPropagation();
     }
