@@ -27,9 +27,6 @@ const MainHTML = (props) => {
   const [backgroundVideoDownloading, setVideoDownloading] = useState(true);
   const numberOfPages = 2; //this is zero based index so there is 2 pages
 
-  // const checkEvent = (e) => {
-  //   console.log(e.type);
-  // };
 
   const stopPropagation = (e) => {
     console.log(e);
@@ -97,20 +94,7 @@ const MainHTML = (props) => {
         {backgroundVideoDownloading && (
           <img className="video-background-about" src={pic1} />
         )}
-        {/* <video
-          className="video-background-about"
-          autoPlay
-          muted
-          loop
-          onLoad={() => {
-            setVideoDownloading(false);
-          }}
-          src={videoBg}
-          type="video/mp4"
-        /> */}
-        {/* <div>clientHeight:{winDoc.clientHeight}</div>
-        <div>offsetHeight:{winDoc.offsetHeight}</div> */}
-
+      
         <Container>
           <div className="slide-main-page  slide-me">
             <div className="row-about">
@@ -131,42 +115,15 @@ const MainHTML = (props) => {
               </div>
             </div>
           </div>
-          {/* <div
-            className="home-products slide-me"
-            onTouchStart={(e) => {
-              // e.stopPropagation();
-            }}
-            onTouchEnd={(e) => {
-              // e.stopPropagation();
-            }}
-          >
-           
-
-          {/*  */}
-          {/* </div> */}
-          {/* <div className="main-auto-height">
-          <ProductsPage className="main-page-products" />
-        </div> */}
         </Container>
         <div className="wrapper-footer ">
-          {/* <img src={pic1} className="video-background-footer" alt="" /> */}
+    
         </div>
       </div>
     </>
   );
 };
 
-//   <div className="wrapper-about" onScroll={onScroll} onWheel={onScroll}>
-//     <video
-//       className="video-background-about"
-//       autoPlay
-//       muted
-//       loop
-//       src={videoBg}
-//       type="video/mp4"
-//     />
-//
 
-//   </div>
 
 export default MainHTML;
